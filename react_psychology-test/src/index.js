@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+import "./App.css";
+
 ReactDOM.render(
     <App />,
   document.getElementById('root')

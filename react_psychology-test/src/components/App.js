@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from "react";
 import Example from "./example";
+import "../Example.css";
+
 
 function Login(props) {
   const [userName,setUserName] = useState("");
@@ -30,8 +32,19 @@ function Login(props) {
   }
 
   function handleClick(){
-    props.changePage();
+    let checkNum = /[0-9]/;
+    let checkEng = /[a-zA-Z]/;
+    let checkSpc = /[~!@#$%^&*()_+|<>?:{}]/;
+    let checkKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const message = "이름이 올바르지 않습니다.\n(한글 이름을 입력해주세요 !)\n(Please input English name !)"
+
+    // 성별은 체크를 하지 않으면, 버튼 활성화가 애초에 안될 것이고, radio형태라, 잘못된 값은 없을것이다. 고로 이름만 체크
+    if(checkNum.test(userName) || checkSpc.test(userName) || (checkEng.test(userName) && checkKor.test(userName)))
+      alert(message);
+    else
+      props.changePage();
   }
+
 
   useEffect(() => {
     handleBtn();
@@ -63,7 +76,7 @@ function Login(props) {
               </div>
 
               <div className="text-center">
-                <button type="button" disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
+                <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
               </div>
             </div>
           </div>
@@ -77,10 +90,10 @@ function Login(props) {
 }
 
 
-function App() {
-  
+function App() { 
   const [loginToken,setLoginToken] = useState(true);
   const [exampleToken,setExampleToken] = useState(false);
+  const [progress,setProgress] = useState("0");
 
   function nextHandlePage() {
     setLoginToken(false);
@@ -92,13 +105,13 @@ function App() {
   } 
 
   useEffect(() =>{
-    console.log(loginToken,exampleToken);
+    //console.log(loginToken,exampleToken);
   },[loginToken,exampleToken]);
 
   return (
     <div className="App">
       <Login isLoggined={loginToken} changePage={nextHandlePage} />
-      <Example isLoggined={exampleToken} changePage={prevHandlePage} />
+      <Example isLoggined={exampleToken} curProgress={progress} changePage={prevHandlePage} />
     </div>
   );
 }

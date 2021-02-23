@@ -19,16 +19,20 @@ function Example(props) {
     if (props.isLoggined){
         return (
             <div className="example-container">
-                <div className="example-title">
-                    <h2>검사 예시</h2>
+                <div className="example-progress-container">
+                    <div className="example-title">
+                        <h2>검사 예시</h2>
+                    </div>
                     <div className="example-progress">
                         <h3>0%</h3>
                     </div>
                 </div>
-
-                <div className="progress-bar">
-
+                <div className="progress">
+                    <div className="progress-bar">
+                        <progress value="0" max="100"></progress>
+                    </div>
                 </div>
+
                 <h4>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h4>
 
                 <div className="form-group">

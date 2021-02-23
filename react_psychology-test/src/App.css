@@ -1,0 +1,12 @@
+.form-name:focus {
+    outline: rgb(29, 172, 216) solid 3px;
+}
+
+.form-check.form-check-inline{
+    display: inline;
+    margin-right : 12px;
+}
+.form-check-input{
+    margin-right : 5px;
+}
+
