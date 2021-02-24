@@ -1,22 +1,36 @@
 import React,{useEffect, useState} from "react";
 
 function Example(props) {
-    const [exampleChecker,setExampleChecker] = useState(false);
+    const [exampleChecker, setExampleChecker] = useState(false);
     const [activeBtn, setActiveBtn] = useState(true);
 
     function handleChecker(event) {
-        if(event.target.value === "1" || event.target.value === "2")
+        if (document.querySelector(".form-check-input").checked === false){
+            console.log("checkd : false");
             setActiveBtn(false);
+        }
+        else if (document.querySelector(".form-check-input").checked === true){
+            console.log("checkd : true");
+            document.querySelector(".form-check-input").checked = false;
+            setActiveBtn(true);
+        } 
     }
-    function handleClick() {
-        props.changePage();
+    
+    function handleMoveLogin() {
+        setExampleChecker(false);
+        props.moveLoginPage();
+    }
+    
+    function handleMoveTest() {
+        setExampleChecker(false);
+        props.moveTestPage();
     }
 
     useEffect(() => {
 
-    },[exampleChecker]);
+    }, [exampleChecker]);
 
-    if (props.isLoggined){
+    if (props.isLoggined) {
         return (
             <div className="example-container">
                 <div className="example-progress-container">
@@ -39,15 +53,15 @@ function Example(props) {
                     <div>두 개 가치 중에 자신에게 더 중요한 가치를 선택하세요.</div>
                     <div>
                         <div className="form-check form-check-inline">
-                            <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="1" onChange={handleChecker} />창의성</label>
+                            <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="1" onChange={() => setExampleChecker(true)} />창의성</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="2" onChange={handleChecker} />안정성</label>
+                            <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="2" onChange={() => setExampleChecker(true)} />안정성</label>
                         </div>
                     </div>
                     <div className="text-center">
-                        <button type="button" className="btn btn-outline-primary" onClick={handleClick}>이전</button>
-                        <button type="button" disabled={activeBtn} className="btn btn-outline-primary">검사 시작</button>
+                        <button type="button" className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
+                        <button type="button" disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
                     </div>
 
                 </div>
@@ -56,7 +70,8 @@ function Example(props) {
     }
     else
         return null;
-    
 }
+
+
 
 export default Example;

@@ -1,8 +1,6 @@
 import React, {useState,useEffect} from "react";
-import axios from "axios";
-import Example from "./example";
-import "../Example.css";
-
+import Example from "./Example";
+import Test from "./Test";
 
 function Login(props) {
   const [userName,setUserName] = useState("");
@@ -45,7 +43,6 @@ function Login(props) {
     else
       props.changePage();
   }
-
 
   useEffect(() => {
     handleBtn();
@@ -90,118 +87,43 @@ function Login(props) {
     return null;
 }
 
-function Inspection(){
-  
-  const [questionBox,setQuestionBox] = useState("0");
-  const [questionIdx, setQestionIdx] = useState(0);
 
-  const fetchApiData = async () => {
-    try {
-      const apikey = "8ae87adbbfc34f50eb84444700264097";
-      const url = `https://www.career.go.kr/inspct/openapi/test/questions?apikey=${apikey}&q=6`;
-      const getApiData = await axios.get(url);
-      const data = getApiData.data;
-
-      //console.log(data.RESULT);
-      setQuestionBox(data.RESULT);
-      //console.log(questionBox);
-    } catch (e) {
-      console.log(e);
-      console.log(e.response.status);
-      console.log(e.response.headers);
-      //console.log(e.response.data);
-    }
-  }
-
-  useEffect(() => {
-    fetchApiData();
-    console.log(questionBox);
-  }, [])
-
- 
-  return(
-    <>
-      {/* <form>
-        <div className="form-group">
-          <div className="form-group-box">
-            <div>{questionBox[0].question}</div>
-            <div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[0].answer01} value={questionBox[0].answerScore01} />{questionBox[0].answer01}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[0].answer02} value={questionBox[0].answerScore02} />{questionBox[0].answer02}</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-group-box">
-            <div>{questionBox[1].question}</div>
-            <div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[1].answer01} value={questionBox[1].answerScore01} />{questionBox[1].answer01}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[1].answer02} value={questionBox[1].answerScore02} />{questionBox[1].answer02}</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-group-box">
-            <div>{questionBox[2].question}</div>
-            <div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[2].answer01} value={questionBox[2].answerScore01} />{questionBox[2].answer01}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[2].answer02} value={questionBox[2].answerScore02} />{questionBox[2].answer02}</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="form-group-box">
-            <div>{questionBox[3].question}</div>
-            <div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[3].answer01} value={questionBox[3].answerScore01} />{questionBox[3].answer01}</label>
-              </div>
-              <div className="form-check form-check-inline">
-                <label className="form-check-label"><input type="radio" name={questionBox[3].answer02} value={questionBox[3].answerScore02} />{questionBox[3].answer02}</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form> */}
-    </>
-  );
-}
 
 function App() { 
   const [loginToken,setLoginToken] = useState(true);
   const [exampleToken,setExampleToken] = useState(false);
+  const [testToken,setTestToken] = useState(false);
+  
   const [progress,setProgress] = useState("0");
 
-  function nextHandlePage() {
+  function loginToExample() {
     setLoginToken(false);
     setExampleToken(true);
   }
-  function prevHandlePage() {
+  function exampleToLogin() {
     setLoginToken(true);
     setExampleToken(false);
-  } 
+  }
+  function exampleToTest(){
+    setExampleToken(false);
+    setTestToken(true);
+  }
+  function testToExample(){
+    setExampleToken(true);
+    setTestToken(false);
+  }  
 
+  
   useEffect(() =>{
-    //console.log(loginToken,exampleToken);
-  },[loginToken,exampleToken]);
+  
+  },[]);
+//loginToken,exampleToken
 
   return (
     <div className="App">
-      <Login isLoggined={loginToken} changePage={nextHandlePage} />
-      <Example isLoggined={exampleToken} curProgress={progress} changePage={prevHandlePage} />
-      <Inspection />
+      <Login isLoggined={loginToken} changePage={loginToExample} />
+      <Example isLoggined={exampleToken} moveLoginPage={exampleToLogin} moveTestPage={exampleToTest} />
+      <Test isLoggined={testToken} changePage={testToExample}/>
     </div>
   );
 }
