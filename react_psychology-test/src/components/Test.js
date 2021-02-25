@@ -86,15 +86,22 @@ function Test(props) {
     async function handleSubmit(){
         //console.log("handleSubmit 호출");
         //console.log("answer : ",answer);
+        const userName = document.querySelector(".form-name").value;
+        let gender = null;
+        if (document.querySelector(".radio-male").checked)
+            gender = document.querySelector(".radio-male").value;
+        else if (document.querySelector(".radio-female").checked)
+            gender = document.querySelector(".radio-female").value;
+
         let data = {
             apikey: "8ae87adbbfc34f50eb84444700264097",
             qestrnSeq : "6",
             trgetSe: "100208",
-            name : "위영민",
-            gender: "100323",
-            school : "세종대학교",
-            grade : "3",
-            email : "abc@email.com",
+            name : userName,
+            gender: gender,
+            school : "",
+            grade : "",
+            email : "",
             startDtm : String(new Date().getTime()),
             answers : answer.trim() 
         }
@@ -117,36 +124,34 @@ function Test(props) {
 
     }
 
-    if(props.isLoggined){
-        return (
-            <>
-                <h1>검사 진행</h1>
-                {testList}
-                <button onClick={() => {
-                    if (num === 0)
-                        props.changePage();
-                    else{
-                        setNum(num - 1);
-                        prevTestList(num);
-                        console.log(num);
-                    }
-                }}>이전</button>
-                <button disabled={counter<5 ? true : false} className="testNextBtn" onClick={(event) => {
-                    if (event.target.value === "제출")
-                        handleSubmit();
-                    setCounter(0);
-                    setNum(num + 1);
-                    if(num === 4) {
-                        setButtonText("제출");
-                        setCounter(2);
-                    }
-                    nextTestList(num);
+    return (
+        <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
+            <h1>검사 진행</h1>
+            {testList}
+            <button onClick={() => {
+                if (num === 0)
+                    props.changePage();
+                else{
+                    setNum(num - 1);
+                    prevTestList(num);
                     console.log(num);
-                }} value={buttonText} >{buttonText}</button>
-            </>
-        );
-    }else
-        return null;
+                }
+            }}>이전</button>
+            <button disabled={counter<5 ? true : false} className="testNextBtn" onClick={(event) => {
+                if (event.target.value === "제출")
+                    handleSubmit();
+                setCounter(0);
+                setNum(num + 1);
+                if(num === 4) {
+                    setButtonText("제출");
+                    setCounter(2);
+                }
+                nextTestList(num);
+                console.log(num);
+            }} value={buttonText} >{buttonText}</button>
+        </div>
+    );
+   
 }
 
 export default withRouter(Test);

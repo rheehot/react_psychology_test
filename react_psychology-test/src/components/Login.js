@@ -2,10 +2,7 @@ import React, {useState, useEffect} from "react";
 
 function Login(props) {
     const [userName, setUserName] = useState("");
-    const [userGender, setUserGender] = useState({
-        male: false,
-        female: false
-    });
+    const [userGender, setUserGender] = useState("");
     const [activeBtn, setActiveBtn] = useState(true);
 
     function inputUserName(event) {
@@ -15,20 +12,18 @@ function Login(props) {
 
     function checkGender(event) {
         const gender = event.target.value;
-        if (gender === "male")
-            setUserGender({ ...userGender, male: true, female: false }); // 객체 상태,바벨 spread operator
-        else if (gender === "female")
-            setUserGender({ ...userGender, male: false, female: true });
+        setUserGender(gender);
     }
 
     function handleBtn() {
-        if (userName.length !== 0 && (userGender['male'] === true || userGender['female'] === true))
+        if (userName.length !== 0 && userGender !== "")
             setActiveBtn(false);
         else
             setActiveBtn(true);
     }
 
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault();
         let checkNum = /[0-9]/;
         let checkEng = /[a-zA-Z]/;
         let checkSpc = /[~!@#$%^&*()_+|<>?:{}]/;
@@ -46,43 +41,39 @@ function Login(props) {
         handleBtn();
     }, [userName, userGender]);
 
-    if (props.isLoggined) {
-        return (
-            <div className="container">
-                <form>
-                    <div className="login-form">
-                        <h2>직업가치관검사</h2>
+    return (
+        <div className="login-container" style={props.isLoggined ? {display:"block"} : {display:"none"}}>
+            <form>
+                <div className="login-form">
+                    <h2>직업가치관검사</h2>
 
-                        <div className="form-group">
-                            <label>
-                                이름 <br />
-                                <input name="name" type="text" className="form-name" onChange={inputUserName} />
-                            </label>
-                        </div>
-
-                        <div className="form-group">
-                            <label>
-                                성별 <br />
-                            </label>
-                            <div className="form-check form-check-inline">
-                                <label className="form-check-label"><input name="gender" type="radio" className="form-check-input" value="male" onChange={checkGender} />남성</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <label className="form-check-label"><input name="gender" type="radio" className="form-check-input" value="female" onChange={checkGender} />여성</label>
-                            </div>
-
-                            <div className="text-center">
-                                <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
-                            </div>
-                        </div>
+                    <div className="form-group">
+                        <label>
+                            이름 <br />
+                            <input name="name" type="text" className="form-name" onChange={inputUserName} />
+                        </label>
                     </div>
 
-                </form>
-            </div>
-        );
-    }
-    else
-        return null;
+                    <div className="form-group">
+                        <label>
+                            성별 <br />
+                        </label>
+                        <div className="form-check form-check-inline">
+                            <label className="form-check-label"><input name="gender" type="radio" className="radio-male" value="100323" onChange={checkGender} />남성</label>
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <label className="form-check-label"><input name="gender" type="radio" className="radio-female" value="100324" onChange={checkGender} />여성</label>
+                        </div>
+
+                        <div className="text-center">
+                            <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    );
 }
 
 export default Login;
