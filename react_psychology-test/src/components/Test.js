@@ -15,7 +15,7 @@ function Test(props) {
         const data = response.data.RESULT;
         
         setData({data : data});
-        //console.log(data);
+        console.log(data);
     }
 
     useEffect(() => {
@@ -26,7 +26,7 @@ function Test(props) {
     const group = data.data;
 
     function testListMaker(group) {
-        console.log("group",group);
+        //console.log("group",group);
         // const testList = group.map((d,index) => {
         //     return (
         //         <form key={index} className={d.qitemNo} onChange={(event) =>{
@@ -53,7 +53,7 @@ function Test(props) {
                     const value = event.target.value;
                     const name = event.target.name;
                     const newAnswer = 'B' + name + '=' + value;
-                    setAnswer(answer+' '+ newAnswer);
+                    setAnswer(answer + newAnswer + ' ');
 
                     console.log(answer);
                 }}>
@@ -81,6 +81,34 @@ function Test(props) {
         return false;
     }
 
+    async function handleSubmit(){
+        //console.log("handleSubmit 호출");
+        //console.log("answer : ",answer);
+        let data = {
+            apikey: "8ae87adbbfc34f50eb84444700264097",
+            qestrnSeq : "6",
+            trgetSe: "100208",
+            name : "위영민",
+            gender: "100323",
+            school : "세종대학교",
+            grade : "3",
+            email : "abc@email.com",
+            startDtm : String(new Date().getTime()),
+            answers : answer.trim() 
+        }
+        console.log(JSON.stringify(data));
+        const url = "https://www.career.go.kr/inspct/openapi/test/report";
+        
+        const post_response = await axios.post(url, JSON.stringify(data), {
+            headers: { "Content-Type": `application/json` }
+        }).catch(error => {
+            console.log(error);
+        });
+        
+        console.log(post_response);
+        const seq = post_response.data
+    }
+
     if(props.isLoggined){
         return (
             <>
@@ -95,7 +123,9 @@ function Test(props) {
                         console.log(num);
                     }
                 }}>이전</button>
-                <button disabled={counter<5 ? true : false} className="testNextBtn" onClick={() => {
+                <button disabled={counter<5 ? true : false} className="testNextBtn" onClick={(event) => {
+                    if (event.target.value === "제출")
+                        handleSubmit();
                     setCounter(0);
                     setNum(num + 1);
                     if(num === 4) {
@@ -104,7 +134,7 @@ function Test(props) {
                     }
                     nextTestList(num);
                     console.log(num);
-                }}>{buttonText}</button>
+                }} value={buttonText} >{buttonText}</button>
             </>
         );
     }else
