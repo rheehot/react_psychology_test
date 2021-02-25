@@ -1,39 +1,22 @@
-import React, {useState,useEffect} from "react";
-import Example from "./Example";
-import Test from "./Test";
-import Login from "./Login";
+import React from "react";
+import {BrowserRouter as Router, Switch, Route, BrowserRouter,} from 'react-router-dom';
+import Home from "./Home";
+import Completed from "./Completed";
+import Result from "./Result";
 
 function App() { 
-  const [loginToken,setLoginToken] = useState(true);
-  const [exampleToken,setExampleToken] = useState(false);
-  const [testToken,setTestToken] = useState(false);
-  
-  //const [progress,setProgress] = useState("0");
-
-  function loginToExample() {
-    setLoginToken(false);
-    setExampleToken(true);
-  }
-  function exampleToLogin() {
-    setLoginToken(true);
-    setExampleToken(false);
-  }
-  function exampleToTest(){
-    setExampleToken(false);
-    setTestToken(true);
-  }
-  function testToExample(){
-    setExampleToken(true);
-    setTestToken(false);
-  }  
-
+ 
 
   return (
-    <div className="App">
-      <Login isLoggined={loginToken} changePage={loginToExample} />
-      <Example isLoggined={exampleToken} moveLoginPage={exampleToLogin} moveTestPage={exampleToTest} />
-      <Test isLoggined={testToken} changePage={testToExample}/>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path={"/"} component={Home} />
+          <Route exact path={"/Completed"} component={Completed} />
+          <Route exact path={"/Result"} component={Result} />
+        </Switch> 
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -88,6 +88,18 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - JSON.stringify(data) : 모든 형태의(객체나,배열 숫자 등등)데이터를 JSON형태 데이터로 변환해준다.
 - String.trim() : 문자열 양쪽 공백 삭제
 - new Date() : 현재시각 가져옴 / new Data()..getTime() : 밀리세크단위로 변환
+- string.split( 구분자 ) : 문자열 자르기
+
+- 페이지 전환시, 보여질 페이지에, 데이터를 함께 전달하는 방법 [참고문헌1] (https://velog.io/@dhlee91/this.props.history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0) [참고문헌2](https://velog.io/@devmoonsh/React-Router)
+    + 넘기는 컴포넌트
+        * props.history.push({
+        pathname : 경로,
+        state : { 데이터 }
+    });
+    + 받는 컴포넌트
+        * import {useLocation} from "react-router";
+        * const location = useLocation();
+        * const data = location.state.데이터;
 
 📢 README 정리 해야함..
 

@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import axios from "axios";
 import $ from 'jquery';
+import { withRouter } from "react-router-dom";
 
 function Test(props) {
 
@@ -20,6 +21,7 @@ function Test(props) {
 
     useEffect(() => {
         fetch();
+        
     },[])
 
     //const group = data.data.slice(4*num-4, 4*num);
@@ -105,8 +107,14 @@ function Test(props) {
             console.log(error);
         });
         
+        const seq = post_response.data.RESULT.url.split('=')[1];
+        //console.log(seq);
         console.log(post_response);
-        const seq = post_response.data
+        props.history.push({
+            pathname : "/Completed",
+            state : { data : seq }
+        });
+
     }
 
     if(props.isLoggined){
@@ -141,4 +149,4 @@ function Test(props) {
         return null;
 }
 
-export default Test;
+export default withRouter(Test);

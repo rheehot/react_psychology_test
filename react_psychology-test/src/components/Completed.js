@@ -1,6 +1,11 @@
 import React from "react";
+import {useLocation} from "react-router";
+import { Link } from "react-router-dom";
 
 function Completed() {
+
+    const location = useLocation();
+    const data = location.state.data;
 
     return(
         <>
@@ -9,8 +14,13 @@ function Completed() {
             <br />
             <h4>중요 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.</h4>
 
-            <div className="btn-container">
-                
+            <div className="link-container">
+                <Link to={{
+                    pathname: "/Result",
+                    state : { seq : data }
+                }} >
+                    <button className="result-btn">결과 보기</button>
+                </Link>
             </div>
         </>
     );
