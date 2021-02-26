@@ -24,17 +24,18 @@ function JobTable(props) {
     // });
     const [educationInfo, setEducationInfo] = useState([]);
     const [professionInfo, setProfessionInfo] = useState([]);
-
+    //const dataEduInfo = [];
+    //const dataMajorInfo = [];
     useEffect(() => {
         async function fetch(){
             try{
                 const response1 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`);
-                //console.log("학력별데이터",response1);
+                console.log("학력별데이터",response1);  // api 배열
                 setEducationInfo(response1.data);
-                console.log("학력별데이터", educationInfo);
+                console.log("학력별데이터", educationInfo); // 배열 state 잘 들어갔는지 확인
 
                 const response2 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/majors?no1=${props.No[0]}&no2=${props.No[1]}`);
-                //console.log("전공별데이터",response2);
+                console.log("전공별데이터",response2);
                 setProfessionInfo(response2.data);
                 console.log("전공별데이터", professionInfo);
 
@@ -59,24 +60,68 @@ function JobTable(props) {
                     </tr>
                     <tr>
                         <td>중졸</td>
-                        <td>중졸직업1</td>
+                        <td>
+                        {
+                            educationInfo.filter((datas) => datas[2] === 1).map((data,index) => {
+                                const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                return(
+                                    <a href={url} key={index}>{data[1]}</a>
+                                )
+                            })
+                        }
+                        </td>
                     </tr>
                     <tr>
                         <td>고졸</td>
-                        <td>고졸직업1</td>
+                        <td>
+                            {
+                                educationInfo.filter((datas) => datas[2] === 2).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index}>{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>전문대졸</td>
-                        <td>전문대졸직업1</td>
-
+                        <td>
+                            {
+                                educationInfo.filter((datas) => datas[2] === 3).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index}>{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>대졸</td>
-                        <td>대졸직업1</td>
+                        <td>
+                            {
+                                educationInfo.filter((datas) => datas[2] === 4).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index}>{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>대학원졸</td>
-                        <td>대학원졸직업1</td>
+                        <td>
+                            {
+                                educationInfo.filter((datas) => datas[2] === 5).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index}>{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                 </thead>
             </table>
