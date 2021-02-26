@@ -4,19 +4,141 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 
+function JobTable(props) {
+
+    // const [educationInfo,setEducationInfo] = useState({
+    //     1 : [],
+    //     2 : [],
+    //     3 : [],
+    //     4 : [],
+    //     5 : []
+    // });
+    // const [professionInfo,setProfessionInfo] = useState({
+    //     1 : [],
+    //     2 : [],
+    //     3 : [],
+    //     4 : [],
+    //     5 : [],
+    //     6 : [],
+    //     7 : []
+    // });
+    const [educationInfo, setEducationInfo] = useState([]);
+    const [professionInfo, setProfessionInfo] = useState([]);
+
+    useEffect(() => {
+        async function fetch(){
+            try{
+                const response1 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`);
+                //console.log("학력별데이터",response1);
+                setEducationInfo(response1.data);
+                console.log("학력별데이터", educationInfo);
+
+                const response2 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/majors?no1=${props.No[0]}&no2=${props.No[1]}`);
+                //console.log("전공별데이터",response2);
+                setProfessionInfo(response2.data);
+                console.log("전공별데이터", professionInfo);
+
+            } catch (e){
+                console.log(e);
+            }
+        }
+        fetch();
+    },[]);
+    
+    return(
+        <div className="job-table">
+            <h3>가치관과 관련이 높은 직업</h3>
+            <div className="job-table-title">
+                <h4>종사자 평균 학력별</h4>
+            </div>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">분야</th>
+                        <th scope="col">직업</th>
+                    </tr>
+                    <tr>
+                        <td>중졸</td>
+                        <td>중졸직업1</td>
+                    </tr>
+                    <tr>
+                        <td>고졸</td>
+                        <td>고졸직업1</td>
+                    </tr>
+                    <tr>
+                        <td>전문대졸</td>
+                        <td>전문대졸직업1</td>
+
+                    </tr>
+                    <tr>
+                        <td>대졸</td>
+                        <td>대졸직업1</td>
+                    </tr>
+                    <tr>
+                        <td>대학원졸</td>
+                        <td>대학원졸직업1</td>
+                    </tr>
+                </thead>
+            </table>
+
+            <div className="job-table-title">
+                <h4>종사자 평균 전공별</h4>
+            </div>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">분야</th>
+                        <th scope="col">직업</th>
+                    </tr>
+                    <tr>
+                        <td>인문</td>
+                        <td>인문직업1</td>
+                    </tr>
+                    <tr>
+                        <td>사회</td>
+                        <td>사회직업1</td>
+
+                    </tr>
+                    <tr>
+                        <td>교육</td>
+                        <td>교육직업1</td>
+                    </tr>
+                    <tr>
+                        <td>공학</td>
+                        <td>공학직업1</td>
+                    </tr>
+                    <tr>
+                        <td>자연</td>
+                        <td>자연직업1</td>
+                    </tr>
+                    <tr>
+                        <td>의학</td>
+                        <td>의학직업1</td>
+                    </tr>
+                    <tr>
+                        <td>예체능</td>
+                        <td>예체능직업1</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    );
+}
+
+
 function Result() {
     
     const [userName, setUserName] = useState("");
     const [userGender,setUserGender] = useState("");
     const [testDay, setTestDay] = useState("");
-    const [score,setScore] = useState([]);
+    const [score,setScore] = useState({score:[]});
     let score_str = null;
 
     const location = useLocation();
     const seq = location.state.seq;
     const url = `https://inspct.career.go.kr/inspct/api/psycho/report?seq=${seq}`;
 
-    
+   
     useEffect(() => {
         async function fetch() {
             try {
@@ -33,14 +155,16 @@ function Result() {
                 var data_list = [];
                 for(var i=0; i<8; i++)
                     data_list.push(Number(score_str[2+(4*i)]));
-                setScore(score => [...score, data_list]);
-                 
                 
-                console.log(response);
-                console.log("사용자 :",userName);
-                console.log("성별 :", userGender);
-                console.log("검사날짜 :", testDay);
-                console.log("결과 :", score[0]);
+                setScore({score :data_list});
+                //console.log("score",score.score);
+                
+                // console.log(response);
+                // console.log("사용자 :",userName);
+                // console.log("성별 :", userGender);
+                // console.log("검사날짜 :", testDay);
+                // console.log("결과 :", score[0]);
+                
             } catch (error) {
                 console.log(error);
             }
@@ -57,7 +181,7 @@ function Result() {
             borderWidth : 1,
             hoverBackgroundColor: 'rgba(255,99,132,0.4)',
             hoverBorderColor: 'rgba(255,99,132,1)',
-            data: score[0]
+            data: score.score
         }]
     };
     const option = {
@@ -65,7 +189,7 @@ function Result() {
             yAxes : [{
                 ticks : {
                     min : 0,
-                    max : 7,
+                    max : 10,
                     stepSize: 1
                 }
             }]
@@ -73,6 +197,20 @@ function Result() {
         maintainAspectRatio : true
     }
 
+    function findResNo(score_arr) {
+        var dup_arr = score_arr.slice();
+    
+        var first = Math.max.apply(null, dup_arr);
+        var firstIndex = dup_arr.indexOf(first);
+        dup_arr[firstIndex] = 0;
+
+        var second = Math.max.apply(null, dup_arr);
+        var secondIndex = dup_arr.indexOf(second);
+
+        return [firstIndex+1,secondIndex+1];
+    }
+    const resNo = findResNo(score.score);
+    
     return(
         <>
             <div className="result-title-box">
@@ -110,6 +248,10 @@ function Result() {
             <br />
             <br />
             
+            <JobTable No={resNo} />
+
+            <br />
+            <br />
             <Link to="/"><button>다시 검사하기</button></Link>
         </>
     );

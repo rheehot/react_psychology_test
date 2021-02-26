@@ -111,6 +111,27 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - 로그인 -> 예시 -> 테스트 페이지가 Token에따른 조건부렌더링에서 => Token에 따른, display로 컨트롤
     + 조건부렌더링을하면, 페이지가 reload 되고, state나, html정보 자체가 새로고침 된다.
 
+>   display 제어 방법들
+    1.
+    document.getElementByClass("myDIV").style.display = "none";
+    document.getElementByClass("myDIV").style.display = "block";
+
+    2.
+    $(".tagID").show(); // display 속성을 block 으로 바꾼다.
+    $(".tagID").hide(); // display 속성을 none 으로 바꾼다. 
+
+    3.
+    <div className="displayNo">
+    <div className="displayYes">
+    css
+    .displayNo {
+    display: none;
+    }
+
+    .displayYes {
+    display: block;
+    }
+
 - 첫번째 로그인 페이지에서, 이름,성별을 입력하고, 버튼을 누를 때, 클릭핸들러에서, 이벤트를 default 시켜야, 새로고침되서, 잠깐 다음페이지로 넘어갔다가, 다시 처음페이지로 reload되는 것을 막는다.
 
 - state 중에, 배열이나 객체 일때, 제대로 setState 적용하는 법을 확실히 알아야 겠다. [참고문헌](https://ichi.pro/ko/hukeuleul-sayonghayeo-react-state-ui-baeyeol-e-chugahaneun-bangbeob-67108288520668)
@@ -121,11 +142,29 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 
 ## 4️⃣ day
 
-## 설치
+### 설치
 - $ npm install --save react-chartjs-2 chart.js
 
-## Day Note
+### CSS 라이브러리
+- [리액트스트랩](https://reactstrap.github.io/components/collapse/)
+- [리액트차트](https://recharts.org/en-US/examples/PieChartWithCustomizedLabel)
+- [sweetalert2](https://sweetalert2.github.io/#examples)
+
+### Day Note
 - React + Chart.js = 데이터 시각화하기(막대그래프, 외 가능) [참고문헌1](https://ichi.pro/ko/react-mich-chart-jsleul-sayonghan-deiteo-sigaghwa-209311532565250) [참고문헌2](https://penguingoon.tistory.com/238)
+
+- 배열 내의, 첫번째, 두번째로 큰 값의 인덱스 찾아내기
+    + var num = Math.max.apply(null,arr) : 배열 내, 최대값 찾기
+    + var index1 = arr.indexOf(num) : 배열 내, num값의 인덱스 반환
+    + arr[index1] = 0;
+    + 위에 과정을 한번 더 진행, 두번 째로 큰 값 찾기 
+
+- state 배열, 별개의 배열 할당하기
+    + var 배열1 = 배열2 : 같은 주소 참조(불변성 X)
+    + var 배열1 = 배열2.slice() : 배열2 와 같은 새로운 배열 생성(불변성 O)
+[참고문헌](https://bbaktaeho-95.tistory.com/37)
+
+
 
 
 

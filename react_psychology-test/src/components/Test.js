@@ -20,8 +20,7 @@ function Test(props) {
     }
 
     useEffect(() => {
-        fetch();
-        
+        fetch();  
     },[])
 
     //const group = data.data.slice(4*num-4, 4*num);
@@ -48,7 +47,7 @@ function Test(props) {
         
         // return testList;
         var testList = [];
-    
+      
         for(var i=0; i<group.length; i++){
             testList.push(
                 <div key={i+1} className={"group"+parseInt(i/5)} onChange={(event) =>{
@@ -127,7 +126,11 @@ function Test(props) {
     return (
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <h1>검사 진행</h1>
-            {testList}
+            
+            <form className="test-form">
+                {testList}
+            </form>
+            
             <button onClick={() => {
                 if (num === 0)
                     props.changePage();
