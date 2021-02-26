@@ -4,42 +4,37 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 
+import "../Result.css";
+
 function JobTable(props) {
 
-    // const [educationInfo,setEducationInfo] = useState({
-    //     1 : [],
-    //     2 : [],
-    //     3 : [],
-    //     4 : [],
-    //     5 : []
-    // });
-    // const [professionInfo,setProfessionInfo] = useState({
-    //     1 : [],
-    //     2 : [],
-    //     3 : [],
-    //     4 : [],
-    //     5 : [],
-    //     6 : [],
-    //     7 : []
-    // });
     const [educationInfo, setEducationInfo] = useState([]);
     const [professionInfo, setProfessionInfo] = useState([]);
+    
     //const dataEduInfo = [];
     //const dataMajorInfo = [];
+    
     useEffect(() => {
-        async function fetch(){
-            try{
+        async function fetch() {
+            try {
+                console.log("넘어온 결과 :",props.No[0], props.No[1]);
                 const response1 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`);
-                console.log("학력별데이터",response1);  // api 배열
-                setEducationInfo(response1.data);
-                console.log("학력별데이터", educationInfo); // 배열 state 잘 들어갔는지 확인
-
+            
+                console.log("API1 :", response1.data);
+                localStorage.educationInfo = JSON.stringify(response1.data);
+                setEducationInfo(JSON.parse(localStorage.educationInfo));
+                console.log("SET1 :", educationInfo);
+        
                 const response2 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/majors?no1=${props.No[0]}&no2=${props.No[1]}`);
-                console.log("전공별데이터",response2);
-                setProfessionInfo(response2.data);
-                console.log("전공별데이터", professionInfo);
+                           
+                console.log("API2 :", response2.data);
+                localStorage.professionInfo = JSON.stringify(response2.data);
+                setProfessionInfo(JSON.parse(localStorage.professionInfo));
+                
+                console.log("SET2 :", professionInfo);
 
-            } catch (e){
+            } catch (e) {
+                console.log("테이블쪽 통신에러");
                 console.log(e);
             }
         }
@@ -61,14 +56,14 @@ function JobTable(props) {
                     <tr>
                         <td>중졸</td>
                         <td>
-                        {
-                            educationInfo.filter((datas) => datas[2] === 1).map((data,index) => {
-                                const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
-                                return(
-                                    <a href={url} key={index}>{data[1]}</a>
-                                )
-                            })
-                        }
+                            {
+                                educationInfo.filter((datas) => datas[2] === 1).map((data,index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return(
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
                         </td>
                     </tr>
                     <tr>
@@ -78,7 +73,7 @@ function JobTable(props) {
                                 educationInfo.filter((datas) => datas[2] === 2).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
-                                        <a href={url} key={index}>{data[1]}</a>
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
                                     )
                                 })
                             }
@@ -91,7 +86,7 @@ function JobTable(props) {
                                 educationInfo.filter((datas) => datas[2] === 3).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
-                                        <a href={url} key={index}>{data[1]}</a>
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
                                     )
                                 })
                             }
@@ -104,7 +99,7 @@ function JobTable(props) {
                                 educationInfo.filter((datas) => datas[2] === 4).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
-                                        <a href={url} key={index}>{data[1]}</a>
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
                                     )
                                 })
                             }
@@ -117,7 +112,7 @@ function JobTable(props) {
                                 educationInfo.filter((datas) => datas[2] === 5).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
-                                        <a href={url} key={index}>{data[1]}</a>
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
                                     )
                                 })
                             }
@@ -137,32 +132,94 @@ function JobTable(props) {
                     </tr>
                     <tr>
                         <td>인문</td>
-                        <td>인문직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 1).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>사회</td>
-                        <td>사회직업1</td>
-
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 2).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>교육</td>
-                        <td>교육직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 3).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>공학</td>
-                        <td>공학직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 4).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>자연</td>
-                        <td>자연직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 5).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>의학</td>
-                        <td>의학직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 6).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                     <tr>
                         <td>예체능</td>
-                        <td>예체능직업1</td>
+                        <td>
+                            {
+                                professionInfo.filter((datas) => datas[2] === 7).map((data, index) => {
+                                    const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
+                                    return (
+                                        <a href={url} key={index} className="result-aTag" value={data[2]} target="_blank" rel="noreferrer">{data[1]}</a>
+                                    )
+                                })
+                            }
+                        </td>
                     </tr>
                 </thead>
             </table>
@@ -177,14 +234,30 @@ function Result() {
     const [userGender,setUserGender] = useState("");
     const [testDay, setTestDay] = useState("");
     const [score,setScore] = useState({score:[]});
-    let score_str = null;
-
+    const [scoreStr, setScoreStr] = useState("");
+    const [resNo, setResNo] = useState({NoArr:[]});
     const location = useLocation();
     const seq = location.state.seq;
     const url = `https://inspct.career.go.kr/inspct/api/psycho/report?seq=${seq}`;
+    
+    const valueList = ["", "능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"];
+    
+    function findResNo(score_arr) {
+        console.log("arr :", score_arr);
+        var dup_arr = score_arr.slice();
 
-   
+        var first = Math.max.apply(null, dup_arr);
+        var firstIndex = dup_arr.indexOf(first);
+        dup_arr[firstIndex] = 0;
+
+        var second = Math.max.apply(null, dup_arr);
+        var secondIndex = dup_arr.indexOf(second);
+
+        return [firstIndex + 1, secondIndex + 1];
+    }
+
     useEffect(() => {
+        
         async function fetch() {
             try {
                 const response = await axios.get(url);
@@ -193,29 +266,36 @@ function Result() {
                     setUserGender("남자");
                 else
                     setUserGender("여자");
-                
-                setTestDay(response.data.inspct.beginDtm.slice(0,10));
-                
-                score_str = response.data.result.wonScore;
+                setTestDay(response.data.inspct.beginDtm.slice(0, 10));
+
+                console.log("이름 :", userName);
+                console.log("성별 :", userGender);
+                console.log("날짜 :", testDay);
+
+
+                console.log("API score str :", response.data.result.wonScore);
+                setScoreStr(response.data.result.wonScore);
+                console.log("state score str", scoreStr);
+
                 var data_list = [];
-                for(var i=0; i<8; i++)
-                    data_list.push(Number(score_str[2+(4*i)]));
-                
-                setScore({score :data_list});
-                //console.log("score",score.score);
-                
-                // console.log(response);
-                // console.log("사용자 :",userName);
-                // console.log("성별 :", userGender);
-                // console.log("검사날짜 :", testDay);
-                // console.log("결과 :", score[0]);
-                
+
+                for (var i = 0; i < 8; i++)
+                    data_list.push(Number(scoreStr[2 + (4 * i)]));
+
+                console.log("dataList :", data_list);
+                setScore({ score: data_list });
+                console.log("State score", score.score);
+
+                const res = findResNo(score.score)
+                setResNo({ NoArr: res });
+
+                console.log("resNO :", resNo.NoArr);
             } catch (error) {
                 console.log(error);
             }
         }
         fetch();
-    },[]);
+    },[scoreStr]);
     
     const data = {
         labels: ["능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"],
@@ -242,19 +322,9 @@ function Result() {
         maintainAspectRatio : true
     }
 
-    function findResNo(score_arr) {
-        var dup_arr = score_arr.slice();
     
-        var first = Math.max.apply(null, dup_arr);
-        var firstIndex = dup_arr.indexOf(first);
-        dup_arr[firstIndex] = 0;
 
-        var second = Math.max.apply(null, dup_arr);
-        var secondIndex = dup_arr.indexOf(second);
-
-        return [firstIndex+1,secondIndex+1];
-    }
-    const resNo = findResNo(score.score);
+    
     
     return(
         <>
@@ -284,6 +354,15 @@ function Result() {
             <br />
             <br />
 
+            <div className="my-value">
+                <h2 className="value-comment-title">직업가치관 결과</h2>
+                <p className="value-comment">
+                    직업생활과 관련하여 {userName}님은 {valueList[resNo[0]]}(와)과 {valueList[resNo[1]]}(을)를 가장 중요하게 생각합니다. 
+                    <br />
+                    반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다.
+                </p>
+            </div>
+
             <Bar
                 data={data}
                 width={100}
@@ -293,7 +372,7 @@ function Result() {
             <br />
             <br />
             
-            <JobTable No={resNo} />
+            <JobTable No={resNo.NoArr} />
 
             <br />
             <br />

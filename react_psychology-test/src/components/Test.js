@@ -56,7 +56,7 @@ function Test(props) {
                     const newAnswer = 'B' + name + '=' + value;
                     setAnswer(answer + newAnswer + ' ');
 
-                    console.log(answer);
+                    //console.log(answer);
                 }}>
                     <p>{group[i].qitemNo} {group[i].question}</p>
                     <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={() => setCounter(counter + 1)}  />{group[i].answer01}</label>

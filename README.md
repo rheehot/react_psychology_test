@@ -165,6 +165,10 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 [참고문헌](https://bbaktaeho-95.tistory.com/37)
 
 
+## 해결할 점
+- 결과페이지에서, 통신 쪽으로 문제가 있는 것 해결해야 한다.
+
+
 
 
 
