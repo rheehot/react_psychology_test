@@ -286,9 +286,8 @@ function Result() {
                 setScore({ score: data_list });
                 console.log("State score", score.score);
 
-                const res = findResNo(score.score)
+                const res = findResNo(score.score);
                 setResNo({ NoArr: res });
-
                 console.log("resNO :", resNo.NoArr);
             } catch (error) {
                 console.log(error);
@@ -357,7 +356,7 @@ function Result() {
             <div className="my-value">
                 <h2 className="value-comment-title">직업가치관 결과</h2>
                 <p className="value-comment">
-                    직업생활과 관련하여 {userName}님은 {valueList[resNo[0]]}(와)과 {valueList[resNo[1]]}(을)를 가장 중요하게 생각합니다. 
+                    직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다. 
                     <br />
                     반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다.
                 </p>
@@ -376,7 +375,7 @@ function Result() {
 
             <br />
             <br />
-            <Link to="/"><button>다시 검사하기</button></Link>
+            <Link to="/"><button className="replay-btn">다시 검사하기</button></Link>
         </>
     );
 }

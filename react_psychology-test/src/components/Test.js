@@ -2,6 +2,9 @@ import React,{useState, useEffect} from "react";
 import axios from "axios";
 import $ from 'jquery';
 import { withRouter } from "react-router-dom";
+import { Progress } from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Test(props) {
 
@@ -10,6 +13,7 @@ function Test(props) {
     const [answer, setAnswer] = useState("");
     const [buttonText, setButtonText] = useState("다음");
     const [counter,setCounter] = useState(0);
+    const [progressCount,setProgressCount] = useState(0);
 
     async function fetch(){
         const response = await axios.get("https://www.career.go.kr/inspct/openapi/test/questions?apikey=8ae87adbbfc34f50eb84444700264097&q=6");
@@ -59,8 +63,14 @@ function Test(props) {
                     //console.log(answer);
                 }}>
                     <p>{group[i].qitemNo} {group[i].question}</p>
-                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={() => setCounter(counter + 1)}  />{group[i].answer01}</label>
-                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={() => setCounter(counter + 1) } />{group[i].answer02}</label>
+                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={() => {
+                        setCounter(counter + 1);
+                        setProgressCount(progressCount + 1);
+                    }}  />{group[i].answer01}</label>
+                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={() => {
+                        setCounter(counter + 1);
+                        setProgressCount(progressCount + 1);
+                    }} />{group[i].answer02}</label>
                 </div>
             );
         }
@@ -127,6 +137,8 @@ function Test(props) {
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <h1>검사 진행</h1>
             
+            <Progress className="progress-" value={progressCount} max="28"></Progress>
+
             <form className="test-form">
                 {testList}
             </form>
@@ -139,8 +151,8 @@ function Test(props) {
                     prevTestList(num);
                     console.log(num);
                 }
-            }}>이전</button>
-            <button disabled={counter<5 ? true : false} className="testNextBtn" onClick={(event) => {
+            }} className="btn btn-outline-primary">이전</button>
+            <button disabled={counter < 5 ? true : false} className="btn btn-outline-primary" onClick={(event) => {
                 if (event.target.value === "제출")
                     handleSubmit();
                 setCounter(0);

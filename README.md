@@ -165,9 +165,17 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 [참고문헌](https://bbaktaeho-95.tistory.com/37)
 
 
-## 해결할 점
+### 해결할 점
 - 결과페이지에서, 통신 쪽으로 문제가 있는 것 해결해야 한다.
 
+
+## 5️⃣ day
+
+### 설치
+- npm install --save reactstrap react react-dom : 리액트스트랩
+- npm install react-bootstrap bootstrap
+- npm install --save bootstrap : 부트스트랩 (리액트스트립 내부적으로는 부트스트랩을 포함하고 있지 않다고해서 설치해야한다고 설명하는 듯)
+    + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가)
 
 
 
