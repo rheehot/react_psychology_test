@@ -9,7 +9,6 @@ function Test(props) {
 
     const [data,setData] = useState({data: []});
     const [num,setNum] = useState(0);
-    const [answer, setAnswer] = useState("");
     const [buttonText, setButtonText] = useState("다음");
     const [counter,setCounter] = useState(0);
     const [progressCount,setProgressCount] = useState(0);
@@ -29,18 +28,13 @@ function Test(props) {
     const group = data.data;
 
     function testListMaker(group) {
+        
         var testList = [];
-      
+        //console.log("group :", group);
+        
         for(var i=0; i<group.length; i++){
             testList.push(
-                <div key={i+1} className={"group"+parseInt(i/5)} onChange={(event) =>{
-                    const value = event.target.value;
-                    const name = event.target.name;
-                    const newAnswer = 'B' + name + '=' + value;
-                    setAnswer(answer + newAnswer + ' ');
-
-                    //console.log(answer);
-                }}>
+                <div key={i+1} className={"group"+parseInt(i/5)} >
                     <p>{group[i].qitemNo} {group[i].question}</p>
                     <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={() => {
                         setCounter(counter + 1);
@@ -81,6 +75,11 @@ function Test(props) {
         else if (document.querySelector(".radio-female").checked)
             gender = document.querySelector(".radio-female").value;
 
+        var answer = $(".test-form").serialize().replace(/&/gi,' B');
+        answer = "B" + answer;
+        console.log("answer ",answer);
+
+
         let data = {
             apikey: "8ae87adbbfc34f50eb84444700264097",
             qestrnSeq : "6",
@@ -91,7 +90,7 @@ function Test(props) {
             grade : "",
             email : "",
             startDtm : String(new Date().getTime()),
-            answers : answer.trim() 
+            answers : answer
         }
         console.log(JSON.stringify(data));
         const url = "https://www.career.go.kr/inspct/openapi/test/report";

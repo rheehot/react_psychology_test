@@ -175,9 +175,25 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - npm install --save reactstrap react react-dom : 리액트스트랩
 - npm install react-bootstrap bootstrap
 - npm install --save bootstrap : 부트스트랩 (리액트스트립 내부적으로는 부트스트랩을 포함하고 있지 않다고해서 설치해야한다고 설명하는 듯)
-    + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가)
+    + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가
 
+### Day Note 
+- 리액트스트랩에서, Progress를 통해서, 진행사항을 구현했다.
+    + 진행사항은, 클릭 수/질문사항 전체갯수
 
+- test페이지 항목, 순서와 상관없이,무작위,값 바꿔도, 항상 순서에 맞게 데이터 만들어내기 구현
+    + 기존 : 해당, 질문 radio 값 클릭할때마다. onChange 이벤트로, checked 된 데이터를 str에 누적해서 저장하도록 했다.
+        * 문제점 : 값을 바꾸거나, 순서가 무작위로하면, 중복도 제어 못하고, 순서도 엉망이 됬었다. (정직한 순서로 체크하지 않는이상...버그 생긴다.)
+    + 해결책 : form serialize 를 알게 되었다.
+        * 이를 통해, 내가 원하는 이벤트 시점에서, form 태그 안에, 원하는 값을, String형태로 반환 받는다.
+        * 이 데이터는 중간중간에 '&' 가 붙는데, 이는 replace 함수로 변형한다.
+        * replace 함수를 그냥 쓰면,문자열 내, 첫 번째 부분만 적용이된다고 한다.
+        * 이를 해결하기 위해, replaceAll 처럼 사용하기가 있더라. [참고문헌](http://www.codejs.co.kr/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%97%90%EC%84%9C-replace%EB%A5%BC-replaceall-%EC%B2%98%EB%9F%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/)
+        * 정리하면, replace( 바뀔문자열(문자) , 바꿀문자열(문자) ) 일 때, 바뀔문자열에, 정규식을 넣을 때 다음과 같은 옵션이 있단다.
+        * [정규식의 gi 설명]
+            * g : 발생할 모든 pattern에 대한 전역 검색
+            * i : 대/소문자 구분 안함
+            * m: 여러 줄 검색 (참고)
 
 
 
