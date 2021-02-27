@@ -4,7 +4,6 @@ import $ from 'jquery';
 import { withRouter } from "react-router-dom";
 import { Progress } from 'reactstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Test(props) {
 
@@ -27,29 +26,9 @@ function Test(props) {
         fetch();  
     },[])
 
-    //const group = data.data.slice(4*num-4, 4*num);
     const group = data.data;
 
     function testListMaker(group) {
-        //console.log("group",group);
-        // const testList = group.map((d,index) => {
-        //     return (
-        //         <form key={index} className={d.qitemNo} onChange={(event) =>{
-        //             const value = event.target.value;
-        //             const name = event.target.name;
-        //             const newAnswer = 'B' + name + '=' + value;
-        //             setAnswer(answer+' '+ newAnswer);
-        
-        //             console.log(answer);
-        //         }}>
-        //             <p>{d.question}</p>
-        //             <label><input type="radio" name={d.qitemNo} value={d.answerScore01} />{d.answer01}</label>
-        //             <label><input type="radio" name={d.qitemNo} value={d.answerScore02} />{d.answer02}</label>
-        //         </form>
-        //     );
-        // });
-        
-        // return testList;
         var testList = [];
       
         for(var i=0; i<group.length; i++){
@@ -137,7 +116,9 @@ function Test(props) {
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <h1>검사 진행</h1>
             
-            <Progress className="progress-" value={progressCount} max="28"></Progress>
+            <br />
+            <Progress value={progressCount} max="28"></Progress>
+            <br />
 
             <form className="test-form">
                 {testList}

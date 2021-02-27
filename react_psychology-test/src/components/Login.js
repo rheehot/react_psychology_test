@@ -56,13 +56,14 @@ function Login(props) {
 
                     <div className="form-group">
                         <label>
-                            성별 <br />
+                            성별
                         </label>
+                        <br />
                         <div className="form-check form-check-inline">
-                            <label className="form-check-label"><input name="gender" type="radio" className="radio-male" value="100323" onChange={checkGender} />남성</label>
+                            <label className="form-check-label"><input name="gender" type="radio" className="example-radio" value="100323" onChange={checkGender} />남성</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <label className="form-check-label"><input name="gender" type="radio" className="radio-female" value="100324" onChange={checkGender} />여성</label>
+                            <label className="form-check-label"><input name="gender" type="radio" className="example-radio" value="100324" onChange={checkGender} />여성</label>
                         </div>
 
                         <div className="text-center">

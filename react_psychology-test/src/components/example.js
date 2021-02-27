@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from "react";
 import { Progress } from 'reactstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Example(props) {
     const [exampleChecker, setExampleChecker] = useState(false);
@@ -35,16 +34,14 @@ function Example(props) {
 
     return (
         <div className="example-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
-            <div className="example-progress-container">
-                <div className="example-title">
-                    <h2>검사 예시</h2>
-                </div>
-                <div className="example-progress">
-                    <h3>0%</h3>
-                </div>
-            </div>
             
+            <div className="example-title">
+                <h2>검사 예시</h2>
+            </div>
+            <br />
+
             <Progress className="progress" value="0" max="28"></Progress>
+            <br />
 
             <h4>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h4>
 

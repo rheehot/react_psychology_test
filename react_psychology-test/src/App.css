@@ -1,10 +1,13 @@
+.container{
+   
+}
 .form-name:focus {
-    outline: rgb(29, 172, 216) solid 3px;
+    
 }
 
-.form-check.form-check-inline{
+.example-radio{
     display: inline;
-    margin-right : 12px;
+    margin-right : 8px;
 }
 .form-check-input{
     margin-right : 5px;

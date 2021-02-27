@@ -3,19 +3,23 @@ import {BrowserRouter as Router, Switch, Route, BrowserRouter,} from 'react-rout
 import Home from "./Home";
 import Completed from "./Completed";
 import Result from "./Result";
+import { Container } from 'reactstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../App.css";
 
 function App() { 
  
 
   return (
     <BrowserRouter>
-      <div>
+      <Container>
         <Switch>
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/Completed"} component={Completed} />
           <Route exact path={"/Result"} component={Result} />
         </Switch> 
-      </div>
+      </Container>
     </BrowserRouter>
   );
 }

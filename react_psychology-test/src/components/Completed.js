@@ -2,6 +2,8 @@ import React from "react";
 import {useLocation} from "react-router";
 import { Link } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Completed() {
 
     const location = useLocation();
@@ -19,8 +21,9 @@ function Completed() {
                     pathname: "/Result",
                     state : { seq : data }
                 }} >
-                    <button className="result-btn">결과 보기</button>
+                    <button className="result-btn">결과 보기</button> 
                 </Link>
+                
             </div>
         </>
     );
