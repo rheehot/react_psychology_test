@@ -18,31 +18,53 @@ function Test(props) {
         const data = response.data.RESULT;
         
         setData({data : data});
-        console.log(data);
+        //console.log(data);
     }
 
     useEffect(() => {
         fetch();  
     },[])
 
-    const group = data.data;
+    function countChecked() {
+        var count = 0;
+        $('.test-radio').each(function(){
+            if($(this).is(':checked')){
+                count += 1;
+            }
+        });
+        return count;
+    }
 
+    function pageCountChecked(num) {
+        var count = 0;
+        $(`.group${num}`).each(function(){
+            for (var i = 0; i < this.querySelectorAll('.test-radio').length; i++){
+                if (this.querySelectorAll('.test-radio')[i].checked)
+                    count += 1;           
+            }
+        });
+        if(num === 5 && count === 3)    // 마지막 페이지 제어
+            count = 5;
+        return count;
+    }
+
+    const group = data.data;
     function testListMaker(group) {
-        
         var testList = [];
-        //console.log("group :", group);
         
         for(var i=0; i<group.length; i++){
             testList.push(
                 <div key={i+1} className={"group"+parseInt(i/5)} >
                     <p>{group[i].qitemNo} {group[i].question}</p>
-                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={() => {
+                    <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
                         setCounter(counter + 1);
-                        setProgressCount(progressCount + 1);
+                        const cur_count = countChecked();
+                        setProgressCount(cur_count);
                     }}  />{group[i].answer01}</label>
-                    <label><input type="radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={() => {
+                    <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={(event) => {
                         setCounter(counter + 1);
-                        setProgressCount(progressCount + 1);
+                        const cur_count = countChecked();
+                        setProgressCount(cur_count);
                     }} />{group[i].answer02}</label>
                 </div>
             );
@@ -92,7 +114,7 @@ function Test(props) {
             startDtm : String(new Date().getTime()),
             answers : answer
         }
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         const url = "https://www.career.go.kr/inspct/openapi/test/report";
         
         const post_response = await axios.post(url, JSON.stringify(data), {
@@ -103,7 +125,7 @@ function Test(props) {
         
         const seq = post_response.data.RESULT.url.split('=')[1];
         //console.log(seq);
-        console.log(post_response);
+        //console.log(post_response);
         props.history.push({
             pathname : "/Completed",
             state : { data : seq }
@@ -127,22 +149,28 @@ function Test(props) {
                 if (num === 0)
                     props.changePage();
                 else{
+                    setCounter(5);
+                    if(num === 5)
+                        setButtonText("다음");
                     setNum(num - 1);
                     prevTestList(num);
-                    console.log(num);
+                    //console.log(num);
                 }
-            }} className="btn btn-outline-primary">이전</button>
-            <button disabled={counter < 5 ? true : false} className="btn btn-outline-primary" onClick={(event) => {
+            }} className="btn btn-outline-primary" name="prev-btn">이전</button>
+            <button disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
                 if (event.target.value === "제출")
                     handleSubmit();
-                setCounter(0);
+                
+                
                 setNum(num + 1);
+                const cur_count = pageCountChecked(num+1);
+                setCounter(cur_count);
                 if(num === 4) {
                     setButtonText("제출");
                     setCounter(2);
                 }
                 nextTestList(num);
-                console.log(num);
+                //console.log(num);
             }} value={buttonText} >{buttonText}</button>
         </div>
     );
