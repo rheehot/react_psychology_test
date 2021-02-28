@@ -11,12 +11,10 @@ function JobTable(props) {
     const [educationInfo, setEducationInfo] = useState([]);
     const [professionInfo, setProfessionInfo] = useState([]);
     
-    //const dataEduInfo = [];
-    //const dataMajorInfo = [];
-    
     useEffect(() => {
         async function fetch() {
             try {
+
                 console.log("넘어온 결과 :",props.No[0], props.No[1]);
                 const response1 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`);
             
@@ -375,7 +373,10 @@ function Result() {
 
             <br />
             <br />
-            <Link to="/"><button className="replay-btn">다시 검사하기</button></Link>
+            
+            <div className="text-center">
+                <Link to="/"><button className="btn btn-outline-primary">다시 검사하기</button></Link>
+            </div>
         </>
     );
 }

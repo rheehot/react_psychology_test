@@ -165,7 +165,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 [참고문헌](https://bbaktaeho-95.tistory.com/37)
 
 
-### 해결할 점
+### ★ 해결할 점
 - 결과페이지에서, 통신 쪽으로 문제가 있는 것 해결해야 한다.
 
 
@@ -175,10 +175,57 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - npm install --save reactstrap react react-dom : 리액트스트랩
 - npm install react-bootstrap bootstrap
 - npm install --save bootstrap : 부트스트랩 (리액트스트립 내부적으로는 부트스트랩을 포함하고 있지 않다고해서 설치해야한다고 설명하는 듯)
-    + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가)
+    + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가
+
+### Day Note 
+- 리액트스트랩에서, Progress를 통해서, 진행사항을 구현했다.
+    + 진행사항은, 클릭 수/질문사항 전체갯수
+
+- test페이지 항목, 순서와 상관없이,무작위,값 바꿔도, 항상 순서에 맞게 데이터 만들어내기 구현
+    + 기존 : 해당, 질문 radio 값 클릭할때마다. onChange 이벤트로, checked 된 데이터를 str에 누적해서 저장하도록 했다.
+        * 문제점 : 값을 바꾸거나, 순서가 무작위로하면, 중복도 제어 못하고, 순서도 엉망이 됬었다. (정직한 순서로 체크하지 않는이상...버그 생긴다.)
+    + 해결책 : form serialize 를 알게 되었다.
+        * 이를 통해, 내가 원하는 이벤트 시점에서, form 태그 안에, 원하는 값을, String형태로 반환 받는다.
+        * 이 데이터는 중간중간에 '&' 가 붙는데, 이는 replace 함수로 변형한다.
+        * replace 함수를 그냥 쓰면,문자열 내, 첫 번째 부분만 적용이된다고 한다.
+        * 이를 해결하기 위해, replaceAll 처럼 사용하기가 있더라. [참고문헌](http://www.codejs.co.kr/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%97%90%EC%84%9C-replace%EB%A5%BC-replaceall-%EC%B2%98%EB%9F%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/)
+        * 정리하면, replace( 바뀔문자열(문자) , 바꿀문자열(문자) ) 일 때, 바뀔문자열에, 정규식을 넣을 때 다음과 같은 옵션이 있단다.
+        * [정규식의 gi 설명]
+            * g : 발생할 모든 pattern에 대한 전역 검색
+            * i : 대/소문자 구분 안함
+            * m: 여러 줄 검색 (참고)
+
+## 6️⃣ day
+
+### Day Note
+
+💡 Test.js(테스트페이지) UI/UX 적으로 보완, 버그해결을 진행했다.
+
+🔴 이슈 1
+- Progress bar 증가는, 기존에 counter state(클릭 수)로 구현했다.
+- 문제점 : 동일한 항목의 radio 를, 번갈아 눌러도, counter는 증가하니깐, progress bar 게이지는 올라갔다.
+    + 해결법 : counter가 아니라, 클릭 할 때마다, Test페이지의, radio를 요소를 다 가져와서, checked 수를, counter로 지정했다.
+    + countChecked() 가 제어함.
+
+🔴 이슈 2
+- 테스트페이지의, 다음 버튼 활성화는, 기존에, 5개의 항목을 누르면 활성화되고, 다음을 누르고, 다음페이지가 나오면, 버튼은 비활성화 되도록했었다. 이 역시, counter로 5번 클릭 시, 활성화 되도록했었다.
+- 문제점 : 사용자가, 예를들어, 2개의 항목을 체크하고, 잠시 이전페이지로 갔다가, 다시 돌아온다면 ?
+    + 체크된 2개 사항은, 그대로 이지만, 나머지, 체크되지 않은 3개의 항목을 체크해도, 그 때, counter는 5가 아니라, 3으로 인지할 테고, 그로 인해, 버튼 활성화 X
+    + 해결책 : 질문 5개당 1개의 페이지(?) 라고 생각했을 때, 다음 버튼을 눌러서, 나오는 페이지의, 체크된 radio 수를, counter로 지정한다.
+    + pageCountChecked() 가 제어함
+
+🔴 이슈 3
+- 마지막 항목, 페이지는 `다음` 버튼이 `제출` 이어야 한다. 그 부분을 구현했었다.
+- 문제점 : 사용자가 마지막항목 페이지에서, 잠시, `이전`버튼을 눌러 이전페이지로 이동하면, `제출`버튼에서, `다음`버튼이 적용 되었는가 ?
+- 해결법 : `이전`버튼을 눌렀을때, 테스트페이지가 마지막이었으면, buttonText state를 다시, `다음`으로 변경했다.
 
 
+💡 코딩하다가, 하나 알게 된 것
 
+- 리액트스트랩을 기본적으로, import하면, 그 css파일안에, 기본적으로, 적용되는, css효과들이 있다.
+- 기본 태그이름의 정의도 되어있고, 특정 className으로, 정의된 css도 있나보다.
+    + 그래서, 예를 들어(<div className="text-center">) 이면, 그 안에있는 요소들은, 가운데 정렬이 되는 듯 하다.
+    
 
 
 
