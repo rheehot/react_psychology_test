@@ -239,8 +239,18 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
     + reactstrap
     + chart.js
 
+### 배포
 
+nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌1](https://www.hanumoka.net/2019/12/29/react-20191229-react-nginx-deploy/react_psychology_test/react_psychology-test/build)
+- 필요한 것
+    + 내 Azure서버, DNS Name & Password
+- 절차
+    + gitlab(또는 github)에 있는, 내 git repo를 Azure계정으로 접속해서, git pull로 가져오기
+    + npm run build로, 내 프로젝트를 build (프로젝트 내에, build 폴더 생김 확인)
+    + `참고문헌`에 나와있는대로 절차를 밟는다.
+    + host가 되고 있는 것을 확인하고, 나의, Azure DNS Name을, url에 쳐서 접근해본다.
 
+    
 📢 README 정리 해야함..
 
 
