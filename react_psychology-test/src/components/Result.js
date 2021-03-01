@@ -37,7 +37,7 @@ function JobTable(props) {
             }
         }
         fetch();
-    },[props.No]);
+    },[]);
     
     return(
         <div className="job-table">
@@ -257,7 +257,7 @@ function Result() {
     useEffect(() => {
         
         async function fetch() {
-            try {
+            try { 
                 const response = await axios.get(url);
                 setUserName(response.data.user.name);
                 if (response.data.inspct.sexdstn === 100323)

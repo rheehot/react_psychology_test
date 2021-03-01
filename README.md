@@ -233,6 +233,11 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - $ npm install -g npm-check
     + npm-check는 의존성 관리의 불편함을 덜어주는 cli 
     + npm-check : 실행
+- $ npm install --save
+    + bootstrap
+    + react-chartjs-2
+    + reactstrap
+    + chart.js
 
 
 
