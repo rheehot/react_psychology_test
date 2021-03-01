@@ -226,7 +226,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - 기본 태그이름의 정의도 되어있고, 특정 className으로, 정의된 css도 있나보다.
     + 그래서, 예를 들어(<div className="text-center">) 이면, 그 안에있는 요소들은, 가운데 정렬이 되는 듯 하다.
     
+## 7️⃣ day
 
+### 설치
+
+- $ npm install -g npm-check
+    + npm-check는 의존성 관리의 불편함을 덜어주는 cli 
+    + npm-check : 실행
 
 
 

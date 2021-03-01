@@ -37,7 +37,7 @@ function JobTable(props) {
             }
         }
         fetch();
-    },[]);
+    },[props.No]);
     
     return(
         <div className="job-table">
