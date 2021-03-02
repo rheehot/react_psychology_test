@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
+import $ from "jquery";
 
 import "../Result.css";
 
@@ -13,11 +14,12 @@ function JobTable(props) {
     
     function fetch() {
         console.log("넘어온 props.No :", props.No[0], props.No[1]);
+     
         axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`)
         .then(response1 => {
             console.log("API1 :", response1.data);
             setEducationInfo(response1.data);
-        }).then(() =>{
+        }).then(() => {
             console.log("SET1 :", educationInfo);
         }).catch((error) => {
             console.log("학력별 API 작업 오류");
@@ -27,34 +29,44 @@ function JobTable(props) {
         .then(response2 => {
             console.log("API2 :", response2.data);
             setProfessionInfo(response2.data);
-        }).then(() =>{
+        }).then(() => {
             console.log("SET2 :", professionInfo);
         }).catch((error) => {
             console.log("전공별별 API 작업 오류");
             console.log(error);
         });
     }
-    useEffect(() => {
-        fetch();
-    },[props.No]);
     
+
+    useEffect(() => {
+        if(professionInfo.length === 0 && educationInfo.length === 0)
+            fetch();
+    }, [props.No,professionInfo,educationInfo]);
+    
+    function isTrEmpty(arr,n){
+        for(var i=0; i<arr.length; i++){
+            if(arr[i][2] === n)
+                return true;
+        }
+        return false;   
+    }
     return(
-        <div className="job-table">
+        <div className="job-table" >
             <h3>가치관과 관련이 높은 직업</h3>
             <div className="job-table-title">
                 <h4>종사자 평균 학력별</h4>
             </div>
-            <table className="table">
+            <table className="table" >
                 <thead>
                     <tr>
-                        <th scope="col">분야</th>
-                        <th scope="col">직업</th>
+                        <th scope="col" width="100">분야</th>
+                        <th scope="col" >직업</th>
                     </tr>
-                    <tr>
+                    <tr className="tr1" style={{ display: isTrEmpty(educationInfo,1) ? "" : 'none' }} >
                         <td>중졸</td>
                         <td>
-                            { 
-                                educationInfo.length !== 0 ?
+                            {
+                                isTrEmpty(educationInfo,1) ?
                                 educationInfo.filter((datas) => datas[2] === 1).map((data,index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return(
@@ -65,11 +77,11 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="tr2" style={{ display: isTrEmpty(educationInfo, 2) ? "" : 'none' }}>
                         <td>고졸</td>
                         <td>
                             {
-                                educationInfo.length !== 0 ?
+                                isTrEmpty(educationInfo, 2) ?
                                 educationInfo.filter((datas) => datas[2] === 2).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
@@ -80,11 +92,11 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="tr3" style={{ display: isTrEmpty(educationInfo, 3) ? "" : 'none' }}>
                         <td>전문대졸</td>
                         <td>
                             {
-                                educationInfo.length !== 0 ?
+                                isTrEmpty(educationInfo, 3) ?
                                 educationInfo.filter((datas) => datas[2] === 3).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
@@ -95,11 +107,11 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="tr4" style={{ display: isTrEmpty(educationInfo, 4) ? "" : 'none' }}>
                         <td>대졸</td>
                         <td>
                             {
-                                educationInfo.length !== 0 ?
+                                isTrEmpty(educationInfo, 4) ?
                                 educationInfo.filter((datas) => datas[2] === 4).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
@@ -110,11 +122,11 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="tr5" style={{ display: isTrEmpty(educationInfo, 5) ? "" : 'none' }}>
                         <td>대학원졸</td>
                         <td>
                             {
-                                educationInfo.length !== 0 ?
+                                isTrEmpty(educationInfo, 5) ?
                                 educationInfo.filter((datas) => datas[2] === 5).map((data, index) => {
                                     const url = `https://www.career.go.kr/cnet/front/base/job/jobView.do?SEQ=${data[0]}`;
                                     return (
@@ -134,10 +146,10 @@ function JobTable(props) {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">분야</th>
+                        <th scope="col" width="100">분야</th>
                         <th scope="col">직업</th>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 1) ? "" : 'none' }}>
                         <td>인문</td>
                         <td>
                             {
@@ -152,7 +164,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 2) ? "" : 'none' }}>
                         <td>사회</td>
                         <td>
                             {
@@ -167,7 +179,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 3) ? "" : 'none' }}>
                         <td>교육</td>
                         <td>
                             {
@@ -182,7 +194,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 4) ? "" : 'none' }}>
                         <td>공학</td>
                         <td>
                             {
@@ -197,7 +209,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 5) ? "" : 'none' }}>
                         <td>자연</td>
                         <td>
                             {
@@ -212,7 +224,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 6) ? "" : 'none' }}>
                         <td>의학</td>
                         <td>
                             {
@@ -227,7 +239,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{ display: isTrEmpty(professionInfo, 7) ? "" : 'none' }}>
                         <td>예체능</td>
                         <td>
                             {
@@ -294,6 +306,7 @@ function Result() {
     
     function findResNo(score_arr) {
         console.log("인자 arr :", score_arr);
+        console.log("resNo :",resNo.NoArr);
         var dup_arr = score_arr.slice();
 
         var first = Math.max.apply(null, dup_arr);
@@ -319,7 +332,8 @@ function Result() {
         //console.log("resNO :", resNo.NoArr);
     }
     useEffect(() => {
-        NoArrMaker();
+        if(resNo.NoArr[0] === 0 || resNo.NoArr.length === 0)
+            NoArrMaker();
     }, [score,resNo])
    
     

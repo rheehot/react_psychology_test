@@ -19,12 +19,12 @@ function Example(props) {
     }
     
     function handleMoveLogin() {
-        setExampleChecker(false);
+        setExampleChecker(true);
         props.moveLoginPage();
     }
     
     function handleMoveTest() {
-        setExampleChecker(false);
+        setExampleChecker(true);
         props.moveTestPage();
     }
 
