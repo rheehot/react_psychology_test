@@ -62,7 +62,7 @@ function JobTable(props) {
                         <th scope="col" width="100">분야</th>
                         <th scope="col" >직업</th>
                     </tr>
-                    <tr className="tr1" style={{ display: isTrEmpty(educationInfo,1) ? "" : 'none' }} >
+                    <tr style={{ display: isTrEmpty(educationInfo,1) ? "" : 'none' }} >
                         <td>중졸</td>
                         <td>
                             {
@@ -77,7 +77,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr className="tr2" style={{ display: isTrEmpty(educationInfo, 2) ? "" : 'none' }}>
+                    <tr style={{ display: isTrEmpty(educationInfo, 2) ? "" : 'none' }}>
                         <td>고졸</td>
                         <td>
                             {
@@ -92,7 +92,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr className="tr3" style={{ display: isTrEmpty(educationInfo, 3) ? "" : 'none' }}>
+                    <tr style={{ display: isTrEmpty(educationInfo, 3) ? "" : 'none' }}>
                         <td>전문대졸</td>
                         <td>
                             {
@@ -107,7 +107,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr className="tr4" style={{ display: isTrEmpty(educationInfo, 4) ? "" : 'none' }}>
+                    <tr style={{ display: isTrEmpty(educationInfo, 4) ? "" : 'none' }}>
                         <td>대졸</td>
                         <td>
                             {
@@ -122,7 +122,7 @@ function JobTable(props) {
                             }
                         </td>
                     </tr>
-                    <tr className="tr5" style={{ display: isTrEmpty(educationInfo, 5) ? "" : 'none' }}>
+                    <tr style={{ display: isTrEmpty(educationInfo, 5) ? "" : 'none' }}>
                         <td>대학원졸</td>
                         <td>
                             {
