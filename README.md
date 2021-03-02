@@ -225,7 +225,8 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - 리액트스트랩을 기본적으로, import하면, 그 css파일안에, 기본적으로, 적용되는, css효과들이 있다.
 - 기본 태그이름의 정의도 되어있고, 특정 className으로, 정의된 css도 있나보다.
     + 그래서, 예를 들어(<div className="text-center">) 이면, 그 안에있는 요소들은, 가운데 정렬이 되는 듯 하다.
-    
+
+
 ## 7️⃣ day
 
 ### 설치

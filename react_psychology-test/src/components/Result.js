@@ -35,8 +35,7 @@ function JobTable(props) {
         });
     }
     useEffect(() => {
-        if(props.No.length !== 0)
-            fetch();
+        fetch();
     },[props.No]);
     
     return(
