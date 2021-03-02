@@ -137,8 +137,8 @@ function Test(props) {
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <h1>검사 진행</h1>
             
-            <br />
-            <Progress value={progressCount} max="28"></Progress>
+            <br />   
+            <Progress style={{width:'90%', display:'inline-flex'}} animated value={progressCount} max="28"></Progress> {Math.round(progressCount / data.data.length * 100)}%
             <br />
 
             <form className="test-form">

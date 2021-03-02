@@ -40,7 +40,7 @@ function Example(props) {
             </div>
             <br />
 
-            <Progress className="progress" value="0" max="28"></Progress>
+            <Progress style={{ width: '90%', display: 'inline-flex' }} animated value={0} max="28"></Progress> 0%
             <br />
 
             <h4>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h4>
