@@ -19,16 +19,13 @@ function JobTable(props) {
                 const response1 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/jobs?no1=${props.No[0]}&no2=${props.No[1]}`);
             
                 console.log("API1 :", response1.data);
-                localStorage.educationInfo = JSON.stringify(response1.data);
-                setEducationInfo(JSON.parse(localStorage.educationInfo));
+                setEducationInfo(response1.data);
                 console.log("SET1 :", educationInfo);
         
-                const response2 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/majors?no1=${props.No[0]}&no2=${props.No[1]}`);
-                           
-                console.log("API2 :", response2.data);
-                localStorage.professionInfo = JSON.stringify(response2.data);
-                setProfessionInfo(JSON.parse(localStorage.professionInfo));
+                const response2 = await axios.get(`https://inspct.career.go.kr/inspct/api/psycho/value/majors?no1=${props.No[0]}&no2=${props.No[1]}`);  
                 
+                console.log("API2 :", response2.data);
+                setProfessionInfo(response2.data);
                 console.log("SET2 :", professionInfo);
 
             } catch (e) {
@@ -37,7 +34,7 @@ function JobTable(props) {
             }
         }
         fetch();
-    },[]);
+    },[props.No,educationInfo,professionInfo]);
     
     return(
         <div className="job-table">
@@ -239,9 +236,38 @@ function Result() {
     const url = `https://inspct.career.go.kr/inspct/api/psycho/report?seq=${seq}`;
     
     const valueList = ["", "능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"];
+
+
+    function fetch(){
+        try{
+            axios.get(url).then(response => {
+                setUserName(response.data.user.name);
+                if (response.data.inspct.sexdstn === 100323)
+                    setUserGender("남자");
+                else
+                    setUserGender("여자");
+                setTestDay(response.data.inspct.beginDtm.slice(0, 10));
+                
+                console.log("이름 :", userName);
+                console.log("성별 :", userGender);
+                console.log("날짜 :", testDay);
+
+                console.log("API score str :", response.data.result.wonScore);
+                setScoreStr(response.data.result.wonScore);
+                console.log("state score str", scoreStr);
+
+                return response;
+            })
+        }catch(error){
+            console.log(error);
+        }
+    }
+    useEffect(() => {
+      fetch();  
+    }, [userName, testDay, userGender, scoreStr])
     
     function findResNo(score_arr) {
-        console.log("arr :", score_arr);
+        console.log("인자 arr :", score_arr);
         var dup_arr = score_arr.slice();
 
         var first = Math.max.apply(null, dup_arr);
@@ -251,48 +277,63 @@ function Result() {
         var second = Math.max.apply(null, dup_arr);
         var secondIndex = dup_arr.indexOf(second);
 
-        return [firstIndex + 1, secondIndex + 1];
+        setResNo({ NoArr: [firstIndex + 1, secondIndex + 1] });
     }
 
-    useEffect(() => {
+    function NoArrMaker(){
+        var data_list = [];
+        for (var i = 0; i < 8; i++)
+            data_list.push(Number(scoreStr[2 + (4 * i)]));
         
-        async function fetch() {
-            try { 
-                const response = await axios.get(url);
-                setUserName(response.data.user.name);
-                if (response.data.inspct.sexdstn === 100323)
-                    setUserGender("남자");
-                else
-                    setUserGender("여자");
-                setTestDay(response.data.inspct.beginDtm.slice(0, 10));
+        console.log("data_list score :", data_list);
+        setScore({ score: data_list });
+        console.log("State score", score.score);
+        
+        findResNo(data_list);
+        console.log("resNO :", resNo.NoArr);
+    }
+    useEffect(() => {
+        NoArrMaker();
+    }, [score])
+    // useEffect(() => {
+        
+    //     async function fetch() {
+    //         try { 
+    //             const response = await axios.get(url);
+    //             setUserName(response.data.user.name);
+    //             if (response.data.inspct.sexdstn === 100323)
+    //                 setUserGender("남console.log("API score str :", response.data.result.wonScore);
+    //             setScoreStr(response.data.result.wonScore);
+    //             console.log("state score str", scoreStr);자");
+    //             else
+    //                 setUserGender("여자");
+    //             setTestDay(response.data.inspct.beginDtm.slice(0, 10));
 
-                console.log("이름 :", userName);
-                console.log("성별 :", userGender);
-                console.log("날짜 :", testDay);
+    //             console.log("이름 :", userName);
+    //             console.log("성별 :", userGender);
+    //             console.log("날짜 :", testDay);
 
 
-                console.log("API score str :", response.data.result.wonScore);
-                setScoreStr(response.data.result.wonScore);
-                console.log("state score str", scoreStr);
+    //             
 
-                var data_list = [];
+    //             var data_list = [];
 
-                for (var i = 0; i < 8; i++)
-                    data_list.push(Number(scoreStr[2 + (4 * i)]));
+    //             for (var i = 0; i < 8; i++)
+    //                 data_list.push(Number(scoreStr[2 + (4 * i)]));
 
-                console.log("dataList :", data_list);
-                setScore({ score: data_list });
-                console.log("State score", score.score);
+    //             console.log("dataList :", data_list);
+    //             setScore({ score: data_list });
+    //             console.log("State score", score.score);
 
-                const res = findResNo(score.score);
-                setResNo({ NoArr: res });
-                console.log("resNO :", resNo.NoArr);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetch();
-    },[scoreStr]);
+    //             const res = findResNo(score.score);
+    //             setResNo({ NoArr: res });
+    //             console.log("resNO :", resNo.NoArr);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     fetch();
+    // }, [userName, userGender, testDay, scoreStr, score, resNo.NoArr]);
     
     const data = {
         labels: ["능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"],
