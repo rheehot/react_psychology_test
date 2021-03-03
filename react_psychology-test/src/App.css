@@ -13,26 +13,55 @@
     margin-right : 5px;
 }
 
+.container{
+    margin : 50px auto;
+}
+
+/* Completed 컴포넌트( 검사 완료 페이지 ) */
+.completed-container{
+    text-align:center;
+}
+
+/* Result 컴포넌트 ( 검사 결과 페이지 ) */
+.result-title-box{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .group0{
     display:block;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group1{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group2{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group3{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group4{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group5{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group6{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 
 

@@ -48,13 +48,19 @@ function Test(props) {
         return count;
     }
 
+    const groupStyle = {
+        backgroundColor: '#dce2e8',
+        border: "1px solid rgba(0,0,0,.125)", 
+        padding: "20px", 
+        textAlign: 'center'
+    }
     const group = data.data;
     function testListMaker(group) {
         var testList = [];
         
         for(var i=0; i<group.length; i++){
             testList.push(
-                <div key={i+1} className={"group"+parseInt(i/5)} >
+                <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
                     <p>{group[i].qitemNo} {group[i].question}</p>
                     <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
                         setCounter(counter + 1);
@@ -125,7 +131,7 @@ function Test(props) {
         
         const seq = post_response.data.RESULT.url.split('=')[1];
         //console.log(seq);
-        //console.log(post_response);
+        console.log(post_response);
         props.history.push({
             pathname : "/Completed",
             state : { data : seq }
@@ -135,10 +141,13 @@ function Test(props) {
 
     return (
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
-            <h1>검사 진행</h1>
+            <div className="test-container-header">
+                <h2 style={{ width: '75%', display: 'inline-flex' }}>검사 예시</h2>
+                <h2 style={{ display: 'inline-flex', textAlign: 'right' }}>🏃‍♂️..{Math.round(progressCount / data.data.length * 100) }%</h2>
+            </div>
             
             <br />   
-            <Progress style={{width:'90%', display:'inline-flex'}} animated value={progressCount} max="28"></Progress> {Math.round(progressCount / data.data.length * 100)}%
+            <Progress animated value={progressCount} max="28"></Progress>
             <br />
 
             <form className="test-form">

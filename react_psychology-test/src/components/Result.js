@@ -2,7 +2,7 @@ import React, {useState,useEffect} from "react";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { Bar } from "react-chartjs-2";
+import { Pie,Doughnut,Radar,Bar } from "react-chartjs-2";
 import $ from "jquery";
 
 import "../Result.css";
@@ -368,7 +368,7 @@ function Result() {
     
     return(
         <>
-            <div className="result-title-box">
+            <div className="result-title-box" >
                 <h2 className="result-title">직업가치관검사 결과표</h2>
             </div>
             <div className="result-description-box">
