@@ -22,8 +22,8 @@ function OtherTest(){
                 description: '#React로 만든 #직업가치관검사 #나에게맞는 직업추천 #너는 누구냐 ?',
                 imageUrl: 'https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb8614022de826f725e10df604bf1b9725cfd',
                 link: {
-                    mobileWebUrl: 'https://cheonmro.github.io/',
-                    webUrl: 'https://cheonmro.github.io/'
+                    mobileWebUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result',
+                    webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result'
                 }
             },
             social: {
@@ -33,17 +33,17 @@ function OtherTest(){
             },
             buttons: [
                 {
-                    title: '웹으로 보기',
+                    title: '검사결과 보기',
                     link: {
-                        mobileWebUrl: 'https://cheonmro.github.io/',
+                        mobileWebUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result',
                         webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result'
                     }
                 },
                 {
-                    title: '앱으로 보기',
+                    title: '검사 해보기',
                     link: {
-                        mobileWebUrl: 'https://cheonmro.github.io/',
-                        webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result'
+                        mobileWebUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com',
+                        webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com'
                     }
                 }
             ]
