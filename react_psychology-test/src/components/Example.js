@@ -58,8 +58,8 @@ function Example(props) {
                 </div>
             </div>
             <div className="text-center">
-                <button type="button" className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
-                <button type="button" disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
+                <button type="button" style={{float:'left'}} className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
+                <button type="button" style={{ float: 'right' }} disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
             </div>
         </div>
     );

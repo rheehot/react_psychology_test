@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Form, FormGroup, Label, Input, FormFeedback, FormText } from 'reactstrap';
 
 function Login(props) {
     const [userName, setUserName] = useState("");
@@ -45,30 +46,28 @@ function Login(props) {
         <div className="login-container" style={props.isLoggined ? {display:"block"} : {display:"none"}}>
             <form>
                 <div className="login-form">
-                    <h2>직업가치관검사</h2>
+                    <h2 className="login-title">직업가치관검사</h2>
 
                     <div className="form-group">
-                        <label>
+                        <label className="form-label">
                             이름 <br />
-                            <input name="name" type="text" className="form-name" onChange={inputUserName} />
                         </label>
+                        <input name="name" type="text" className="form-name" onChange={inputUserName} />
                     </div>
 
                     <div className="form-group">
-                        <label>
-                            성별
+                        <label className="form-label">
+                            성별 <br />
                         </label>
-                        <br />
                         <div className="form-check form-check-inline">
                             <label className="form-check-label"><input name="gender" type="radio" className="radio-male" value="100323" onChange={checkGender} />남성</label>
-                        </div>
-                        <div className="form-check form-check-inline">
                             <label className="form-check-label"><input name="gender" type="radio" className="radio-female" value="100324" onChange={checkGender} />여성</label>
                         </div>
+                        
+                    </div>
 
-                        <div className="text-center">
-                            <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
-                        </div>
+                    <div className="text-center">
+                        <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
                     </div>
                 </div>
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { Pie,Doughnut,Radar,Bar } from "react-chartjs-2";
+import { Button } from 'reactstrap';
 import $ from "jquery";
 
 import "../Result.css";
@@ -52,9 +53,9 @@ function JobTable(props) {
     }
     return(
         <div className="job-table" >
-            <h3>가치관과 관련이 높은 직업</h3>
-            <div className="job-table-title">
-                <h4>종사자 평균 학력별</h4>
+            <h3 className="job-table-title">가치관과 관련이 높은 직업</h3>
+            <div className="job-table-container">
+                <h4 className="job-table-h">종사자 평균 학력별</h4>
             </div>
             <table className="table" >
                 <thead>
@@ -140,8 +141,8 @@ function JobTable(props) {
                 </thead>
             </table>
 
-            <div className="job-table-title">
-                <h4>종사자 평균 전공별</h4>
+            <div className="job-table-container">
+                <h4 className="job-table-h">종사자 평균 전공별</h4>
             </div>
             <table className="table">
                 <thead>
@@ -341,11 +342,11 @@ function Result() {
         labels: ["능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"],
         datasets: [{
             label: "직업가치관결과",
-            backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
+            backgroundColor: '#CBE3EE',
+            borderColor: '#000101',
             borderWidth : 1,
-            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            hoverBorderColor: 'rgba(255,99,132,1)',
+            hoverBackgroundColor: '#214753',
+            hoverBorderColor: '#CBE3EE',
             data: score.score
         }]
     };
@@ -375,7 +376,7 @@ function Result() {
                 직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다. 직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
             </div>
 
-            <table className="result-table">
+            <table className="table" style={{textAlign:'center'}}>
                 <thead>
                     <tr>
                         <th scope="col">이름</th>
@@ -398,8 +399,8 @@ function Result() {
                 <h2 className="value-comment-title">직업가치관 결과</h2>
                 <p className="value-comment">
                     직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다. 
-                    <br />
-                    반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다.
+                    {/* <br />
+                    반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다. */}
                 </p>
             </div>
 
@@ -418,7 +419,9 @@ function Result() {
             <br />
             
             <div className="text-center">
-                <Link to="/"><button className="btn btn-outline-primary">다시 검사하기</button></Link>
+                <Link to="/">
+                    <button className="btn btn-outline-primary">다시 검사하기</button>
+                </Link>
             </div>
         </>
     );

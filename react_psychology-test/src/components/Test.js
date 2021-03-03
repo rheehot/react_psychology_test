@@ -142,7 +142,7 @@ function Test(props) {
     return (
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <div className="test-container-header">
-                <h2 style={{ width: '75%', display: 'inline-flex' }}>검사 예시</h2>
+                <h2 style={{ width: '75%', display: 'inline-flex' }}>검사 진행</h2>
                 <h2 style={{ display: 'inline-flex', textAlign: 'right' }}>🏃‍♂️..{Math.round(progressCount / data.data.length * 100) }%</h2>
             </div>
             
@@ -154,33 +154,35 @@ function Test(props) {
                 {testList}
             </form>
             
-            <button onClick={() => {
-                if (num === 0)
-                    props.changePage();
-                else{
-                    setCounter(5);
-                    if(num === 5)
-                        setButtonText("다음");
-                    setNum(num - 1);
-                    prevTestList(num);
+            <div className="test-button">
+                <button style={{ float: 'left' }} className="btn btn-outline-primary" name="prev-btn" onClick={() => {
+                    if (num === 0)
+                        props.changePage();
+                    else {
+                        setCounter(5);
+                        if (num === 5)
+                            setButtonText("다음");
+                        setNum(num - 1);
+                        prevTestList(num);
+                        //console.log(num);
+                    }
+                }}>이전</button>
+                <button style={{float:'right'}} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
+                    if (event.target.value === "제출")
+                        handleSubmit();
+
+
+                    setNum(num + 1);
+                    const cur_count = pageCountChecked(num + 1);
+                    setCounter(cur_count);
+                    if (num === 4) {
+                        setButtonText("제출");
+                        setCounter(2);
+                    }
+                    nextTestList(num);
                     //console.log(num);
-                }
-            }} className="btn btn-outline-primary" name="prev-btn">이전</button>
-            <button disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
-                if (event.target.value === "제출")
-                    handleSubmit();
-                
-                
-                setNum(num + 1);
-                const cur_count = pageCountChecked(num+1);
-                setCounter(cur_count);
-                if(num === 4) {
-                    setButtonText("제출");
-                    setCounter(2);
-                }
-                nextTestList(num);
-                //console.log(num);
-            }} value={buttonText} >{buttonText}</button>
+                }} value={buttonText} >{buttonText}</button>
+            </div>
         </div>
     );
    
