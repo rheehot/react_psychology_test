@@ -7,8 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Completed() {
 
-    const location = useLocation();
-    const data = location.state.data;
+    //const location = useLocation();
+    const data = localStorage.getItem("seq");
 
     return(
         <div className="completed-container">
@@ -28,7 +28,7 @@ function Completed() {
                     pathname: "/Result",
                     state : { seq : data }
                 }} >
-                <button type="button" class="btn btn-outline-success">결과 보기</button>
+                    <button type="button" className="btn btn-outline-success" onClick={localStorage.setItem("seq", data)}>결과 보기</button>
                 </Link>
             </div>
         </div>

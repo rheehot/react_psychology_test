@@ -130,11 +130,12 @@ function Test(props) {
         });
         
         const seq = post_response.data.RESULT.url.split('=')[1];
+        localStorage.setItem("seq", seq);
         //console.log(seq);
         console.log(post_response);
         props.history.push({
             pathname : "/Completed",
-            state : { data : seq }
+            //state : { data : seq }
         });
 
     }

@@ -270,8 +270,8 @@ function Result() {
     const [score,setScore] = useState({score:[]});
     const [scoreStr, setScoreStr] = useState("");
     const [resNo, setResNo] = useState({NoArr:[]});
-    const location = useLocation();
-    const seq = location.state.seq;
+    //const location = useLocation();
+    const seq = localStorage.getItem("seq");
     const url = `https://inspct.career.go.kr/inspct/api/psycho/report?seq=${seq}`;
     
     const valueList = ["", "능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"];
@@ -336,7 +336,8 @@ function Result() {
         if(resNo.NoArr[0] === 0 || resNo.NoArr.length === 0)
             NoArrMaker();
     }, [score,resNo])
-   
+    
+    
     
     const data = {
         labels: ["능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"],
@@ -364,7 +365,7 @@ function Result() {
     }
 
     
-
+    
     
     
     return(
@@ -422,7 +423,17 @@ function Result() {
                 <Link to="/">
                     <button className="btn btn-outline-primary">다시 검사하기</button>
                 </Link>
+                
+                <Link to={{
+                    pathname: "/OtherTest",
+                    state: { name: userName }
+                }} >
+                <button type="button" className="btn btn-outline-primary" onClick={localStorage.setItem("name", userName)}>다른 검사하기</button>
+                </Link> 
+              
             </div>
+            
+            
         </>
     );
 }
