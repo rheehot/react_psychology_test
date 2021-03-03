@@ -48,13 +48,19 @@ function Test(props) {
         return count;
     }
 
+    const groupStyle = {
+        backgroundColor: '#dce2e8',
+        border: "1px solid rgba(0,0,0,.125)", 
+        padding: "20px", 
+        textAlign: 'center'
+    }
     const group = data.data;
     function testListMaker(group) {
         var testList = [];
         
         for(var i=0; i<group.length; i++){
             testList.push(
-                <div key={i+1} className={"group"+parseInt(i/5)} >
+                <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
                     <p>{group[i].qitemNo} {group[i].question}</p>
                     <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
                         setCounter(counter + 1);
@@ -125,7 +131,7 @@ function Test(props) {
         
         const seq = post_response.data.RESULT.url.split('=')[1];
         //console.log(seq);
-        //console.log(post_response);
+        console.log(post_response);
         props.history.push({
             pathname : "/Completed",
             state : { data : seq }
@@ -135,43 +141,48 @@ function Test(props) {
 
     return (
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
-            <h1>검사 진행</h1>
+            <div className="test-container-header">
+                <h2 style={{ width: '75%', display: 'inline-flex' }}>검사 진행</h2>
+                <h2 style={{ display: 'inline-flex', textAlign: 'right' }}>🏃‍♂️..{Math.round(progressCount / data.data.length * 100) }%</h2>
+            </div>
             
             <br />   
-            <Progress style={{width:'90%', display:'inline-flex'}} animated value={progressCount} max="28"></Progress> {Math.round(progressCount / data.data.length * 100)}%
+            <Progress animated value={progressCount} max="28"></Progress>
             <br />
 
             <form className="test-form">
                 {testList}
             </form>
             
-            <button onClick={() => {
-                if (num === 0)
-                    props.changePage();
-                else{
-                    setCounter(5);
-                    if(num === 5)
-                        setButtonText("다음");
-                    setNum(num - 1);
-                    prevTestList(num);
+            <div className="test-button">
+                <button style={{ float: 'left' }} className="btn btn-outline-primary" name="prev-btn" onClick={() => {
+                    if (num === 0)
+                        props.changePage();
+                    else {
+                        setCounter(5);
+                        if (num === 5)
+                            setButtonText("다음");
+                        setNum(num - 1);
+                        prevTestList(num);
+                        //console.log(num);
+                    }
+                }}>이전</button>
+                <button style={{float:'right'}} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
+                    if (event.target.value === "제출")
+                        handleSubmit();
+
+
+                    setNum(num + 1);
+                    const cur_count = pageCountChecked(num + 1);
+                    setCounter(cur_count);
+                    if (num === 4) {
+                        setButtonText("제출");
+                        setCounter(2);
+                    }
+                    nextTestList(num);
                     //console.log(num);
-                }
-            }} className="btn btn-outline-primary" name="prev-btn">이전</button>
-            <button disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
-                if (event.target.value === "제출")
-                    handleSubmit();
-                
-                
-                setNum(num + 1);
-                const cur_count = pageCountChecked(num+1);
-                setCounter(cur_count);
-                if(num === 4) {
-                    setButtonText("제출");
-                    setCounter(2);
-                }
-                nextTestList(num);
-                //console.log(num);
-            }} value={buttonText} >{buttonText}</button>
+                }} value={buttonText} >{buttonText}</button>
+            </div>
         </div>
     );
    

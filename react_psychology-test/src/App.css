@@ -13,26 +13,106 @@
     margin-right : 5px;
 }
 
+.container{
+    padding: 40px 0 40px 0;   
+}
+/* Login 컴포넌트 ( 로그인 페이지 ) */
+.login-container{
+    padding: 100px 0;
+}
+.login-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-group{
+    text-align: center;
+}
+.form-label{
+    margin-bottom: 8px;
+    display: block;
+}
+.form-check-label{
+    margin-right: 12px;
+    margin-left: 30px;
+}
+
+
+
+
+/* Completed 컴포넌트( 검사 완료 페이지 ) */
+.completed-container{
+    text-align:center;
+}
+
+/* Result 컴포넌트 ( 검사 결과 페이지 ) */
+.result-title-box{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.result-description-box{
+    margin-bottom: 30px;
+}
+.my-value{
+    margin-bottom: 30px;
+}
+.value-comment-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.value-comment{
+    text-align: center;
+}
+
+/* JobTable 컴포넌트 ( 결과페이지 내, 학력,전공별 직업군 테이블 ) */
+.job-table-title{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.job-table-container{
+    text-align: center;
+    padding : 8px;
+    background-color: #E0EEF7;
+}
+.job-table-h{
+    margin-bottom: 0;
+}
+
+
+
 .group0{
     display:block;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group1{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group2{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group3{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group4{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group5{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 .group6{
     display:none;
+    margin-bottom : 16px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 
 
