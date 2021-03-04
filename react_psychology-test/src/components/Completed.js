@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Completed() {
 
     //const location = useLocation();
+    //const data = location.state.data;
     const data = localStorage.getItem("seq");
 
     return(
