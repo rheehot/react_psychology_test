@@ -1,75 +1,213 @@
 import React, {useState,useEffect} from "react";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import Grid from '@material-ui/core/Grid';
+
+
+
+
+const useStyles = makeStyles({
+    root: {
+        maxWidth: "100%",
+    },
+    body : {
+        maxHeight: 300,
+    },
+    media: {
+        height: 0,
+        paddingTop: '100%'
+    },
+});
 
 function OtherTest(){
-
     //const location = useLocation();
     const data = localStorage.getItem("name");
     const seq = localStorage.getItem("seq");
 
+    const classes = useStyles();
+
+   
+
     
-    useEffect(() => {
-        if (window.Kakao.isInitialized() === false)
-        {
-            window.Kakao.init('592531f1e88506d1f0e77d9f5cd336a8');
-            console.log(window.Kakao.isInitialized());
-        }
-        window.Kakao.Link.createDefaultButton({
-            container: '#kakao-link-btn',
-            objectType: 'feed',
-            content: {
-                title: 'REACT 직업심리검사 서비스',
-                description: '#React로 만든 #직업가치관검사 #나에게맞는 직업추천 #너는 누구냐 ?',
-                imageUrl: 'https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb8614022de826f725e10df604bf1b9725cfd',
-                link: {
-                    mobileWebUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`,
-                    webUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`
-                    // mobileWebUrl: 'http://localhost:3000/Result',
-                    // webUrl: `http://localhost:3000/Result?seq=${seq}`
-                }
-            },
-            social: {
-                likeCount: 286,
-                commentCount: 13,
-                sharedCount: 59
-            },
-            buttons: [
-                {
-                    title: '검사결과 보기',
-                    link: {
-                        mobileWebUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`,
-                        webUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`
-                        // mobileWebUrl: 'http://localhost:3000/Result',
-                        // webUrl: `http://localhost:3000/Result?seq=${seq}`
-
-                    }
-                },
-                {
-                    title: '검사 해보기',
-                    link: {
-                        mobileWebUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com',
-                        webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com'
-                        // mobileWebUrl: 'http://localhost:3000',
-                        // webUrl: 'http://localhost:3000'
-
-                    }
-                }
-            ]
-        });
-        
-        
-    },[])
-
-    function onClickKakao() {
-        window.open('http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/OtherTest');
-        //window.open('http://localhost:3000/OtherTest');
-    }
     return(
-        <>
+        <Container>
             <h1>{data}님을 좀더 알아보세요 !!</h1>
-            <button style={{backgroundColor:"white", border:"0px"}}id="kakao-link-btn" onClick={onClickKakao}><img src={"https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb86141d1a2caccd0c566eab28b91e2e5d306"} style={{ backgroundColor:'white'}} alt="결과 공유하기" /></button>
-        </>
+            
+            
+            
+            <Grid container spacing={2}>
+                
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="https://high5test.com/wp-content/uploads/2018/12/16personalities-alternative.png"
+                                title="https://www.16personalities.com/ko"
+                            />
+                            <CardContent >
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    16Personalities
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    16Personalities 검사는 Big5를 토대로 만들어진 심리 테스트입니다.
+                                    신뢰도와 타당도가 충분히 검증된 검사이며, 각종 연구개발 현장에 쓰이는 검사입니다.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="https://www.16personalities.com/ko" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="https://media.vlpt.us/images/jslauren/post/07d7ef73-fd4c-4aa6-ae52-3ec0825bc2a7/cover.png"
+                                title="https://programmers.co.kr/pages/2020-mbti-survey"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    프로그래머스 개발자 MBTI
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    "16Personalities"를 통해, MBTI 검사를 해보고, 내 성향은 개발자로써는 어떤 모습의 가치를 추구하는지 확인하세요.😎
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="https://programmers.co.kr/pages/2020-mbti-survey" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FOyKwm%2FbtqPqlVHUaO%2Fi58NH0J8qUa8p1Xf1kkCM1%2Fimg.jpg"
+                                title="https://comu.codeuniv.kr/"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    내 안의 개발자
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    모두를 위한 코딩 커뮤니티 "코뮤니티"에서 만든 MBTI 유형별 개발자 유형 테스트입니다.
+                                    특히 대학생분들 중에, 어떤 분야로 방향을 잡고 싶은지 궁금하시다면 추천합니다. 재미는 덤 입니다. 😜
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="https://comu.codeuniv.kr/" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="http://bftest.wecode.co.kr/Logo5.png"
+                                title="http://bftest.wecode.co.kr/"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    BF-TEST
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    Front-end vs Back-end, 나의 성향에 맞는 포지션을 알아보는 심리테스트입니다.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="http://bftest.wecode.co.kr/" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="https://d3iwxdng5nai8r.cloudfront.net/assets/mgram_tiles-ea42bad53c904a053fba6ecc96734524a10815f0987ff3614979ef72cdbdf6bc.png"
+                                title="https://mgram.me/ko/"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    mgram
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    초정밀 성격 진단「mgram」은 당신의 성격을 구성하는 44개 요소 중, 가장 강하게 나타나는 8가지 요소를 정밀하게 추출해 드립니다.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="https://mgram.me/ko/" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item xs={4}>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image="https://w.namu.la/s/3485ce72df6b9e2ace13f2cb00483f1fbd196075a8d6a09e1a9cc5f05e0e7a0ebaa2d8292fb3371b16efaf539c22e79f1273938aef1304bb6d005e22f8da68702d54c9bd340d981cc22321a5863b7d9f04bb03d5b1ca687425ec791b95edeacad676b078ee39b7e90c346dacb80704dc"
+                                title="https://together.kakao.com/big-five"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    카카오같이가치
+                                </Typography>
+                                <Typography className={classes.body} variant="body2" color="textSecondary" component="p">
+                                    Kakao impact 플랫폼 중 하나인 「카카오같이가치」의 서비스 중 하나인, Big 5 성향 검사 서비스입니다.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button href="https://together.kakao.com/big-five" target="_blank" size="small" color="primary">
+                                테스트 하러가기
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+            </Grid>
+           
+           <Link to="/">
+                <Button variant="outlined" color="primary">시작 페이지로 이동</Button>
+           </Link>
+        
+        </Container>
     );
 }
 
 export default OtherTest;
+

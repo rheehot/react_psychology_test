@@ -6,7 +6,11 @@ import { Pie,Doughnut,Radar,Bar } from "react-chartjs-2";
 import { Button } from 'reactstrap';
 import $ from "jquery";
 
+import Tooltip from '@material-ui/core/Tooltip';
+
 import "../Result.css";
+import iconGitgub from "./icons/icon_github.png";
+import iconKakao from "./icons/icon_kakao.png";
 
 function JobTable(props) {
 
@@ -349,8 +353,6 @@ function Result({location}) {
             NoArrMaker();
     }, [score,resNo])
     
-    
-    
     const data = {
         labels: ["능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"],
         datasets: [{
@@ -376,7 +378,63 @@ function Result({location}) {
         maintainAspectRatio : true
     }
 
-    
+    const callKakaoBtn = () => {
+        if (window.Kakao.isInitialized() === false) {
+            window.Kakao.init('592531f1e88506d1f0e77d9f5cd336a8');
+            console.log(window.Kakao.isInitialized());
+        }
+        window.Kakao.Link.createDefaultButton({
+            container: '#kakao-link-btn',
+            objectType: 'feed',
+            content: {
+                title: 'REACT 직업심리검사 서비스',
+                description: '#React로 만든 #직업가치관검사 #나에게맞는 직업추천 #너는 누구냐 ?',
+                imageUrl: 'https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb8614022de826f725e10df604bf1b9725cfd',
+                link: {
+                    // mobileWebUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`,
+                    // webUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`
+                    mobileWebUrl: 'http://localhost:3000/Result',
+                    webUrl: `http://localhost:3000/Result?seq=${seq}`
+                }
+            },
+            social: {
+                likeCount: 286,
+                commentCount: 13,
+                sharedCount: 59
+            },
+            buttons: [
+                {
+                    title: '검사결과 보기',
+                    link: {
+                        // mobileWebUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`,
+                        // webUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`
+                        mobileWebUrl: 'http://localhost:3000/Result',
+                        webUrl: `http://localhost:3000/Result?seq=${seq}`
+
+                    }
+                },
+                {
+                    title: '검사 해보기',
+                    link: {
+                        //mobileWebUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com',
+                        //webUrl: 'http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com'
+                        mobileWebUrl: 'http://localhost:3000',
+                        webUrl: 'http://localhost:3000'
+
+                    }
+                }
+            ]
+        });
+    }
+
+    function onClickKakao() {
+        //window.open('http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/OtherTest');
+        window.open('http://localhost:3000/OtherTest');
+    }
+
+    useEffect(() => {
+        callKakaoBtn()
+    }, [])
     
     
     
@@ -432,7 +490,7 @@ function Result({location}) {
             <br />
             
             <div className="text-center">
-                <Link to="/">
+                <Link to="/Home">
                     <button className="btn btn-outline-primary">다시 검사하기</button>
                 </Link>
                 
@@ -445,6 +503,24 @@ function Result({location}) {
               
             </div>
             
+            <br />
+            <br />
+
+            <div className="text-center">
+                <Tooltip title="Share" placement="left">
+                    <button style={{ backgroundColor: "white", border: "0px" }} id="kakao-link-btn" onClick={onClickKakao}>
+                        <img src={iconKakao} width="50px" style={{ backgroundColor: 'white' }} alt="결과 공유하기" />
+                    </button>
+                </Tooltip>
+                
+                <Tooltip title="Code" placement="right">
+                    <a href="https://github.com/youngminss/react_psychology_test" target="_blank">
+                        <img src={iconGitgub} width="50px" style={{ backgroundColor: 'white' }} alt="소스코드" />
+                    </a>
+                </Tooltip>
+            </div>
+            
+                
             
         </>
     );
