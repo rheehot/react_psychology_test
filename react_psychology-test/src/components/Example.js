@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -51,7 +52,7 @@ function Example(props) {
 
     return (
         <div className="example-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} >
                 <Grid item xs={12} className={classes.item}>
                     <Typography variant="h4" gutterBottom>
                         검사 예시
@@ -64,7 +65,7 @@ function Example(props) {
                             <LinearProgress animated variant="determinate" value={0} valueBuffer={100} />
                         </Box>
                         <Box minWidth={35}>
-                            <Typography variant="body2" color="textSecondary">🏃‍♂️..{0}%</Typography>
+                            <Typography variant="h6" color="textSecondary">🏃‍♂️..{0}%</Typography>
                         </Box>
                     </Box>
                 </Grid>

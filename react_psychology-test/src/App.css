@@ -36,8 +36,14 @@
     margin-left: 30px;
 }
 
+/* Example 컴포넌트( 검사 예시 페이지 ) */
 
 
+/* Test 컴포넌트( 검사 진행 페이지 ) */
+.test-radio{
+    margin-left : 10px;
+    margin-right: 3px;
+}
 
 /* Completed 컴포넌트( 검사 완료 페이지 ) */
 .completed-container{

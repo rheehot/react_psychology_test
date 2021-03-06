@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     },
     item: {
         textAlign: "center"
+    },
+    container : {
+        paddingTop : "140px",
     }
 }));
 
@@ -29,7 +32,7 @@ function Completed() {
     const classes = useStyles();
 
     return(
-        <FadeIn>
+        <FadeIn className={classes.container}>
             <Grid container spacing={3}>
                 <Grid item xs={12} className={classes.item}>
                     <Typography variant="h4" gutterBottom>
@@ -43,9 +46,11 @@ function Completed() {
                         중요 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
                      </Typography>
                 </Grid>
+                
 
                 <Grid item xs={12} className={classes.item}>
                     <div className="link-container">
+                        <br />
                         <Link to={{
                             pathname: "/Result",
                             state: { seq: data }

@@ -78,7 +78,7 @@ function Test(props) {
             testList.push(
 
                     <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
-                        <p>{group[i].qitemNo} {group[i].question}</p>
+                        <p>{group[i].qitemNo}. {group[i].question}</p>
                         <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
                             setCounter(counter + 1);
                             const cur_count = countChecked();
@@ -173,7 +173,7 @@ function Test(props) {
                             <LinearProgress animated variant="determinate" value={Math.round(progressCount / data.data.length * 100)} valueBuffer={100} />
                         </Box>
                         <Box minWidth={35}>
-                            <Typography variant="body2" color="textSecondary">🏃‍♂️..{Math.round(progressCount / data.data.length * 100)}%</Typography>
+                            <Typography variant="h6" color="textSecondary">🏃‍♂️..{Math.round(progressCount / data.data.length * 100)}%</Typography>
                         </Box>
                     </Box>
                 </Grid>

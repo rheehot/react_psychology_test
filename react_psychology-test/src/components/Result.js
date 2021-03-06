@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
@@ -12,10 +12,18 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 import "../Result.css";
 import iconGitgub from "./icons/icon_github.png";
 import iconKakao from "./icons/icon_kakao.png";
+import value1 from "./images/value1.png";
+import value2 from "./images/value2.png";
+import value3 from "./images/value3.png";
+import value4 from "./images/value4.png";
+import value5 from "./images/value5.png";
+import value6 from "./images/value6.png";
+import value7 from "./images/value7.png";
+import value8 from "./images/value8.png";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
     },
     item: {
         textAlign: "center"
-    }
+    },
+    
 }));
 
 
@@ -309,7 +318,7 @@ function Result({location}) {
     const url = `https://inspct.career.go.kr/inspct/api/psycho/report?seq=${seq}`;
     
     const valueList = ["", "능력발휘", "자율성", "보수", "안정성", "사회적 인정", "사회봉사", "자기계발", "창의성"];
-
+    const valueImgList = ["", value1, value2, value3, value4, value5, value6, value7, value8];
 
     function fetch(){
         try{
@@ -406,7 +415,7 @@ function Result({location}) {
             objectType: 'feed',
             content: {
                 title: 'REACT 직업심리검사 서비스',
-                description: '#React로 만든 #직업가치관검사 #나에게맞는 직업추천 #너는 누구냐 ?',
+                description: '#React로 만든 #직업가치관검사 #나에게맞는 직업추천 #웹서비스 프로젝트',
                 imageUrl: 'https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb8614022de826f725e10df604bf1b9725cfd',
                 link: {
                     // mobileWebUrl: `http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/Result?seq=${seq}`,
@@ -465,21 +474,29 @@ function Result({location}) {
                      </Typography>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.item}>
                     <Typography variant="p" gutterBottom>
-                        직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다. 
-                        직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 
+                        직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. <br/>
+                        따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다.<br />
+                        직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. <br /> 
                         또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
                      </Typography>
                 </Grid>
 
                 <Grid item xs={12} className={classes.item}>
-                    <table className="table" style={{ textAlign: 'center' }}>
+                    <table className="table" style={{ 
+                        textAlign: 'center',
+                        width : "80%",
+                        marginLeft : 'auto',
+                        marginRight : 'auto', 
+                        marginTop: '30px',
+                        marginBottom: '30px',
+                    }}>
                         <thead>
                             <tr>
-                                <th scope="col">이름</th>
-                                <th scope="col">성별</th>
-                                <th scope="col">검사일</th>
+                                <th style={{width:'33.3%'}} scope="col">이름</th>
+                                <th style={{ width: '33.3%' }} scope="col">성별</th>
+                                <th style={{ width: '33.3%' }} scope="col">검사일</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -500,6 +517,8 @@ function Result({location}) {
                     {/* <br />
                     반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다. */}
                         </p>
+                        <img src={valueImgList[resNo.NoArr[0]]} />
+                        <img src={valueImgList[resNo.NoArr[1]]} />
                     </div>
                 </Grid>
 
