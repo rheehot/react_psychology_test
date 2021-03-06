@@ -9,9 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 import FadeIn from 'react-fade-in';
 
-const playSound = (audioFile) => {
-    audioFile.play();
-}
+
 const images = [
     {
         url: 'https://t1.daumcdn.net/cfile/tistory/25483E3E58763D2635?original',

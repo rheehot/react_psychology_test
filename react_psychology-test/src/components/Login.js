@@ -1,10 +1,32 @@
 import React, {useState, useEffect} from "react";
 import { TextField } from "@material-ui/core"
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    item : {
+        textAlign : 'center',
+    }
+}));
+
 
 function Login(props) {
+
+    const classes = useStyles();
+
     const [userName, setUserName] = useState("");
     const [userGender, setUserGender] = useState("");
     const [activeBtn, setActiveBtn] = useState(true);
+    const [value,setValue] = useState("");
 
     function inputUserName(event) {
         const name = event.target.value;
@@ -14,6 +36,7 @@ function Login(props) {
     function checkGender(event) {
         const gender = event.target.value;
         setUserGender(gender);
+        setValue(gender);
     }
 
     function handleBtn() {
@@ -44,34 +67,39 @@ function Login(props) {
 
     return (
         <div className="login-container" style={props.isLoggined ? {display:"block"} : {display:"none"}}>
-            <form>
-                <div className="login-form">
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
                     <h2 className="login-title">직업가치관검사</h2>
+                </Grid>
 
-                    <div className="form-group">
-                        <label className="form-label">
-                            이름 <br />
-                        </label>
-                        <input name="name" type="text" className="form-name" onChange={inputUserName} />
-                    </div>
+                <Grid item xs={12} className={classes.item}>
+                    <TextField
+                        id="standard-textarea"
+                        label="성함(Name)"
+                        placeholder="성함을 입력해주세요."
+                        multiline
+                        onChange={inputUserName}
+                    />
+                </Grid>
 
-                    <div className="form-group">
-                        <label className="form-label">
-                            성별 <br />
-                        </label>
-                        <div className="form-check form-check-inline">
-                            <label className="form-check-label"><input name="gender" type="radio" className="radio-male" value="100323" onChange={checkGender} />남성</label>
-                            <label className="form-check-label"><input name="gender" type="radio" className="radio-female" value="100324" onChange={checkGender} />여성</label>
-                        </div>
-                        
-                    </div>
+                <Grid item xs={12} className={classes.item}>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">성별</FormLabel>
+                        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={checkGender}>
+                            <FormControlLabel id="login-radio" value="100324" control={<Radio id="female" />} label="여성" />
+                            <FormControlLabel id="login-radio" value="100323" control={<Radio id="male" />} label="남성" />
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
 
+                <Grid item xs={12}>
                     <div className="text-center">
                         <button disabled={activeBtn} className="btn btn-outline-primary" onClick={handleClick} >검사 시작</button>
                     </div>
-                </div>
-
-            </form>
+                </Grid>
+            </Grid>
+               
+        
         </div>
     );
 }

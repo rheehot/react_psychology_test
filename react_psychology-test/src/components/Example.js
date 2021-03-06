@@ -1,10 +1,27 @@
 import React,{useEffect, useState} from "react";
 import { Progress } from 'reactstrap';
-import FadeIn from 'react-fade-in';
+
+import Box from '@material-ui/core/Box';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    item : {
+        textAlign: "center"
+    }
+}));
+
 
 function Example(props) {
     const [exampleChecker, setExampleChecker] = useState(false);
     const [activeBtn, setActiveBtn] = useState(true);
+    
+    const classes = useStyles();
 
     function handleChecker(event) {
         if (document.querySelector(".form-check-input").checked === false){
@@ -34,36 +51,53 @@ function Example(props) {
 
     return (
         <div className="example-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12} className={classes.item}>
+                    <Typography variant="h4" gutterBottom>
+                        검사 예시
+                     </Typography>
+                </Grid>
 
-            <div className="example-title">
-                <h2 style={{ width: '81%', display: 'inline-flex' }}>검사 예시</h2>
-                <h2 style={{ display: 'inline-flex', textAlign: 'right' }}>🏃‍♂️‍..0%</h2>
-            </div>
-            <br />
+                <Grid item xs={12} className={classes.item}>
+                    <Box display="flex" alignItems="center">
+                        <Box width="100%" mr={1}>
+                            <LinearProgress animated variant="determinate" value={0} valueBuffer={100} />
+                        </Box>
+                        <Box minWidth={35}>
+                            <Typography variant="body2" color="textSecondary">🏃‍♂️..{0}%</Typography>
+                        </Box>
+                    </Box>
+                </Grid>
 
-            <Progress animated value={0} max="28"></Progress>
+                <Grid item xs={12} className={classes.item}>
+                    <Typography variant="h6" gutterBottom>
+                        직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.
+                    </Typography>
+                </Grid>
 
-            <br />
-
-            <h4>직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.</h4>
-
-            <div className="form-group" style={{ backgroundColor: '#dce2e8', border: "1px solid rgba(0,0,0,.125)", padding: "28px", textAlign: 'center' }}>
-                <p>1. 두 개 가치 중에 자신에게 더 중요한 가치를 선택하세요.</p>
-                <div>
-                    <div className="form-check form-check-inline">
-                        <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="1" onChange={() => setExampleChecker(true)} />창의성</label>
+                <Grid item xs={12} className={classes.item}>
+                    <div className="form-group" style={{ backgroundColor: '#dce2e8', border: "1px solid rgba(0,0,0,.125)", padding: "28px", textAlign: 'center' }}>
+                        <p>1. 두 개 가치 중에 자신에게 더 중요한 가치를 선택하세요.</p>
+                        <div>
+                            <div className="form-check form-check-inline">
+                                <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="1" onChange={() => setExampleChecker(true)} />창의성</label>
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="2" onChange={() => setExampleChecker(true)} />안정성</label>
+                            </div>
+                        </div>
                     </div>
-                    <div className="form-check form-check-inline">
-                        <label className="form-check-label"><input type="radio" className="form-check-input" name="check" value="2" onChange={() => setExampleChecker(true)} />안정성</label>
+                </Grid>
+
+                <Grid item xs={12} className={classes.item}>
+                    <div className="text-center">
+                        <button type="button" style={{ float: 'left' }} className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
+                        <button type="button" style={{ float: 'right' }} disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
                     </div>
-                </div>
-            </div>
-            <div className="text-center">
-                <button type="button" style={{ float: 'left' }} className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
-                <button type="button" style={{ float: 'right' }} disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
-            </div>
-        </div>
+                </Grid>
+            </Grid>
         
+        </div> 
     );
     
 }

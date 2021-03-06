@@ -2,9 +2,22 @@ import React,{useState, useEffect} from "react";
 import axios from "axios";
 import $ from 'jquery';
 import { withRouter } from "react-router-dom";
-import { Progress } from 'reactstrap';
 
-import FadeIn from 'react-fade-in';
+
+import Box from '@material-ui/core/Box';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    item : {
+        textAlign : "center",
+    }
+}));
 
 function Test(props) {
 
@@ -13,6 +26,8 @@ function Test(props) {
     const [buttonText, setButtonText] = useState("다음");
     const [counter,setCounter] = useState(0);
     const [progressCount,setProgressCount] = useState(0);
+
+    const classes = useStyles();
 
     async function fetch(){
         const response = await axios.get("https://www.career.go.kr/inspct/openapi/test/questions?apikey=8ae87adbbfc34f50eb84444700264097&q=6");
@@ -99,13 +114,13 @@ function Test(props) {
     async function handleSubmit(){
         //console.log("handleSubmit 호출");
         //console.log("answer : ",answer);
-        const userName = document.querySelector(".form-name").value;
+        const userName = document.querySelector("#standard-textarea").value;
         let gender = null;
-        if (document.querySelector(".radio-male").checked)
-            gender = document.querySelector(".radio-male").value;
-        else if (document.querySelector(".radio-female").checked)
-            gender = document.querySelector(".radio-female").value;
-
+        if (document.querySelector("#male").checked)
+            gender = document.querySelector("#male").value;
+        else if (document.querySelector("#female").checked)
+            gender = document.querySelector("#female").value;
+        
         var answer = $(".test-form").serialize().replace(/&/gi,' B');
         answer = "B" + answer;
         console.log("answer ",answer);
@@ -145,49 +160,69 @@ function Test(props) {
 
     return (
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
-            <div className="test-container-header">
-                <h2 style={{ width: '75%', display: 'inline-flex' }}>검사 진행</h2>
-                <h2 style={{ display: 'inline-flex', textAlign: 'right' }}>🏃‍♂️..{Math.round(progressCount / data.data.length * 100) }%</h2>
-            </div>
-            
-            <br />   
-            <Progress animated value={progressCount} max="28"></Progress>
-            <br />
+            <Grid container spacing={3}>
+                <Grid item xs={12} className={classes.item}>
+                    <Typography variant="h4" gutterBottom>
+                        검사 진행
+                     </Typography>
+                </Grid>
+
+                <Grid item xs={12} className={classes.item}>
+                    <Box display="flex" alignItems="center">
+                        <Box width="100%" mr={1}>
+                            <LinearProgress animated variant="determinate" value={Math.round(progressCount / data.data.length * 100)} valueBuffer={100} />
+                        </Box>
+                        <Box minWidth={35}>
+                            <Typography variant="body2" color="textSecondary">🏃‍♂️..{Math.round(progressCount / data.data.length * 100)}%</Typography>
+                        </Box>
+                    </Box>
+                </Grid>
+
+                <Grid item xs={12} className={classes.item}>
+                    <form className="test-form">
+                        {testList}
+                    </form>
+                </Grid>
+
+                <Grid item xs={12} className={classes.item}>
+                    <div className="test-button">
+                        <button style={{ float: 'left' }} className="btn btn-outline-primary" name="prev-btn" onClick={() => {
+                            if (num === 0)
+                                props.changePage();
+                            else {
+                                setCounter(5);
+                                if (num === 5)
+                                    setButtonText("다음");
+                                setNum(num - 1);
+                                prevTestList(num);
+                                //console.log(num);
+                            }
+                        }}>이전</button>
+                        <button style={{ float: 'right' }} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
+                            if (event.target.value === "제출")
+                                handleSubmit();
+
+
+                            setNum(num + 1);
+                            const cur_count = pageCountChecked(num + 1);
+                            setCounter(cur_count);
+                            if (num === 4) {
+                                setButtonText("제출");
+                                setCounter(2);
+                            }
+                            nextTestList(num);
+                            //console.log(num);
+                        }} value={buttonText} >{buttonText}</button>
+                    </div>
+                </Grid>
+            </Grid>
 
             
-            <form className="test-form">
-                {testList}
-            </form>
+           
             
-            <div className="test-button">
-                <button style={{ float: 'left' }} className="btn btn-outline-primary" name="prev-btn" onClick={() => {
-                    if (num === 0)
-                        props.changePage();
-                    else {
-                        setCounter(5);
-                        if (num === 5)
-                            setButtonText("다음");
-                        setNum(num - 1);
-                        prevTestList(num);
-                        //console.log(num);
-                    }
-                }}>이전</button>
-                <button style={{float:'right'}} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
-                    if (event.target.value === "제출")
-                        handleSubmit();
-
-
-                    setNum(num + 1);
-                    const cur_count = pageCountChecked(num + 1);
-                    setCounter(cur_count);
-                    if (num === 4) {
-                        setButtonText("제출");
-                        setCounter(2);
-                    }
-                    nextTestList(num);
-                    //console.log(num);
-                }} value={buttonText} >{buttonText}</button>
-            </div>
+            
+            
+          
         </div>
     );
    
