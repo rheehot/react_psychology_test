@@ -4,6 +4,7 @@ import $ from 'jquery';
 import { withRouter } from "react-router-dom";
 import { Progress } from 'reactstrap';
 
+import FadeIn from 'react-fade-in';
 
 function Test(props) {
 
@@ -60,19 +61,21 @@ function Test(props) {
         
         for(var i=0; i<group.length; i++){
             testList.push(
-                <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
-                    <p>{group[i].qitemNo} {group[i].question}</p>
-                    <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
-                        setCounter(counter + 1);
-                        const cur_count = countChecked();
-                        setProgressCount(cur_count);
-                    }}  />{group[i].answer01}</label>
-                    <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={(event) => {
-                        setCounter(counter + 1);
-                        const cur_count = countChecked();
-                        setProgressCount(cur_count);
-                    }} />{group[i].answer02}</label>
-                </div>
+
+                    <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
+                        <p>{group[i].qitemNo} {group[i].question}</p>
+                        <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
+                            setCounter(counter + 1);
+                            const cur_count = countChecked();
+                            setProgressCount(cur_count);
+                        }} />{group[i].answer01}</label>
+                        <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={(event) => {
+                            setCounter(counter + 1);
+                            const cur_count = countChecked();
+                            setProgressCount(cur_count);
+                        }} />{group[i].answer02}</label>
+                    </div>
+                
             );
         }
         return testList;
@@ -80,12 +83,12 @@ function Test(props) {
     }
     const testList = testListMaker(group)
     
-    function nextTestList(num) {
-        $(`.group${num+1}`).show();
+    function nextTestList(num) {    
+        $(`.group${num+1}`).fadeIn('linear');
         $(`.group${num}`).hide();
     }
     function prevTestList(num) {
-        $(`.group${num-1}`).show();
+        $(`.group${num-1}`).fadeIn('linear');
         $(`.group${num}`).hide();
     }
 
@@ -151,6 +154,7 @@ function Test(props) {
             <Progress animated value={progressCount} max="28"></Progress>
             <br />
 
+            
             <form className="test-form">
                 {testList}
             </form>

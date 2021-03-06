@@ -6,6 +6,7 @@ import { Pie,Doughnut,Radar,Bar } from "react-chartjs-2";
 import { Button } from 'reactstrap';
 import $ from "jquery";
 
+import FadeIn from 'react-fade-in';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import "../Result.css";
@@ -439,7 +440,7 @@ function Result({location}) {
     
     
     return(
-        <>
+        <FadeIn>
             <div className="result-title-box" >
                 <h2 className="result-title">직업가치관검사 결과표</h2>
             </div>
@@ -522,7 +523,7 @@ function Result({location}) {
             
                 
             
-        </>
+        </FadeIn>
     );
 }
 

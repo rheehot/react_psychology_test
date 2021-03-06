@@ -7,6 +7,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import FadeIn from 'react-fade-in';
 
 const playSound = (audioFile) => {
     audioFile.play();
@@ -26,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
         width: '100vw',
         height : '100vh',
     },
-    
     image: {
         position: 'relative',
         height: "100vh",
@@ -131,6 +131,7 @@ function Intro() {
     const classes = useStyles(); 
     
     return(
+        <FadeIn className={classes.fadeIn}>
             <div className={classes.root}>
                 {images.map((image) => (
                     <ButtonBase
@@ -152,9 +153,9 @@ function Intro() {
 
                         <div className={classes.root1}>
 
-            
-                        <Grid container spacing={1}>
-                            <Grid item xs={6}>
+
+                            <Grid container spacing={1}>
+                                <Grid item xs={6}>
                                     <Typography
                                         variant="h3"
                                         component="span"
@@ -169,46 +170,48 @@ function Intro() {
                                     >
                                         あなたの仕事は
                                     </Typography>
+                                </Grid>
+
+                                <Grid item xs={6}>
+                                    <span className={classes.imageButton}>
+                                        <Link to="/Home" style={{ textDecoration: 'none', color: '#FFF' }}>
+                                            <Typography
+                                                component="span"
+                                                variant="subtitle1"
+                                                color="inherit"
+                                                className={classes.imageTitle}
+
+                                            >
+                                                {image.title}
+                                                <span className={classes.imageMarked} />
+                                            </Typography>
+                                        </Link>
+                                    </span>
+
+                                    <span className={classes.imageButton1}>
+                                        <Link to="" style={{ textDecoration: 'none', color: '#FFF' }}>
+                                            <Typography
+                                                component="span"
+                                                variant="subtitle1"
+                                                color="inherit"
+                                                className={classes.imageTitle}
+
+                                            >
+                                                {image.title1}
+                                                <span className={classes.imageMarked} />
+                                            </Typography>
+                                        </Link>
+                                    </span>
+                                </Grid>
                             </Grid>
 
-                            <Grid item xs={6}>
-                                <span className={classes.imageButton}>
-                                    <Link to="/Home" style={{ textDecoration: 'none', color: '#FFF' }}>
-                                        <Typography
-                                            component="span"
-                                            variant="subtitle1"
-                                            color="inherit"
-                                            className={classes.imageTitle}
-
-                                        >
-                                            {image.title}
-                                            <span className={classes.imageMarked} />
-                                        </Typography>
-                                    </Link>
-                                </span>
-
-                                <span className={classes.imageButton1}>
-                                    <Link to="" style={{ textDecoration: 'none', color: '#FFF' }}>
-                                        <Typography
-                                            component="span"
-                                            variant="subtitle1"
-                                            color="inherit"
-                                            className={classes.imageTitle}
-
-                                        >
-                                            {image.title1}
-                                            <span className={classes.imageMarked} />
-                                        </Typography>
-                                    </Link>
-                                </span>
-                            </Grid>
-                        </Grid>
-                       
                         </div>
-                        
+
                     </ButtonBase>
                 ))}
             </div> 
+        </FadeIn>
+            
     );
 }
 

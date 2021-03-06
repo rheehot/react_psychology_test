@@ -15,20 +15,25 @@ import "../App.css";
 function App() { 
   
   return (
-    <BrowserRouter>
-      
+    
+    
+      <BrowserRouter>
+        
         <Switch>
+          
           <Route exact path={"/"} component={Intro} />
           <Container>
-            <Route exact path={"/Home"} component={Home} />
-            <Route exact path={"/Completed"} component={Completed} />
-            <Route exact path={"/Result"} component={Result} />
-            <Route exact path={"/OtherTest"} component={OtherTest} />
+              <Route exact path={"/Home"} component={Home} />
+              <Route exact path={"/Completed"} component={Completed} />
+              <Route exact path={"/Result"} component={Result} />
+              <Route exact path={"/OtherTest"} component={OtherTest} />
           </Container>
-        </Switch> 
-      
-        
-    </BrowserRouter>
+          
+        </Switch>
+
+
+      </BrowserRouter>
+    
   );
 }
 
