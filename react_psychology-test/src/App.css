@@ -121,6 +121,7 @@
     border: 1px solid rgba(0,0,0,.125);
 }
 
+
 /* Font List */
 @font-face {
   font-family: "bomnalL";       
@@ -130,18 +131,92 @@
   font-family: "bomnalM";
   src: url("./fonts/bomnalM.ttf"); 
 }
+@font-face {
+  font-family: "NanumGothic";       
+  src: url("./fonts/NanumGothic.ttf"); 
+}
+@font-face {
+  font-family: "TypoOutline";
+  src: url("./fonts/Typo_HelloPOP_OutlineM.ttf"); 
+}
+@font-face {
+  font-family: "TypoSsangmun";       
+  src: url("./fonts/Typo_SsangmunDongB.ttf"); 
+}
 
+/* basic */
+body {
+    font-family: "NanumGothic";
+}
+.btn.btn-outline-primary {
+    font-family: "TypoOutline";
+}
 /* Intro Page Font */
 #intro-title {
     font-family: "bomnalM";
 }
-#intro-btn1{
-  
+/* PopUp Page Fone */
+#popUp-title {
+    font-family: "TypoOutline";
 }
-#intro-btn2{
-    
+#popUp-desc {
+    font-family: "NanumGothic";
 }
-
+#popUp-contributer {
+    font-family: "TypoSsangmun" ;
+}
+/* Login Page Font */
+#login-title {
+    font-family: "TypoOutline" ;
+}
+/* Example Page Font */
+#example-title {
+    font-family: "TypoOutline" ;
+}
+#example-desc {
+    font-family: "TypoSsangmun" ; 
+}
+.form-group {
+    font-family: "TypoSsangmun" ;
+}
+/* Test Page Font */
+#test-title {
+    font-family: "TypoOutline" ;
+}
+.form-check-label {
+    font-family: "NanumGothic";
+    font-size : 1.1rem;
+}
+.test-form {
+    font-family: "TypoSsangmun" ;
+}
+/* Completed Page Font */
+#completed-title {
+    font-family: "TypoOutline" ;
+}
+.btn.btn-outline-success {
+    font-family: "TypoOutline" ;
+}
+/* Result Page Font */
+#result-title {
+    font-family: "TypoOutline" ;
+}
+.value-comment-title {
+    font-family: "TypoSsangmun" ; 
+}
+.job-table-title {
+    font-family: "TypoSsangmun" ; 
+}
+.job-table-h {
+    font-family: "TypoSsangmun" ;
+}
+/* OtherTest Page Font */
+#other-title {
+    font-family: "TypoOutline" ; 
+}
+#other-btn {
+    font-family: "TypoOutline" ;
+}
 
 
 

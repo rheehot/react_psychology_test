@@ -2,16 +2,28 @@ import React,{useState}from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Button } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
+import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import GitHubIcon from '@material-ui/icons/GitHub';
+import EmailIcon from '@material-ui/icons/Email';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import ChatIcon from '@material-ui/icons/Chat';
+import ToggleOffIcon from '@material-ui/icons/ToggleOff';
+import ToggleOnIcon from '@material-ui/icons/ToggleOn';
 
 import FadeIn from 'react-fade-in';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+
+import kakao1 from './images/me.png';
+import kakao2 from './images/lion.png';
+import kakao3 from './images/apeach.png';
+
 
 const images = [
     {
@@ -32,10 +44,21 @@ const useStyles = makeStyles((theme) => ({
     popUp : {
         textAlign: 'center',
     },
-    paper: {
+    popUpFooter : {
+        textAlign: 'center',
+        padding : "5px",
+        fontSize : "40px"
+    },
+    paperline1: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+    },
+    paperline2 : {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        height: 200,
     },
     image: {
         position: 'relative',
@@ -185,6 +208,7 @@ function Intro() {
 
 
                             <Grid container spacing={1}>
+    
                                 <Grid item xs={6}>
                                     <Typography
                                         variant="h1"
@@ -243,29 +267,85 @@ function Intro() {
                                                 <a className="close" onClick={closeModal}>&times;</a>
                                                 <Grid container spacing={3}>
                                                     <Grid item xs={12} className={classes.popUp}>
-                                                        <Typography variant="h6" gutterBottom>
+                                                        <Typography id="popUp-title" variant="h4" gutterBottom>
                                                             직업심리검사 서비스 『너의 직업은』
                                                         </Typography>
                                                     </Grid>
                                                     <Grid item xs={12}>
-                                                        <Paper className={classes.paper}>
-                                                            <h1>프로젝트소개</h1>
+                                                        <Paper className={classes.paperline1}>
+                                                            <Typography id="popUp-desc" variant="p" gutterBottom>
+                                                                안녕하세요. 엘리스 AI트랙 레이서 1기 YOUNG MIN 입니다. <br />
+                                                                『너의 직업은』은 이번 웹 서비스 프로젝트로 주제로 제작했습니다. <br />
+                                                                많은 기간을 가지고 배운 지식으로 만든 것은 아니지만, 2주동안 열심히 제작해봤습니다. <br />
+                                                                내가 중요시 여기는 가치관은 무엇이며, 그에 맞는 직업들은 무엇이 있는지 알려주는 서비스입니다. <br />
+                                                                자신의 성향을 알아보고 다른 사람에게 결과도 공유해보세요.😎 <br />
+                                                                감사합니다. 🙏
+                                                            </Typography>
                                                         </Paper>
                                                     </Grid>
+                                                    
                                                     <Grid item xs={6}>
-                                                        <Paper className={classes.paper}>
-                                                            <h1>기술스택</h1><h1>기술스택</h1><h1>기술스택</h1><h1>기술스택</h1>
+                                                        <Paper className={classes.paperline2}>
+                                                            <Typography id="popUp-desc" variant="p" gutterBottom>
+                                                                Javascript <br />
+                                                                Functional Components + Hooks <br />
+                                                                React `17.0.1` <br />
+                                                                bootstrap `4.6` <br />
+                                                                react-router-dom `5.2` <br />
+                                                                axios `0.21.1` <br />
+                                                                그 외 다양한 React 라이브러리 📘 <br />
+                                                            </Typography>
                                                         </Paper>
                                                     </Grid>
-                                                    <Grid item xs={6}>
-                                                        <Paper className={classes.paper}>
-                                                            <h1>시스템구성도</h1><h1>시스템구성도</h1><h1>시스템구성도</h1><h1>시스템구성도</h1>
+                                                    <Grid item xs={6} spacing={3}>
+                    
+                                                        <Paper className={classes.paperline2}>
+                                                            <Grid item xs={12} spacing={1} className={classes.popUp} >
+                                                                <Typography id="popUp-contributer" variant="h4" gutterBottom>
+                                                                    Contributor
+                                                            </Typography>
+                                                            </Grid>
+                                                            <Grid item xs={12} spacing={2} >
+                                                                <Tooltip title="김한슬마로 코치님" placement="bottom">
+                                                                    <img src={kakao2} width="90" height="90" />
+                                                                </Tooltip>
+                                                                <Tooltip title="영민 ( 제작자 )" placement="bottom">
+                                                                    <img src={kakao1} width="100" height="100" />
+                                                                </Tooltip>
+                                                                <Tooltip title="이정열 코치님" placement="bottom">
+                                                                    <img src={kakao3} width="100" height="100" />
+                                                                </Tooltip>
+                                                                
+                                                            </Grid>
+                
                                                         </Paper>
                                                     </Grid>
                                                     <Grid item xs={12}>
-                                                        <Paper className={classes.paper}>
-                                                            깃헙링크걸기,메일 배지달기
-                                                        </Paper>
+                                                        <Container style={{textAlign:"center"}}>
+                                                            <Tooltip title="Github" placement="bottom">
+                                                                <a href="https://github.com/youngminss/react_psychology_test" target="_blank" >
+                                                                    <GitHubIcon className={classes.popUpFooter}   />
+                                                                </a>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Blog" placement="bottom">
+                                                                <a href="https://youngminieo1005.tistory.com/notice/56" target="_blank" >
+                                                                    <ChatIcon className={classes.popUpFooter} />
+                                                                </a>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Mail" placement="bottom">
+                                                                <a href="" target="" onClick={(event) => { event.preventDefault() }}>
+                                                                    <EmailIcon className={classes.popUpFooter} />
+                                                                </a>
+                                                            </Tooltip>
+
+                                                            <Tooltip title="Instagram" placement="bottom">
+                                                                <a href="https://www.instagram.com/ming.3000/" target="_blank">
+                                                                    <InstagramIcon className={classes.popUpFooter} />
+                                                                </a>
+                                                            </Tooltip>
+                                                        </Container>
                                                     </Grid>
                                                     <Grid item xs={12} className={classes.popUp}>
                                                         <Typography variant="caption" display="block" gutterBottom>

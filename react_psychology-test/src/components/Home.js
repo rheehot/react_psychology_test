@@ -10,6 +10,7 @@ import Toggle from "./Toggle";
 import { ThemeProvider } from "styled-components";
 import { useDarkMode } from "../styles/useDarkMode";
 import { GlobalStyles, lightTheme, darkTheme } from "../styles/globalStyles";
+import { Container } from "@material-ui/core";
 
 function Home({history}) {
     const [loginToken, setLoginToken] = useState(true);
@@ -46,10 +47,10 @@ function Home({history}) {
         <ThemeProvider theme={themeMode}>
             <GlobalStyles />
             <FadeIn>
-                <Toggle theme={theme} toggleTheme={toggleTheme} />
                 <Login isLoggined={loginToken} changePage={loginToExample} />
                 <Example isLoggined={exampleToken} moveLoginPage={exampleToLogin} moveTestPage={exampleToTest} />
                 <Test isLoggined={testToken} changePage={testToExample} history={history} />
+                <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>
             </FadeIn> 
         </ThemeProvider>
     );

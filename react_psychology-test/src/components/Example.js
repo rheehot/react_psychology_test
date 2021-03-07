@@ -54,7 +54,7 @@ function Example(props) {
         <div className="example-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <Grid container spacing={3} >
                 <Grid item xs={12} className={classes.item}>
-                    <Typography variant="h4" gutterBottom>
+                    <Typography id="example-title" variant="h4" gutterBottom>
                         검사 예시
                      </Typography>
                 </Grid>
@@ -71,7 +71,7 @@ function Example(props) {
                 </Grid>
 
                 <Grid item xs={12} className={classes.item}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography id="example-desc" variant="h6" gutterBottom>
                         직업과 관련된 두개의 가치 중에서 자기에게 더 중요한 가치에 표시하세요.
                     </Typography>
                 </Grid>
@@ -92,8 +92,8 @@ function Example(props) {
 
                 <Grid item xs={12} className={classes.item}>
                     <div className="text-center">
-                        <button type="button" style={{ float: 'left' }} className="btn btn-outline-primary" onClick={handleMoveLogin}>이전</button>
-                        <button type="button" style={{ float: 'right' }} disabled={exampleChecker ? false : true} className="btn btn-outline-primary" onClick={handleMoveTest}>검사 시작</button>
+                        <button type="button" style={{ float: 'left' }} className="btn btn-outline-primary btn-lg" onClick={handleMoveLogin}>이전</button>
+                        <button type="button" style={{ float: 'right' }} disabled={exampleChecker ? false : true} className="btn btn-outline-primary btn-lg" onClick={handleMoveTest}>검사 시작</button>
                     </div>
                 </Grid>
             </Grid>

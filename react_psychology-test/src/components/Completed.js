@@ -6,6 +6,7 @@ import { Button } from 'reactstrap';
 import FadeIn from 'react-fade-in';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { Container } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     container : {
         paddingTop : "140px",
+        paddingBottom : "140px",
     }
 }));
 
@@ -44,10 +46,10 @@ function Completed() {
         <ThemeProvider theme={themeMode}>
             <GlobalStyles />
             <FadeIn className={classes.container}>
-                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                
                 <Grid container spacing={3}>
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant="h4" gutterBottom>
+                        <Typography id="completed-title" variant="h4" gutterBottom>
                             🙏 검사가 완료되었습니다 🙏
                         </Typography>
                     </Grid>
@@ -67,12 +69,14 @@ function Completed() {
                                 pathname: "/Result",
                                 state: { seq: data }
                             }} >
-                                <button type="button" className="btn btn-outline-success" onClick={localStorage.setItem("seq", data)}>결과 보기</button>
+                                <button type="button" className="btn btn-outline-success btn-lg"  onClick={localStorage.setItem("seq", data)}>결과 보기</button>
                             </Link>
                         </div>
                     </Grid>
                 </Grid>
             </FadeIn>
+            <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>
+            
         </ThemeProvider>
     );
 }

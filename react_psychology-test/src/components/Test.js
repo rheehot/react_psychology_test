@@ -162,7 +162,7 @@ function Test(props) {
         <div className="test-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
             <Grid container spacing={3}>
                 <Grid item xs={12} className={classes.item}>
-                    <Typography variant="h4" gutterBottom>
+                    <Typography id="test-title" variant="h4" gutterBottom>
                         검사 진행
                      </Typography>
                 </Grid>
@@ -186,7 +186,7 @@ function Test(props) {
 
                 <Grid item xs={12} className={classes.item}>
                     <div className="test-button">
-                        <button style={{ float: 'left' }} className="btn btn-outline-primary" name="prev-btn" onClick={() => {
+                        <button style={{ float: 'left' }} className="btn btn-outline-primary btn-lg" name="prev-btn" onClick={() => {
                             if (num === 0)
                                 props.changePage();
                             else {
@@ -198,7 +198,7 @@ function Test(props) {
                                 //console.log(num);
                             }
                         }}>이전</button>
-                        <button style={{ float: 'right' }} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary" name="next-btn" onClick={(event) => {
+                        <button style={{ float: 'right' }} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary btn-lg" name="next-btn" onClick={(event) => {
                             if (event.target.value === "제출")
                                 handleSubmit();
 

@@ -7,14 +7,14 @@ import { Button } from 'reactstrap';
 import $ from "jquery";
 
 import FadeIn from 'react-fade-in';
+
+import { Container } from "@material-ui/core";
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
 import "../Result.css";
-import iconGitgub from "./icons/icon_github.png";
-import iconKakao from "./icons/icon_kakao.png";
 import value1 from "./images/value1.png";
 import value2 from "./images/value2.png";
 import value3 from "./images/value3.png";
@@ -23,6 +23,8 @@ import value5 from "./images/value5.png";
 import value6 from "./images/value6.png";
 import value7 from "./images/value7.png";
 import value8 from "./images/value8.png";
+import ShareIcon from '@material-ui/icons/Share';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import Toggle from "./Toggle";
 import { ThemeProvider } from "styled-components";
@@ -71,7 +73,6 @@ function JobTable(props) {
         });
     }
     
-
     useEffect(() => {
         if(professionInfo.length === 0 && educationInfo.length === 0)
             fetch();
@@ -394,7 +395,7 @@ function Result({location}) {
             label: "직업가치관결과",
             backgroundColor: '#CBE3EE',
             borderColor: '#000101',
-            borderWidth : 1,
+            borderWidth : 2,
             hoverBackgroundColor: '#214753',
             hoverBorderColor: '#CBE3EE',
             data: score.score
@@ -406,7 +407,15 @@ function Result({location}) {
                 ticks : {
                     min : 0,
                     max : 8,
-                    stepSize: 1
+                    stepSize: 1,
+                },
+                gridLines: {
+                    color: "#acacac",
+                }
+            }],
+            xAxes : [{
+                gridLines : {
+                    color: "#acacac",
                 }
             }]
         },
@@ -477,10 +486,10 @@ function Result({location}) {
         <ThemeProvider theme={themeMode}>
             <GlobalStyles />
             <FadeIn>
-                <Toggle theme={theme} toggleTheme={toggleTheme} />
-                <Grid container spacing={3}>
+            
+                <Grid container spacing={3} >
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant="h4" gutterBottom>
+                        <Typography id="result-title" variant="h4" gutterBottom>
                             직업가치관검사 결과표
                         </Typography>
                     </Grid>
@@ -505,7 +514,7 @@ function Result({location}) {
                         }}>
                             <thead>
                                 <tr>
-                                    <th style={{width:'33.3%'}} scope="col">이름</th>
+                                    <th style={{ width:'33.3%'  }} scope="col">이름</th>
                                     <th style={{ width: '33.3%' }} scope="col">성별</th>
                                     <th style={{ width: '33.3%' }} scope="col">검사일</th>
                                 </tr>
@@ -528,6 +537,7 @@ function Result({location}) {
                         {/* <br />
                         반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다. */}
                             </p>
+
                             <img src={valueImgList[resNo.NoArr[0]]} />
                             <img src={valueImgList[resNo.NoArr[1]]} />
                         </div>
@@ -542,7 +552,11 @@ function Result({location}) {
                         />
                     </Grid>
 
+                    
+
                     <Grid item xs={12}>
+                        <br />
+                        <br />
                         <JobTable No={resNo.NoArr} />
                     </Grid>
 
@@ -562,14 +576,15 @@ function Result({location}) {
                     <Grid item xs={12} className={classes.item}> 
                         <Tooltip title="Share" placement="left">
                             <button style={{ backgroundColor: "white", border: "0px" }} id="kakao-link-btn" onClick={onClickKakao}>
-                                <img src={iconKakao} width="50px" style={{ backgroundColor: 'white' }} alt="결과 공유하기" />
+                                <ShareIcon fontSize="Large"/>
                             </button>
                         </Tooltip>
 
                         <Tooltip title="Code" placement="right">
-                            <a href="https://github.com/youngminss/react_psychology_test" target="_blank">
-                                <img src={iconGitgub} width="50px" style={{ backgroundColor: 'white' }} alt="소스코드" />
+                            <a href="https://github.com/youngminss/react_psychology_test" target="_blank" style={{color:"Black"}}>
+                                <GitHubIcon fontSize="Large" />
                             </a>
+                            
                         </Tooltip>
                     </Grid>
                 </Grid>
@@ -655,9 +670,10 @@ function Result({location}) {
                     </Tooltip>
                 </div> */}
                 
-                    
-                
+                <br />
+                <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>
             </FadeIn>
+            
         </ThemeProvider>
     );
 }

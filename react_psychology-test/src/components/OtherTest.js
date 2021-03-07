@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     cardContext : {
         overflowY : 'scroll',
         height : "100px",
+        textAlign: "left",
     },
 });
 
@@ -59,13 +60,12 @@ function OtherTest(){
         <ThemeProvider theme={themeMode}>
             <GlobalStyles />
         <FadeIn>
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
             <Container>
                 <Grid container spacing={4}>
 
                     <Grid item xs={12} className={classes.item}>
-                        <Typography variant="h4" gutterBottom>
-                            🔎{data} 님을 더 알아보세요🔍
+                        <Typography id="other-title" variant="h4" gutterBottom>
+                            🔎 {data} 님을 더 알아보세요 🔍
                     </Typography>
                     </Grid>
                     <Grid item xs={4} className={classes.item}>
@@ -222,7 +222,7 @@ function OtherTest(){
 
                     <Grid item xs={12} className={classes.item}>
                         <Link to="/" style={{ textDecoration: 'none' }}>
-                            <Button variant="outlined" color="primary">시작 페이지로 이동</Button>
+                                <button id="other-btn" className="btn btn-outline-primary btn-lg"  >시작 페이지로 이동</button>
                         </Link>
                     </Grid>
                 </Grid>
@@ -230,6 +230,8 @@ function OtherTest(){
 
 
             </Container>
+            <br />
+            <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>
         </FadeIn>
        </ThemeProvider>
     );

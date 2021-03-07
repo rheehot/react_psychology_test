@@ -403,13 +403,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 ### Day Note
 
-[x] 검사 완료페이지, 중앙 정렬 ( O )
+[X] 검사 완료페이지, 중앙 정렬 ( O )
 
-[x] 결과 페이지, 사용자정보, 테이블 영역 3분의 1씩 나누기 ( O )
+[X] 결과 페이지, 사용자정보, 테이블 영역 3분의 1씩 나누기 ( O )
 
-[x] 결과 페이지, 중요 가치관에 대한, 아이콘 뿌려주기 ( O )
+[X] 결과 페이지, 중요 가치관에 대한, 아이콘 뿌려주기 ( O )
 
-[ ] 폰트 적용하기
+[X] 폰트 적용하기
 
 + [ttf react 적용하기 참고 가이드](https://coding-hwije.tistory.com/50)
 
@@ -419,11 +419,15 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
     - [CSS 폰트 이슈포스팅](https://d2.naver.com/helloworld/4969726)
 
+    - [폰트 크기 단위](https://dahanweb.tistory.com/30)
+
     - [좋은 텍스트란 ?](http://koreawebdesign.com/typography-for-webdesign/)
 
-[ ] 인트로페이지 내용채워넣기
+[X] 인트로페이지 내용채워넣기
 
-[c] 다크모드 기능 (시간이...되면)
++ [Reactjs-popUp 라이브러리 가이드](https://react-popup.elazizi.com/)
+
+[X] 다크모드 기능 (시간이...되면)
 
 🍒 참고사이트
 
