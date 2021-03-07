@@ -32,8 +32,8 @@
     display: block;
 }
 .form-check-label{
-    margin-right: 12px;
-    margin-left: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /* Example 컴포넌트( 검사 예시 페이지 ) */
@@ -120,5 +120,28 @@
     margin-bottom : 16px;
     border: 1px solid rgba(0,0,0,.125);
 }
+
+/* Font List */
+@font-face {
+  font-family: "bomnalL";       
+  src: url("./fonts/bomnalL.ttf"); 
+}
+@font-face {
+  font-family: "bomnalM";
+  src: url("./fonts/bomnalM.ttf"); 
+}
+
+/* Intro Page Font */
+#intro-title {
+    font-family: "bomnalM";
+}
+#intro-btn1{
+  
+}
+#intro-btn2{
+    
+}
+
+
 
 

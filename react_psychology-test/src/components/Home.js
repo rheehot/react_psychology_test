@@ -6,13 +6,20 @@ import Login from "./Login";
 import FadeIn from 'react-fade-in';
 import $ from 'jquery';
 
+import Toggle from "./Toggle";
+import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "../styles/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/globalStyles";
+
 function Home({history}) {
     const [loginToken, setLoginToken] = useState(true);
     const [exampleToken, setExampleToken] = useState(false);
     const [testToken, setTestToken] = useState(false);
 
-    //const [progress,setProgress] = useState("0");
+    const [theme, toggleTheme, mountedComponent] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
+    
     function loginToExample() {
         setLoginToken(false);
         setExampleToken(true);
@@ -36,11 +43,15 @@ function Home({history}) {
 
 
     return (
-        <FadeIn>
-            <Login isLoggined={loginToken} changePage={loginToExample} />
-            <Example isLoggined={exampleToken} moveLoginPage={exampleToLogin} moveTestPage={exampleToTest} />
-            <Test isLoggined={testToken} changePage={testToExample} history={history} />
-        </FadeIn> 
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
+            <FadeIn>
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                <Login isLoggined={loginToken} changePage={loginToExample} />
+                <Example isLoggined={exampleToken} moveLoginPage={exampleToLogin} moveTestPage={exampleToTest} />
+                <Test isLoggined={testToken} changePage={testToExample} history={history} />
+            </FadeIn> 
+        </ThemeProvider>
     );
 }
 

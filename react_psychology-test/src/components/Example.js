@@ -77,7 +77,7 @@ function Example(props) {
                 </Grid>
 
                 <Grid item xs={12} className={classes.item}>
-                    <div className="form-group" style={{ backgroundColor: '#dce2e8', border: "1px solid rgba(0,0,0,.125)", padding: "28px", textAlign: 'center' }}>
+                    <div className="form-group">
                         <p>1. 두 개 가치 중에 자신에게 더 중요한 가치를 선택하세요.</p>
                         <div>
                             <div className="form-check form-check-inline">

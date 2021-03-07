@@ -77,14 +77,14 @@ function Test(props) {
         for(var i=0; i<group.length; i++){
             testList.push(
 
-                    <div key={i + 1} className={"group" + parseInt(i / 5)} style={groupStyle}  >
+                    <div key={i + 1} className={"group" + parseInt(i / 5)}   > 
                         <p>{group[i].qitemNo}. {group[i].question}</p>
-                        <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
+                        <label className="form-check-label"><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
                             setCounter(counter + 1);
                             const cur_count = countChecked();
                             setProgressCount(cur_count);
                         }} />{group[i].answer01}</label>
-                        <label><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={(event) => {
+                    <label className="form-check-label"><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore02} onChange={(event) => {
                             setCounter(counter + 1);
                             const cur_count = countChecked();
                             setProgressCount(cur_count);

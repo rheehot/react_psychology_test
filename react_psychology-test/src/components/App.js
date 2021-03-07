@@ -7,33 +7,24 @@ import Result from "./Result";
 import OtherTest from "./OtherTest";
 import { Container } from 'reactstrap';
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../App.css";
 
-
 function App() { 
-  
+
   return (
     
-    
-      <BrowserRouter>
-        
+      <BrowserRouter>  
         <Switch>
-          
           <Route exact path={"/"} component={Intro} />
           <Container>
               <Route exact path={"/Home"} component={Home} />
-              <Route exact path={"/Completed"} component={Completed} />
+            <Route exact path={"/Completed"} component={Completed} />
               <Route exact path={"/Result"} component={Result} />
               <Route exact path={"/OtherTest"} component={OtherTest} />
-          </Container>
-          
+          </Container>  
         </Switch>
-
-
       </BrowserRouter>
-    
   );
 }
 

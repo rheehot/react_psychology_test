@@ -24,6 +24,11 @@ import value6 from "./images/value6.png";
 import value7 from "./images/value7.png";
 import value8 from "./images/value8.png";
 
+import Toggle from "./Toggle";
+import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "../styles/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/globalStyles";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -304,6 +309,9 @@ function Result({location}) {
 
     const classes = useStyles();
 
+    const [theme, toggleTheme, mountedComponent] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
     if(location.search)
     {
         seq = location.search.split("=")[1];
@@ -466,187 +474,191 @@ function Result({location}) {
     
     
     return(
-        <FadeIn>
-            <Grid container spacing={3}>
-                <Grid item xs={12} className={classes.item}>
-                    <Typography variant="h4" gutterBottom>
-                        직업가치관검사 결과표
-                     </Typography>
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
+            <FadeIn>
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                <Grid container spacing={3}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant="h4" gutterBottom>
+                            직업가치관검사 결과표
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant="p" gutterBottom>
+                            직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. <br/>
+                            따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다.<br />
+                            직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. <br /> 
+                            또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}>
+                        <table className="table" style={{ 
+                            textAlign: 'center',
+                            width : "80%",
+                            marginLeft : 'auto',
+                            marginRight : 'auto', 
+                            marginTop: '30px',
+                            marginBottom: '30px',
+                        }}>
+                            <thead>
+                                <tr>
+                                    <th style={{width:'33.3%'}} scope="col">이름</th>
+                                    <th style={{ width: '33.3%' }} scope="col">성별</th>
+                                    <th style={{ width: '33.3%' }} scope="col">검사일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{userName}</td>
+                                    <td>{userGender}</td>
+                                    <td>{testDay}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}>
+                        <div className="my-value">
+                            <h2 className="value-comment-title">직업가치관 결과</h2>
+                            <p className="value-comment">
+                                직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다.
+                        {/* <br />
+                        반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다. */}
+                            </p>
+                            <img src={valueImgList[resNo.NoArr[0]]} />
+                            <img src={valueImgList[resNo.NoArr[1]]} />
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Bar
+                            data={data}
+                            width={100}
+                            height={50}
+                            options={option}
+                        />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <JobTable No={resNo.NoArr} />
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}>
+                            <Link to="/Home">
+                                <button className="btn btn-outline-primary">다시 검사하기</button>
+                            </Link>
+
+                            <Link to={{
+                                pathname: "/OtherTest",
+                                state: { name: userName }
+                            }} >
+                                <button type="button" className="btn btn-outline-primary" onClick={localStorage.setItem("name", userName)}>다른 검사하기</button>
+                            </Link>
+                    </Grid>
+
+                    <Grid item xs={12} className={classes.item}> 
+                        <Tooltip title="Share" placement="left">
+                            <button style={{ backgroundColor: "white", border: "0px" }} id="kakao-link-btn" onClick={onClickKakao}>
+                                <img src={iconKakao} width="50px" style={{ backgroundColor: 'white' }} alt="결과 공유하기" />
+                            </button>
+                        </Tooltip>
+
+                        <Tooltip title="Code" placement="right">
+                            <a href="https://github.com/youngminss/react_psychology_test" target="_blank">
+                                <img src={iconGitgub} width="50px" style={{ backgroundColor: 'white' }} alt="소스코드" />
+                            </a>
+                        </Tooltip>
+                    </Grid>
                 </Grid>
+            
+            
+                {/* <div className="result-title-box" >
+                    <h2 className="result-title">직업가치관검사 결과표</h2>
+                </div>
+                <div className="result-description-box">
+                    직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다. 직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
+                </div>
 
-                <Grid item xs={12} className={classes.item}>
-                    <Typography variant="p" gutterBottom>
-                        직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. <br/>
-                        따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다.<br />
-                        직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. <br /> 
-                        또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
-                     </Typography>
-                </Grid>
+                <table className="table" style={{textAlign:'center'}}>
+                    <thead>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <th scope="col">성별</th>
+                            <th scope="col">검사일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{userName}</td>
+                            <td>{userGender}</td>
+                            <td>{testDay}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <br />
 
-                <Grid item xs={12} className={classes.item}>
-                    <table className="table" style={{ 
-                        textAlign: 'center',
-                        width : "80%",
-                        marginLeft : 'auto',
-                        marginRight : 'auto', 
-                        marginTop: '30px',
-                        marginBottom: '30px',
-                    }}>
-                        <thead>
-                            <tr>
-                                <th style={{width:'33.3%'}} scope="col">이름</th>
-                                <th style={{ width: '33.3%' }} scope="col">성별</th>
-                                <th style={{ width: '33.3%' }} scope="col">검사일</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{userName}</td>
-                                <td>{userGender}</td>
-                                <td>{testDay}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Grid>
+                <div className="my-value">
+                    <h2 className="value-comment-title">직업가치관 결과</h2>
+                    <p className="value-comment">
+                        직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다. 
+                        {/* <br />
+                        반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다.
+                    </p>
+                </div>
 
-                <Grid item xs={12} className={classes.item}>
-                    <div className="my-value">
-                        <h2 className="value-comment-title">직업가치관 결과</h2>
-                        <p className="value-comment">
-                            직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다.
-                    {/* <br />
-                    반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다. */}
-                        </p>
-                        <img src={valueImgList[resNo.NoArr[0]]} />
-                        <img src={valueImgList[resNo.NoArr[1]]} />
-                    </div>
-                </Grid>
+                <Bar
+                    data={data}
+                    width={100}
+                    height={50}
+                    options={option}
+                />
+                <br />
+                <br />
+                
+                <JobTable No={resNo.NoArr} />
 
-                <Grid item xs={12}>
-                    <Bar
-                        data={data}
-                        width={100}
-                        height={50}
-                        options={option}
-                    />
-                </Grid>
+                <br />
+                <br />
+                
+                <div className="text-center">
+                    <Link to="/Home">
+                        <button className="btn btn-outline-primary">다시 검사하기</button>
+                    </Link>
+                    
+                    <Link to={{
+                        pathname: "/OtherTest",
+                        state: { name: userName }
+                    }} >
+                        <button type="button" className="btn btn-outline-primary" onClick={localStorage.setItem("name",userName)}>다른 검사하기</button>
+                    </Link> 
+                
+                </div>
+                
+                <br />
+                <br />
 
-                <Grid item xs={12}>
-                    <JobTable No={resNo.NoArr} />
-                </Grid>
-
-                <Grid item xs={12} className={classes.item}>
-                        <Link to="/Home">
-                            <button className="btn btn-outline-primary">다시 검사하기</button>
-                        </Link>
-
-                        <Link to={{
-                            pathname: "/OtherTest",
-                            state: { name: userName }
-                        }} >
-                            <button type="button" className="btn btn-outline-primary" onClick={localStorage.setItem("name", userName)}>다른 검사하기</button>
-                        </Link>
-                </Grid>
-
-                <Grid item xs={12} className={classes.item}> 
+                <div className="text-center">
                     <Tooltip title="Share" placement="left">
                         <button style={{ backgroundColor: "white", border: "0px" }} id="kakao-link-btn" onClick={onClickKakao}>
                             <img src={iconKakao} width="50px" style={{ backgroundColor: 'white' }} alt="결과 공유하기" />
                         </button>
                     </Tooltip>
-
+                    
                     <Tooltip title="Code" placement="right">
                         <a href="https://github.com/youngminss/react_psychology_test" target="_blank">
                             <img src={iconGitgub} width="50px" style={{ backgroundColor: 'white' }} alt="소스코드" />
                         </a>
                     </Tooltip>
-                </Grid>
-            </Grid>
-           
-           
-            {/* <div className="result-title-box" >
-                <h2 className="result-title">직업가치관검사 결과표</h2>
-            </div>
-            <div className="result-description-box">
-                직업가치관이란 직업을 선택할 때 영향을 끼치는 자신만의 믿음과 신념입니다. 따라서 여러분의 직업생활과 관련하여 포기하지 않는 무게중심의 역할을 한다고 볼 수 있습니다. 직업가치관검사는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려줍니다. 또한 본인이 가장 중요하게 생각하는 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
-            </div>
-
-            <table className="table" style={{textAlign:'center'}}>
-                <thead>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col">성별</th>
-                        <th scope="col">검사일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{userName}</td>
-                        <td>{userGender}</td>
-                        <td>{testDay}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br />
-            <br />
-
-            <div className="my-value">
-                <h2 className="value-comment-title">직업가치관 결과</h2>
-                <p className="value-comment">
-                    직업생활과 관련하여 {userName}님은 {valueList[resNo.NoArr[0]]}(와)과 {valueList[resNo.NoArr[1]]}(을)를 가장 중요하게 생각합니다. 
-                    {/* <br />
-                    반면에 자기계발, 사회봉사은 상대적으로 덜 중요하게 생각합니다.
-                </p>
-            </div>
-
-            <Bar
-                data={data}
-                width={100}
-                height={50}
-                options={option}
-            />
-            <br />
-            <br />
-            
-            <JobTable No={resNo.NoArr} />
-
-            <br />
-            <br />
-            
-            <div className="text-center">
-                <Link to="/Home">
-                    <button className="btn btn-outline-primary">다시 검사하기</button>
-                </Link>
+                </div> */}
                 
-                <Link to={{
-                    pathname: "/OtherTest",
-                    state: { name: userName }
-                }} >
-                    <button type="button" className="btn btn-outline-primary" onClick={localStorage.setItem("name",userName)}>다른 검사하기</button>
-                </Link> 
-              
-            </div>
-            
-            <br />
-            <br />
-
-            <div className="text-center">
-                <Tooltip title="Share" placement="left">
-                    <button style={{ backgroundColor: "white", border: "0px" }} id="kakao-link-btn" onClick={onClickKakao}>
-                        <img src={iconKakao} width="50px" style={{ backgroundColor: 'white' }} alt="결과 공유하기" />
-                    </button>
-                </Tooltip>
+                    
                 
-                <Tooltip title="Code" placement="right">
-                    <a href="https://github.com/youngminss/react_psychology_test" target="_blank">
-                        <img src={iconGitgub} width="50px" style={{ backgroundColor: 'white' }} alt="소스코드" />
-                    </a>
-                </Tooltip>
-            </div> */}
-            
-                
-            
-        </FadeIn>
+            </FadeIn>
+        </ThemeProvider>
     );
 }
 

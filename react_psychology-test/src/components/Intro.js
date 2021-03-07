@@ -187,9 +187,10 @@ function Intro() {
                             <Grid container spacing={1}>
                                 <Grid item xs={6}>
                                     <Typography
-                                        variant="h3"
+                                        variant="h1"
                                         component="span"
                                         className={classes.introTitleKor}
+                                        id="intro-title"
                                     >
                                         『 너의 직업은 』
                                     </Typography>
@@ -197,6 +198,7 @@ function Intro() {
                                         variant="h4"
                                         component="span"
                                         className={classes.introTtileJap}
+                                        id="intro-sub-title"
                                     >
                                         あなたの仕事は
                                     </Typography>
@@ -210,7 +212,7 @@ function Intro() {
                                                 variant="subtitle1"
                                                 color="inherit"
                                                 className={classes.imageTitle}
-
+                                                id="intro-btn1"
                                             >
                                                 {image.title}
                                                 <span className={classes.imageMarked} />
@@ -225,6 +227,7 @@ function Intro() {
                                                 variant="subtitle1"
                                                 color="inherit"
                                                 className={classes.imageTitle}
+                                                id="intro-btn2"
                                                 onClick={() => setOpen(o => !o)}
                                             >
                                                 {image.title1}

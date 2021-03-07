@@ -409,11 +409,29 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 [x] 결과 페이지, 중요 가치관에 대한, 아이콘 뿌려주기 ( O )
 
-[ ] 폰트 적하기
+[ ] 폰트 적용하기
+
++ [ttf react 적용하기 참고 가이드](https://coding-hwije.tistory.com/50)
+
+    - 알아봐야 될 것 : 연산자가 외부 UI 라이브러리(Material UI) 경우, className이 정해져 있는데, 이를 참조해서, CSS를 적용하려고하면, 페이지가 새로고침 되거나해서, 리렌더링 되면, 폰트 적용이 잘 될 때가 있다.
+
+    - 맞는진 모르겠는데, id 값을 만들어서, id값으로 참조하니깐, 버그는 없다.
+
+    - [CSS 폰트 이슈포스팅](https://d2.naver.com/helloworld/4969726)
+
+    - [좋은 텍스트란 ?](http://koreawebdesign.com/typography-for-webdesign/)
 
 [ ] 인트로페이지 내용채워넣기
 
-[ ] 다크모드 기능 (시간이...되면)
+[c] 다크모드 기능 (시간이...되면)
+
+🍒 참고사이트
+
++ [내가 사용한 가이드](https://ichi.pro/ko/react-peulojegteue-dakeu-modeu-chuga-37080865985200)
+
++ [다크 모드 컬러 가이드 1](http://icunow.co.kr/guide-darkmode/)
+
++ [다크 모드 컬러 가이드 2](https://brunch.co.kr/@blckschrl/57)
 
 📢 README 정리 해야함..
 

@@ -15,6 +15,12 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import FadeIn from 'react-fade-in';
 
+import Toggle from "./Toggle";
+import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "../styles/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/globalStyles";
+
+
 const useStyles = makeStyles({
     root: {
         maxWidth: "100%",
@@ -46,10 +52,15 @@ function OtherTest(){
     const data = localStorage.getItem("name");
     const classes = useStyles();
 
-    return(
-        <FadeIn>
-            <Container>
+    const [theme, toggleTheme, mountedComponent] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
+    return(
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
+        <FadeIn>
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
+            <Container>
                 <Grid container spacing={4}>
 
                     <Grid item xs={12} className={classes.item}>
@@ -62,7 +73,7 @@ function OtherTest(){
                             <CardActionArea>
                                 <CardMedia
                                     className={classes.media}
-                                    image="https://high5test.com/wp-content/uploads/2018/12/16personalities-alternative.png"
+                                        image="https://static.neris-assets.com/images/personality-types/headers/fb/logo.png"
                                     title="https://www.16personalities.com/ko"
                                 />
                                 <CardContent  >
@@ -220,7 +231,7 @@ function OtherTest(){
 
             </Container>
         </FadeIn>
-       
+       </ThemeProvider>
     );
 }
 

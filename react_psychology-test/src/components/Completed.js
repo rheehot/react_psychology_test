@@ -10,6 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
+import Toggle from "./Toggle";
+import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "../styles/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/globalStyles";
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -31,36 +37,43 @@ function Completed() {
 
     const classes = useStyles();
 
+    const [theme, toggleTheme, mountedComponent] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
     return(
-        <FadeIn className={classes.container}>
-            <Grid container spacing={3}>
-                <Grid item xs={12} className={classes.item}>
-                    <Typography variant="h4" gutterBottom>
-                        🙏 검사가 완료되었습니다 🙏
-                     </Typography>
-                </Grid>
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
+            <FadeIn className={classes.container}>
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                <Grid container spacing={3}>
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant="h4" gutterBottom>
+                            🙏 검사가 완료되었습니다 🙏
+                        </Typography>
+                    </Grid>
 
-                <Grid item xs={12} className={classes.item}>
-                    <Typography variant="p" gutterBottom>
-                        검사결과는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려주고, <br />
-                        중요 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
-                     </Typography>
-                </Grid>
-                
+                    <Grid item xs={12} className={classes.item}>
+                        <Typography variant="p" gutterBottom>
+                            검사결과는 여러분이 직업을 선택할 때 상대적으로 어떠한 가치를 중요하게 생각하는지를 알려주고, <br />
+                            중요 가치를 충족시켜줄 수 있는 직업에 대해 생각해 볼 기회를 제공합니다.
+                        </Typography>
+                    </Grid>
+                    
 
-                <Grid item xs={12} className={classes.item}>
-                    <div className="link-container">
-                        <br />
-                        <Link to={{
-                            pathname: "/Result",
-                            state: { seq: data }
-                        }} >
-                            <button type="button" className="btn btn-outline-success" onClick={localStorage.setItem("seq", data)}>결과 보기</button>
-                        </Link>
-                    </div>
+                    <Grid item xs={12} className={classes.item}>
+                        <div className="link-container">
+                            <br />
+                            <Link to={{
+                                pathname: "/Result",
+                                state: { seq: data }
+                            }} >
+                                <button type="button" className="btn btn-outline-success" onClick={localStorage.setItem("seq", data)}>결과 보기</button>
+                            </Link>
+                        </div>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </FadeIn>
+            </FadeIn>
+        </ThemeProvider>
     );
 }
 
