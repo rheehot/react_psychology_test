@@ -77,6 +77,12 @@ export const GlobalStyles = createGlobalStyle`
   .table {
     color : ${({ theme }) => theme.text};   
   }
+  #kakaoBtn {
+    color: ${({ theme }) => theme.text};
+  }
+  #githubBtn {
+    color: ${({ theme }) => theme.text};
+  }
   // 추가검사 소개페이지
   `
 
