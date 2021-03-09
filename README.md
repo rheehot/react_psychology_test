@@ -1,13 +1,20 @@
-# 💻 프로젝트 개요
+## 🍒 프로젝트 개요
 
-- REACT-Psychology-Test
+Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 
-[Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
+###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
 
-[Demo](http://elice-kdt-ai-track-vm-project-03.koreacentral.cloudapp.azure.com/test)
 
-## 1️⃣ day report
++ [Guide Demo](http://elice-kdt-ai-track-vm-project-03.koreacentral.cloudapp.azure.com/test)
++ [Live Demo](http://elice-kdt-ai-track-vm-racer-33.koreacentral.cloudapp.azure.com/)
 
+
+## 🍒 Day Note
+
+<details>
+<summary><strong>1️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 - 환경설정
 Azure VM 접속 방법 [링크](https://www.notion.so/Azure-VM-ff3344a92dda4549b235bfa25658f8dc)
 1. npm 설치확인
@@ -39,8 +46,12 @@ Azure VM 접속 방법 [링크](https://www.notion.so/Azure-VM-ff3344a92dda4549b
 - 비고
     + CSS 부분은 보류 중
 
+</div>
+</details>
 
-## 2️⃣ day report
+<details>
+<summary><strong>2️⃣ day report</strong></summary>
+<div markdown="1">
 
 - installation
     + axios
@@ -78,8 +89,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 + 선택지를 사용자가 변경할 수 있으면 어떻할까 ? => answer 상태를 업데이트할때, 기존에 저장된 값을 어떻게 관리할까 ?
 
 
-## 3️⃣ day
+</div>
+</details>
 
+<details>
+<summary><strong>3️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 ### 설치
 - $ npm install --save react-router-dom : React Router를 위한 라이브러리
 - $ npm install --save-dev@types/react-router-dom : Typescript(타입스크립트)를 사용하기 위한 react-router-dom의 타입(Type) 정의 라이브러리
@@ -139,9 +155,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 ### 추후, 보완할 점
 > ★ 일단은, 형제 컴포넌트의 state를 끌어올리기하기엔, 손봐야될 것이 많아보이고, 또 지금 상황에서는, 필요한 것은, 로그인 시, 1.사용자이름 2.성별 데이터만 있으면, API post를 할 수 있을 것 같아서, DOM을 이용해서, 값 들을 얻어 냈다. 
 
+</div>
+</details>
 
-## 4️⃣ day
-
+<details>
+<summary><strong>4️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 ### 설치
 - $ npm install --save react-chartjs-2 chart.js
 
@@ -169,7 +189,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - 결과페이지에서, 통신 쪽으로 문제가 있는 것 해결해야 한다.
 
 
-## 5️⃣ day
+</div>
+</details>
+
+<details>
+<summary><strong>5️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### 설치
 - npm install --save reactstrap react react-dom : 리액트스트랩
@@ -195,7 +221,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
             * i : 대/소문자 구분 안함
             * m: 여러 줄 검색 (참고)
 
-## 6️⃣ day
+</div>
+</details>
+
+<details>
+<summary><strong>6️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### Day Note
 
@@ -224,10 +256,16 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 
 - 리액트스트랩을 기본적으로, import하면, 그 css파일안에, 기본적으로, 적용되는, css효과들이 있다.
 - 기본 태그이름의 정의도 되어있고, 특정 className으로, 정의된 css도 있나보다.
-- 그래서, 예를 들어(<div className="text-center">) 이면, 그 안에있는 요소들은, 가운데 정렬이 되는 듯 하다.
+- 그래서, 예를 들어(`<div className="text-center">`) 이면, 그 안에있는 요소들은, 가운데 정렬이 되는 듯 하다.
 
 
-## 7️⃣ day
+</div>
+</details>
+
+<details>
+<summary><strong>7️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### 설치
 
@@ -252,8 +290,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
     + `참고문헌`에 나와있는대로 절차를 밟는다.
     + host가 되고 있는 것을 확인하고, 나의, Azure DNS Name을, url에 쳐서 접근해본다.
 
+</div>
+</details>
 
-## 8️⃣ day
+<details>
+<summary><strong>8️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### Day Note
 🍒 progress bar 의 % 현황을 추가했다.
@@ -270,8 +313,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + 함수를 하나 만들었고, 그 값이 true OR false를 반환하고 이 값으로 `tr` 요소의 `display` 속성을 삼항연산자로 제어했다.
     - isTrEmpty() 가 제어함
 
+</div>
+</details>
 
-## 9️⃣ day
+<details>
+<summary><strong>9️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### Day Note
 
@@ -297,7 +345,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 무한렌더링 -> useEffect를 여러번 하지않아도되고, fetch 부분에서 NoArrMaker를 실행하도록 하기
 
 
-## 🔟 day
+</div>
+</details>
+
+<details>
+<summary><strong>🔟 day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### Day Note
 
@@ -341,9 +395,14 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + 그러나, 링크 안에, `파라미터`로 `seq`를 직접 넘겨준다. 그 파라미터의 `seq`값을, 추출해서, `결과페이지`를 뿌려주면 된다 생각했다.
 
     - [참고문헌](https://velog.io/@joonsikyang/React-Project-URL-parameters-Query-parameters)
-    
 
-## 1️⃣1️⃣ day
+</div>
+</details>
+
+<details>
+<summary><strong>1️⃣1️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### 설치
 🍒 $ npm i styled-components
@@ -370,8 +429,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
     - [참고문헌](https://webisfree.com/2019-12-12/[react]-img-%ED%83%9C%EA%B7%B8%EC%9D%98-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EC%98%88%EC%A0%9C-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0)
 
+</div>
+</details>
 
-## 1️⃣2️⃣ day
+<details>
+<summary><strong>1️⃣2️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### 설치
 
@@ -396,10 +460,15 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 + DB를 쉽게, 쓸 수 있는, 패키지라고 소개해주셨다.
 
-+ 추후, 더 큰 react 프로젝트를 하게 될 때, 깊게 참고해볼 만 할 것 같다
++ 추후, 더 큰 react 프로젝트를 하게 될 때, 깊게 참고해볼 만 할 것 
 
+</div>
+</details>
 
-## 1️⃣3️⃣ day
+<details>
+<summary><strong>1️⃣3️⃣ day report</strong></summary>
+<div markdown="1">
+<br />
 
 ### Day Note
 
@@ -436,6 +505,15 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + [다크 모드 컬러 가이드 1](http://icunow.co.kr/guide-darkmode/)
 
 + [다크 모드 컬러 가이드 2](https://brunch.co.kr/@blckschrl/57)
+
+
+</div>
+</details>
+
+
+
+
+
 
 
 
