@@ -3,7 +3,6 @@ import axios from "axios";
 import $ from 'jquery';
 import { withRouter } from "react-router-dom";
 
-
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
@@ -32,9 +31,7 @@ function Test(props) {
     async function fetch(){
         const response = await axios.get("https://www.career.go.kr/inspct/openapi/test/questions?apikey=8ae87adbbfc34f50eb84444700264097&q=6");
         const data = response.data.RESULT;
-        
         setData({data : data});
-        //console.log(data);
     }
 
     useEffect(() => {
@@ -59,24 +56,17 @@ function Test(props) {
                     count += 1;           
             }
         });
-        if(num === 5 && count === 3)    // 마지막 페이지 제어
+        if(num === 5 && count === 3)
             count = 5;
         return count;
     }
 
-    const groupStyle = {
-        backgroundColor: '#dce2e8',
-        border: "1px solid rgba(0,0,0,.125)", 
-        padding: "20px", 
-        textAlign: 'center'
-    }
     const group = data.data;
     function testListMaker(group) {
         var testList = [];
         
         for(var i=0; i<group.length; i++){
             testList.push(
-
                     <div key={i + 1} className={"group" + parseInt(i / 5)}   > 
                         <p>{group[i].qitemNo}. {group[i].question}</p>
                         <label className="form-check-label"><input type="radio" className="test-radio" name={group[i].qitemNo} value={group[i].answerScore01} onChange={(event) => {
@@ -90,12 +80,11 @@ function Test(props) {
                             setProgressCount(cur_count);
                         }} />{group[i].answer02}</label>
                     </div>
-                
             );
         }
         return testList;
-
     }
+
     const testList = testListMaker(group)
     
     function nextTestList(num) {    
@@ -107,15 +96,10 @@ function Test(props) {
         $(`.group${num}`).hide();
     }
 
-    function handleCounter() {
-        return false;
-    }
-
     async function handleSubmit(){
-        //console.log("handleSubmit 호출");
-        //console.log("answer : ",answer);
         const userName = document.querySelector("#standard-textarea").value;
         let gender = null;
+        
         if (document.querySelector("#male").checked)
             gender = document.querySelector("#male").value;
         else if (document.querySelector("#female").checked)
@@ -123,8 +107,6 @@ function Test(props) {
         
         var answer = $(".test-form").serialize().replace(/&/gi,' B');
         answer = "B" + answer;
-        console.log("answer ",answer);
-
 
         let data = {
             apikey: "8ae87adbbfc34f50eb84444700264097",
@@ -138,9 +120,8 @@ function Test(props) {
             startDtm : String(new Date().getTime()),
             answers : answer
         }
-        //console.log(JSON.stringify(data));
+
         const url = "https://www.career.go.kr/inspct/openapi/test/report";
-        
         const post_response = await axios.post(url, JSON.stringify(data), {
             headers: { "Content-Type": `application/json` }
         }).catch(error => {
@@ -149,13 +130,10 @@ function Test(props) {
         
         const seq = post_response.data.RESULT.url.split('=')[1];
         localStorage.setItem("seq", seq);
-        //console.log(seq);
-        console.log(post_response);
+
         props.history.push({
             pathname : "/Completed",
-            //state : { data : seq }
         });
-
     }
 
     return (
@@ -195,14 +173,11 @@ function Test(props) {
                                     setButtonText("다음");
                                 setNum(num - 1);
                                 prevTestList(num);
-                                //console.log(num);
                             }
                         }}>이전</button>
                         <button style={{ float: 'right' }} disabled={pageCountChecked(num) < 5 ? true : false} className="btn btn-outline-primary btn-lg" name="next-btn" onClick={(event) => {
                             if (event.target.value === "제출")
                                 handleSubmit();
-
-
                             setNum(num + 1);
                             const cur_count = pageCountChecked(num + 1);
                             setCounter(cur_count);
@@ -211,21 +186,12 @@ function Test(props) {
                                 setCounter(2);
                             }
                             nextTestList(num);
-                            //console.log(num);
                         }} value={buttonText} >{buttonText}</button>
                     </div>
                 </Grid>
             </Grid>
-
-            
-           
-            
-            
-            
-          
         </div>
     );
-   
 }
 
 export default withRouter(Test);

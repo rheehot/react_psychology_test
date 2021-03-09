@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {BrowserRouter as Router, Switch, Route, BrowserRouter,} from 'react-router-dom';
 import Intro from "./Intro";
 import Home from "./Home";
@@ -13,7 +13,6 @@ import "../App.css";
 function App() { 
 
   return (
-    
       <BrowserRouter>  
         <Switch>
           <Route exact path={"/"} component={Intro} />

@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
+
 import { TextField } from "@material-ui/core"
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -16,9 +16,7 @@ const useStyles = makeStyles((theme) => ({
     item : {
         textAlign : 'center',
     }
-    
 }));
-
 
 function Login(props) {
 
@@ -33,20 +31,17 @@ function Login(props) {
         const name = event.target.value;
         setUserName(name);
     }
-
     function checkGender(event) {
         const gender = event.target.value;
         setUserGender(gender);
         setValue(gender);
     }
-
     function handleBtn() {
         if (userName.length !== 0 && userGender !== "")
             setActiveBtn(false);
         else
             setActiveBtn(true);
     }
-
     function handleClick(e) {
         e.preventDefault();
         let checkNum = /[0-9]/;
@@ -83,8 +78,6 @@ function Login(props) {
                     />
                 </Grid>
 
-                
-
                 <Grid item xs={12} className={classes.item}>
                     <br />
                     <FormControl component="fieldset">
@@ -102,8 +95,6 @@ function Login(props) {
                     </div>
                 </Grid>
             </Grid>
-               
-        
         </div>
     );
 }

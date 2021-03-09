@@ -1,12 +1,10 @@
 import React,{useEffect, useState} from "react";
-import { Progress } from 'reactstrap';
 
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,38 +15,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 function Example(props) {
     const [exampleChecker, setExampleChecker] = useState(false);
-    const [activeBtn, setActiveBtn] = useState(true);
-    
     const classes = useStyles();
 
-    function handleChecker(event) {
-        if (document.querySelector(".form-check-input").checked === false){
-            console.log("checkd : false");
-            setActiveBtn(false);
-        }
-        else if (document.querySelector(".form-check-input").checked === true){
-            console.log("checkd : true");
-            document.querySelector(".form-check-input").checked = false;
-            setActiveBtn(true);
-        } 
-    }
-    
     function handleMoveLogin() {
         setExampleChecker(true);
         props.moveLoginPage();
     }
-    
     function handleMoveTest() {
         setExampleChecker(true);
         props.moveTestPage();
     }
-
-    useEffect(() => {
-
-    }, [exampleChecker]);
 
     return (
         <div className="example-container" style={props.isLoggined ? { display: "block" } : { display: "none" }}>
@@ -97,7 +75,6 @@ function Example(props) {
                     </div>
                 </Grid>
             </Grid>
-        
         </div> 
     );
     

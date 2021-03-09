@@ -1,5 +1,4 @@
-import React, {useState,useEffect} from "react";
-//import { useLocation } from "react-router";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -49,10 +48,10 @@ const useStyles = makeStyles({
 });
 
 function OtherTest(){
-    //const location = useLocation();
-    const data = localStorage.getItem("name");
-    const classes = useStyles();
 
+    const data = localStorage.getItem("name");
+    
+    const classes = useStyles();
     const [theme, toggleTheme, mountedComponent] = useDarkMode();
     const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
@@ -62,7 +61,6 @@ function OtherTest(){
         <FadeIn>
             <Container>
                 <Grid container spacing={4}>
-
                     <Grid item xs={12} className={classes.item}>
                         <Typography id="other-title" variant="h4" gutterBottom>
                             🔎 {data} 님을 더 알아보세요 🔍
@@ -226,9 +224,6 @@ function OtherTest(){
                         </Link>
                     </Grid>
                 </Grid>
-
-
-
             </Container>
             <br />
             <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>

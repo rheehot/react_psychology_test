@@ -1,15 +1,13 @@
 import React from "react";
-import {useLocation} from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from 'reactstrap';
-
 import FadeIn from 'react-fade-in';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Container } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Toggle from "./Toggle";
 import { ThemeProvider } from "styled-components";
@@ -30,13 +28,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 function Completed() {
 
-    //const location = useLocation();
-    //const data = location.state.data;
     const data = localStorage.getItem("seq");
-
     const classes = useStyles();
 
     const [theme, toggleTheme, mountedComponent] = useDarkMode();
@@ -61,7 +55,6 @@ function Completed() {
                         </Typography>
                     </Grid>
                     
-
                     <Grid item xs={12} className={classes.item}>
                         <div className="link-container">
                             <br />
@@ -76,7 +69,6 @@ function Completed() {
                 </Grid>
             </FadeIn>
             <Container style={{ textAlign: "center" }}><Toggle theme={theme} toggleTheme={toggleTheme} /></Container>
-            
         </ThemeProvider>
     );
 }

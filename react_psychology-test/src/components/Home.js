@@ -20,7 +20,6 @@ function Home({history}) {
     const [theme, toggleTheme, mountedComponent] = useDarkMode();
     const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
-    
     function loginToExample() {
         setLoginToken(false);
         setExampleToken(true);
@@ -41,7 +40,6 @@ function Home({history}) {
         setTestToken(false);
         $(".example-container").fadeIn("linear");
     }
-
 
     return (
         <ThemeProvider theme={themeMode}>

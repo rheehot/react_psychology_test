@@ -2,7 +2,7 @@ import React,{useState}from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import Tooltip from '@material-ui/core/Tooltip';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
@@ -13,8 +13,6 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import EmailIcon from '@material-ui/icons/Email';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import ChatIcon from '@material-ui/icons/Chat';
-import ToggleOffIcon from '@material-ui/icons/ToggleOff';
-import ToggleOnIcon from '@material-ui/icons/ToggleOn';
 
 import FadeIn from 'react-fade-in';
 import Popup from 'reactjs-popup';
@@ -24,7 +22,6 @@ import kakao1 from './images/me.png';
 import kakao2 from './images/lion.png';
 import kakao3 from './images/apeach.png';
 
-
 const images = [
     {
         url: 'https://t1.daumcdn.net/cfile/tistory/25483E3E58763D2635?original',
@@ -33,7 +30,6 @@ const images = [
         width: '100%',
     }
 ];
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -170,9 +166,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
-
 function Intro() {
 
     const classes = useStyles(); 
@@ -205,8 +198,6 @@ function Intro() {
                         <span className={classes.imageBackdrop} />
 
                         <div className={classes.root1}>
-
-
                             <Grid container spacing={1}>
     
                                 <Grid item xs={6}>
@@ -356,31 +347,14 @@ function Intro() {
                                                 </Grid>
                                             </div>
                                         </Popup>
-                                        {/* <Link to="" style={{ textDecoration: 'none', color: '#FFF' }}>
-                                            <Typography
-                                                component="span"
-                                                variant="subtitle1"
-                                                color="inherit"
-                                                className={classes.imageTitle}
-
-                                            >
-                                                {image.title1}
-                                                <span className={classes.imageMarked} />
-                                            </Typography>
-                                        </Link> */}  
                                     </span>
-                                    
                                 </Grid>
-
                             </Grid>
-
                         </div>
-
                     </ButtonBase>
                 ))}
             </div> 
         </FadeIn>
-            
     );
 }
 
