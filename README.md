@@ -2,6 +2,33 @@
 
 Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 
+<center>
+
+![Elice](https://img.shields.io/static/v1?label=Elice&message=Web-Front-Project&color=524fa1)
+
+</center> 
+
+<center>
+
+![Javascript](https://img.shields.io/static/v1?label=Javascript&message=ES6&color=efd81d)
+![Node](https://img.shields.io/static/v1?label=Node&message=v15.6.0&color=80bd01)
+![React](https://img.shields.io/static/v1?label=React&message=v17.0.1&color=00ccff)
+![Axios](https://img.shields.io/static/v1?label=Axios&message=v0.21.1&color=3b6be3)
+![React_Router_DOM](https://img.shields.io/static/v1?label=React-Router-DOM&message=v5.2.0&color=d0021b)
+
+</center>
+
+<center>
+
+![MaterialUI](https://img.shields.io/static/v1?label=Material-UI&message=v5.2.0&color=3978e7)
+![ChartJS](https://img.shields.io/static/v1?label=ChartJS&message=v2.9.4&color=fd767a)
+![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=v4.6.0&color=8812fc)
+
+</center>
+
+
+
+
 ###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
 
 
