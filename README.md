@@ -15,7 +15,8 @@ Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 <summary><strong>1️⃣ day report</strong></summary>
 <div markdown="1">
 <br />
-- 환경설정
+
+### 🍀 환경설정
 Azure VM 접속 방법 [링크](https://www.notion.so/Azure-VM-ff3344a92dda4549b235bfa25658f8dc)
 1. npm 설치확인
 2. node 설치&버젼확인
@@ -32,7 +33,7 @@ Azure VM 접속 방법 [링크](https://www.notion.so/Azure-VM-ff3344a92dda4549b
 
 + $ npm i react-router-dom : react router 설치 (참고 : react router는 Web용, Native 용 존재함)
 
-### 구현
+### 🌻 구현
 - 유저 설정
     + 이름 입력 폼 구현
     + 성별 선택 폼 구현
@@ -52,12 +53,14 @@ Azure VM 접속 방법 [링크](https://www.notion.so/Azure-VM-ff3344a92dda4549b
 <details>
 <summary><strong>2️⃣ day report</strong></summary>
 <div markdown="1">
+<br />
 
-- installation
-    + axios
-        * npm install axios
+### 🍀 환경설정
+
++ axios
+    * npm install axios
     
-### Day Note
+### 🌼 Day Note
 + axios 통신할때, url string에 시작은 반드시, "https://"(필요시,http)를 붙이는 것을 잊지말자.
 + 그렇지 않으니, 통신하면, 다음과 같은 에러 발생
 (Error: Request failed with status code 404
@@ -70,7 +73,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
     - 프로젝트파일 안에서, import $ from 'jquery';
 
 
-### 구현
+### 🌻 구현
 > 필수 해결 사항
 - 5개씩 질문사항, 뿌려주기
 
@@ -96,11 +99,12 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 <summary><strong>3️⃣ day report</strong></summary>
 <div markdown="1">
 <br />
-### 설치
+
+### 🍀 설치
 - $ npm install --save react-router-dom : React Router를 위한 라이브러리
 - $ npm install --save-dev@types/react-router-dom : Typescript(타입스크립트)를 사용하기 위한 react-router-dom의 타입(Type) 정의 라이브러리
 
-### Day Note
+### 🌼 Day Note
 - JSON.stringify(data) : 모든 형태의(객체나,배열 숫자 등등)데이터를 JSON형태 데이터로 변환해준다.
 - String.trim() : 문자열 양쪽 공백 삭제
 - new Date() : 현재시각 가져옴 / new Data()..getTime() : 밀리세크단위로 변환
@@ -152,7 +156,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 
 - state 중에, 배열이나 객체 일때, 제대로 setState 적용하는 법을 확실히 알아야 겠다. [참고문헌](https://ichi.pro/ko/hukeuleul-sayonghayeo-react-state-ui-baeyeol-e-chugahaneun-bangbeob-67108288520668)
 
-### 추후, 보완할 점
+### 🛠 추후, 보완할 점
 > ★ 일단은, 형제 컴포넌트의 state를 끌어올리기하기엔, 손봐야될 것이 많아보이고, 또 지금 상황에서는, 필요한 것은, 로그인 시, 1.사용자이름 2.성별 데이터만 있으면, API post를 할 수 있을 것 같아서, DOM을 이용해서, 값 들을 얻어 냈다. 
 
 </div>
@@ -162,15 +166,17 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 <summary><strong>4️⃣ day report</strong></summary>
 <div markdown="1">
 <br />
-### 설치
+
+### 🍀 설치
 - $ npm install --save react-chartjs-2 chart.js
 
-### CSS 라이브러리
-- [리액트스트랩](https://reactstrap.github.io/components/collapse/)
-- [리액트차트](https://recharts.org/en-US/examples/PieChartWithCustomizedLabel)
-- [sweetalert2](https://sweetalert2.github.io/#examples)
+- CSS 라이브러리
+    
+    - [리액트스트랩](https://reactstrap.github.io/components/collapse/)
+    - [리액트차트](https://recharts.org/en-US/examples/PieChartWithCustomizedLabel)
+    - [sweetalert2](https://sweetalert2.github.io/#examples)
 
-### Day Note
+### 🌼 Day Note
 - React + Chart.js = 데이터 시각화하기(막대그래프, 외 가능) [참고문헌1](https://ichi.pro/ko/react-mich-chart-jsleul-sayonghan-deiteo-sigaghwa-209311532565250) [참고문헌2](https://penguingoon.tistory.com/238)
 
 - 배열 내의, 첫번째, 두번째로 큰 값의 인덱스 찾아내기
@@ -185,7 +191,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 [참고문헌](https://bbaktaeho-95.tistory.com/37)
 
 
-### ★ 해결할 점
+### 🛠 해결할 점
 - 결과페이지에서, 통신 쪽으로 문제가 있는 것 해결해야 한다.
 
 
@@ -197,13 +203,13 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 <div markdown="1">
 <br />
 
-### 설치
+### 🍀 설치
 - npm install --save reactstrap react react-dom : 리액트스트랩
 - npm install react-bootstrap bootstrap
 - npm install --save bootstrap : 부트스트랩 (리액트스트립 내부적으로는 부트스트랩을 포함하고 있지 않다고해서 설치해야한다고 설명하는 듯)
     + import 'bootstrap/dist/css/bootstrap.min.css'; (index.js 에다가
 
-### Day Note 
+### 🌼 Day Note 
 - 리액트스트랩에서, Progress를 통해서, 진행사항을 구현했다.
     + 진행사항은, 클릭 수/질문사항 전체갯수
 
@@ -229,7 +235,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 <div markdown="1">
 <br />
 
-### Day Note
+### 🌼 Day Note
 
 💡 Test.js(테스트페이지) UI/UX 적으로 보완, 버그해결을 진행했다.
 
@@ -267,7 +273,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 <div markdown="1">
 <br />
 
-### 설치
+### 🍀 설치
 
 - $ npm install -g npm-check
     + npm-check는 의존성 관리의 불편함을 덜어주는 cli 
@@ -278,7 +284,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
     + reactstrap
     + chart.js
 
-### 배포
+### 🌐 배포
 
 nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://www.hanumoka.net/2019/12/29/react-20191229-react-nginx-deploy/)
 
@@ -298,18 +304,19 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### Day Note
-🍒 progress bar 의 % 현황을 추가했다.
+### 🌼 Day Note
+
+⚾ progress bar 의 % 현황을 추가했다.
 + Math.round(체크항목/전체항목 * 100) 으로 구현했다.
 
-🍓 ★ 결과페이지, 학력,전공별, 정보 뿌리기
+⚽ ★ 결과페이지, 학력,전공별, 정보 뿌리기
 + 코치님 피드백이후, 맨 처음 버전인, 하나의 useEffect에 모든 로직 집어 넣은 버젼에서는, deps 를 제대로 넣지 않아서, 프로그램이 제대로 작동하지 X
     - 피드백 이후, 일단, deps에 대해서, 좀 더 알아본 결과, useEffect에서 사용되는, 변수나 state를 넣어줘서, 업데이트 될 때, 리렌더링 되는 것을 제어해야한다.
     + ★ 그렇게, deps를 변경했더니, 새로운 문제가 발생
         - `무한 렌더링` 이 발생했다.
         - 삽질을 엄청하다가, 일단은 JobTable 컴포넌트에서, axios로 데이터를 잘 받아온 시점부터는, 통신을 그만해야되는데, 그것이 제어가 안되는 것 같아서, useEffect에서 실행되는 함수를 실행하는데 있어서, 조건을 걸었다. (이러면, 안되는건지는 모르겠으나..일단 프로그램은 죽지않고, 돌아가서 보류중이다.)
 
-🍎 JobTable 카테고리 중에, 결과값이 없는 카테고리의 경우는, 보여지지 않도록 했다.
+🏀 JobTable 카테고리 중에, 결과값이 없는 카테고리의 경우는, 보여지지 않도록 했다.
 + 함수를 하나 만들었고, 그 값이 true OR false를 반환하고 이 값으로 `tr` 요소의 `display` 속성을 삼항연산자로 제어했다.
     - isTrEmpty() 가 제어함
 
@@ -321,25 +328,25 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### Day Note
+### 🌼 Day Note
 
-🍒 전체적인, 필수,선택 기능은 구현 완료한 것 같다.
+⚾ 전체적인, 필수,선택 기능은 구현 완료한 것 같다.
 
 + 내부적으로, 리팩토링은 아직 개발을 더 해보고 진행할 생각
 
-🍎 1차 CSS 작업을 진행 중이다.
+⚽ 1차 CSS 작업을 진행 중이다.
     
 + 레이아웃, 폰트, 요소 배경색까지 진행해볼 예정
 + 참고사이트
     - [PANTONE](http://www.pantone.kr/)
     - [Design-Seed](https://www.design-seeds.com/)
 
-🍓 차별성을 위해, 추가적 기능을 구상 중이다.
+🏀 차별성을 위해, 추가적 기능을 구상 중이다.
 + 결과페이지, 카카오톡 공유기능 
 + 인트로 페이지 제작 생각중
 + 현재 프로젝트 내 검사 외에, `나를 알 수 있는 검사` 여러 사이트 소개 페이지를 제작할까 생각중
 
-### 피드백
+### 📬 피드백
 렌더링 2번 -> 아바 index.js 에서 <React.StrictMode> 때문에 발생할 수 있다. -> 지워주면 됌
 
 무한렌더링 -> useEffect를 여러번 하지않아도되고, fetch 부분에서 NoArrMaker를 실행하도록 하기
@@ -353,9 +360,9 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### Day Note
+### 🌼 Day Note
 
-🍒 `카카오톡 공유기능`을 지금 구현 중인데, 생각이 드는게 많다.
+⚾ `카카오톡 공유기능`을 지금 구현 중인데, 생각이 드는게 많다.
 
 + 일단, `카카오톡 공유기능`과 `다른 검사사이트 제공` 기능을 위해, 결과페이지에서, `OtherTest(다른기능) 페이지`를 하나 더 제작했다.
 
@@ -376,7 +383,7 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
     - ★ 가장 중요한건, 그럼, 결과페이지에서 한번 적용된, 결과를, 계속 유지하는 법을, 어떻게 구현을 해야할까 ???? (리액트는, state가 증발하는데..) 흠... 
 
 
-🍓 카카오톡 공유버튼 만들기
+⚽ 카카오톡 공유버튼 만들기
 
 + [참고문헌](https://webruden.tistory.com/354)
 + [KAKAO Developer](https://developers.kakao.com/)
@@ -384,11 +391,11 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 
 
-### 피드백
+### 📬 피드백
 
-🥦 결국 생각해보니, `결과페이지`에서, 데이터가 뿌려지는건, `결과완료 페이지`에서, 넘겨온, `seq` 정보만, 있으면, `url + seq` 을 가지고, `사용자데이터`와 `가치관결과`를 받아서, 뿌릴 수 있다는 것
+⚾ 결국 생각해보니, `결과페이지`에서, 데이터가 뿌려지는건, `결과완료 페이지`에서, 넘겨온, `seq` 정보만, 있으면, `url + seq` 을 가지고, `사용자데이터`와 `가치관결과`를 받아서, 뿌릴 수 있다는 것
 
-🥝 그럼, 생각해봐야 되는 것은, `처음 내가 검사하는 사람인지`, `내가 검사한걸 공유링크를 받고 들어온 사람인지` 를, `Result 컴포넌트`에서, 구분해서, `seq` 값을, `LocalStorage`에 `seq`로 받을지, `location`을 통해 받을 건지, 제어할려 했다.
+⚽ 그럼, 생각해봐야 되는 것은, `처음 내가 검사하는 사람인지`, `내가 검사한걸 공유링크를 받고 들어온 사람인지` 를, `Result 컴포넌트`에서, 구분해서, `seq` 값을, `LocalStorage`에 `seq`로 받을지, `location`을 통해 받을 건지, 제어할려 했다.
 
 + 사용자가, 링크를 타고 들어오면, 바로 `Result 컴포넌트`로, 접근할테니, 이전 단계에서, 받은 `LocalStorage`에 원하는 값들이 없을 것이다.
 
@@ -404,11 +411,13 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### 설치
-🍒 $ npm i styled-components
+### 🍀 설치
 
-### Day Note
-🍒 `Intro` 페이지를 만들면 좋겠다 생각했다.
+- $ npm i styled-components
+
+### 🌼 Day Note
+
+⚾ `Intro` 페이지를 만들면 좋겠다 생각했다.
 
 + 배경이미지를 고르고, 브라우저에 꽉 차도록 설정하기 [참고문헌](https://juotte.net/?p=5765)
 
@@ -422,7 +431,7 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
     - `hover` effect가 내 스타일이라 사용해봤다.
 
-🍓 `다른 검사하기` 페이지에 있던, `카카오톡 공유하기` 버튼을 `검사 결과`페이지에서 볼 수 있도록, 배치했다.
+⚽ `다른 검사하기` 페이지에 있던, `카카오톡 공유하기` 버튼을 `검사 결과`페이지에서 볼 수 있도록, 배치했다.
 또 뭐가 있을까 생각하다, `소스코드 공유`도 하면 좋겠다고 생각했다.
 
 + `react` 에서, `img` 에 `src`에 이미지 경로를 사용하는 법이 import하는 식을 써야 적용된다는 것을 알게 됬다.
@@ -437,14 +446,14 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### 설치
+### 🍀 설치
 
-🍒 npm install react-fade-in
+🍏 npm install react-fade-in
 
 + 리액트에서, 컴포넌트에 fade-in 효과를 줄 수 있다.
 + 최상위 컴포넌트에서, 가장 바깥쪽에 선언하면, 하위 컴포넌트들에게 전부 적용된다.
 
-### Day Note
+### 🌼 Day Note
 
 + 전체적으로, 페이지에 `Fade-In` 효과를 주었다.
 
@@ -454,7 +463,7 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 + progress bar, 역시 material-ui로 변경했다.
 
-### 조언
+### 📬 피드백
 
 📌 npm install --save mybatis-mapper
 
@@ -470,15 +479,15 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 <div markdown="1">
 <br />
 
-### Day Note
+### 🌼 Day Note
 
-[X] 검사 완료페이지, 중앙 정렬 ( O )
+- [X] 검사 완료페이지, 중앙 정렬 ( O )
 
-[X] 결과 페이지, 사용자정보, 테이블 영역 3분의 1씩 나누기 ( O )
+- [X] 결과 페이지, 사용자정보, 테이블 영역 3분의 1씩 나누기 ( O )
 
-[X] 결과 페이지, 중요 가치관에 대한, 아이콘 뿌려주기 ( O )
+- [X] 결과 페이지, 중요 가치관에 대한, 아이콘 뿌려주기 ( O )
 
-[X] 폰트 적용하기
+- [X] 폰트 적용하기
 
 + [ttf react 적용하기 참고 가이드](https://coding-hwije.tistory.com/50)
 
@@ -492,11 +501,11 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
     - [좋은 텍스트란 ?](http://koreawebdesign.com/typography-for-webdesign/)
 
-[X] 인트로페이지 내용채워넣기
+- [X] 인트로페이지 내용채워넣기
 
 + [Reactjs-popUp 라이브러리 가이드](https://react-popup.elazizi.com/)
 
-[X] 다크모드 기능 (시간이...되면)
+- [X] 다크모드 기능 (시간이...되면)
 
 🍒 참고사이트
 
