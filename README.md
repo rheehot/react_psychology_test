@@ -14,6 +14,8 @@
 
 </center>
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 
 ###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
