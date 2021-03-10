@@ -135,7 +135,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - import { Link } from "react-router-dom"
     + <Link to="/경로" />
 
-- 페이지 전환시, 보여질 페이지에, 데이터를 함께 전달하는 방법 [참고문헌1] (https://velog.io/@dhlee91/this.props.history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0) [참고문헌2](https://velog.io/@devmoonsh/React-Router)
+- 페이지 전환시, 보여질 페이지에, 데이터를 함께 전달하는 방법 [참고문헌1](https://velog.io/@dhlee91/this.props.history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0) [참고문헌2](https://velog.io/@devmoonsh/React-Router)
     + 넘기는 컴포넌트
         * props.history.push({
         pathname : 경로,
