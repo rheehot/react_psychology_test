@@ -1,6 +1,12 @@
 ## 🍒 프로젝트 개요
 
-<center>
+<div align="center">
+
+## Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
+
+</div>
+
+<div align="center">
 
 ![Elice](https://img.shields.io/static/v1?label=Elice&message=Web-Front-Project&color=524fa1)
 ![Javascript](https://img.shields.io/static/v1?label=Javascript&message=ES6&color=efd81d)
@@ -11,12 +17,8 @@
 ![MaterialUI](https://img.shields.io/static/v1?label=Material-UI&message=v5.2.0&color=3978e7)
 ![ChartJS](https://img.shields.io/static/v1?label=ChartJS&message=v2.9.4&color=fd767a)
 ![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=v4.6.0&color=8812fc)
-
-</center>
-
-Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트 
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+ 
+ </div>
 
 ###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
 
@@ -565,7 +567,11 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
  
 
 
+<div align="center">
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+ 
+</div>
 
 
 
