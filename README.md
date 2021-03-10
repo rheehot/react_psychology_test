@@ -12,8 +12,8 @@
 ![Javascript](https://img.shields.io/static/v1?label=Javascript&message=ES6&color=efd81d)
 ![Node](https://img.shields.io/static/v1?label=Node&message=v15.6.0&color=80bd01)
 ![React](https://img.shields.io/static/v1?label=React&message=v17.0.1&color=00ccff)
-![Axios](https://img.shields.io/static/v1?label=Axios&message=v0.21.1&color=3b6be3)
-![React_Router_DOM](https://img.shields.io/static/v1?label=React-Router-DOM&message=v5.2.0&color=d0021b)
+![Axios](https://img.shields.io/static/v1?label=Axios&message=v0.21.1&color=3b6be3) 
+![React_Router_DOM](https://img.shields.io/static/v1?label=React-Router-DOM&message=v5.2.0&color=d0021b) <br />
 ![MaterialUI](https://img.shields.io/static/v1?label=Material-UI&message=v5.2.0&color=3978e7)
 ![ChartJS](https://img.shields.io/static/v1?label=ChartJS&message=v2.9.4&color=fd767a)
 ![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=v4.6.0&color=8812fc)
@@ -565,7 +565,7 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + `리팩토링` 과정이, 필요함을 알게 됬다.
 + 나의 프로젝트를 대략적으로 소개하는 `README 파일`을 작성을 항상 잘 정리해 놓는 것이 좋다.
  
-
+<br />
 
 <div align="center">
 
