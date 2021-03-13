@@ -2,7 +2,7 @@
 
 <div align="center">
 
-## Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
+### Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 
 </div>
 
