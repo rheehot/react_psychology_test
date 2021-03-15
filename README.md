@@ -548,7 +548,6 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + `D3 라이브러리`로 결과를 다이나믹하게 보여주기
 + 반응형 페이지로 개선하기
 
-<<<<<<< HEAD
 ## 🍒 느낀 점
 
 프로젝트 진행 전
@@ -579,21 +578,6 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 </div>
-=======
-## 🍒 보완해 볼 것
-
-+ `워드클라우드` 활용해보기
-+ `D3 라이브러리`로 결과를 다이나믹하게 보여주기
-+ 반응형 페이지로 개선하기
-
-## 🍒 느낀 점
-
-프로젝트 진행 전
-
-+ `와이어프레임`의 중요성 --> 프로젝트의 방향성을 잡아줬다.
- 
-+ `figma`같은, 웹 디자인 협업 툴 같은 걸, 다음 프로젝트 진행 시 사용해봐야겠다. [Figma 링크](https://www.figma.com/)  
->>>>>>> 64809d134ae21fe49717327d67a6c2333c25cb2d
 
 + 전체적인, 나의 서비스의 `폰트`, `컬러` 정도를 잡고, 들어가는 것도, 프로젝트의 제작시간을 크게 단축 시킬 수 있다는 걸 알았다.
 
