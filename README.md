@@ -579,29 +579,3 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 
 </div>
 
-+ 전체적인, 나의 서비스의 `폰트`, `컬러` 정도를 잡고, 들어가는 것도, 프로젝트의 제작시간을 크게 단축 시킬 수 있다는 걸 알았다.
-
-프로젝트 진행 중
-
-+ 전체적인 프로젝트 일정이 정해지고, 그날 그날의 할당량이 생겼다면 우선적으로 그 사항을 해결한다.
-+ 체력분배를 잘하는 것이 중요 --> 처음에 너무 달리면, 중후반 쯤 `번 아웃`이 올 수 있다
-+ 변수나, 메소드를 하나를 정해도, 추후 `10년 뒤에` 봐도, 내가 이 코드를 봐도 이해할 수 있도록 정하는 것이 중요하다고 했다. 
-
-프로젝트 진행 후
-
-+ 내가 구현한 코드들이, 구현할 때는, 정신없어서 보지 못한, 불필요한 코드가 있을 수 있다.
-+ `리팩토링` 과정이, 필요함을 알게 됬다.
-+ 나의 프로젝트를 대략적으로 소개하는 `README 파일`을 작성을 항상 잘 정리해 놓는 것이 좋다.
- 
-<br />
-
-<div align="center">
-
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
- 
-</div>
-
-
-
-
- 
