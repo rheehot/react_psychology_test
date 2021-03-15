@@ -19,16 +19,11 @@
 ![MaterialUI](https://img.shields.io/static/v1?label=Material-UI&message=v5.2.0&color=3978e7)
 ![ChartJS](https://img.shields.io/static/v1?label=ChartJS&message=v2.9.4&color=fd767a)
 ![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=v4.6.0&color=8812fc)
-<<<<<<< HEAD
 
 </div>
 
 
 
-=======
- 
- </div>
->>>>>>> 64809d134ae21fe49717327d67a6c2333c25cb2d
 
 ###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
 
