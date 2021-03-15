@@ -4,6 +4,8 @@
 
 ### Elice Academy X KDT : Project 1 - 웹 서비스 프로젝트
 
+`커리어넷`의 직업심리검사 API를 사용하여 사용자의 직업 적합도를 확인할 수 있는 웹 서비스
+
 </div>
 
 <div align="center">
