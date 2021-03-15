@@ -14,16 +14,21 @@
 ![Javascript](https://img.shields.io/static/v1?label=Javascript&message=ES6&color=efd81d)
 ![Node](https://img.shields.io/static/v1?label=Node&message=v15.6.0&color=80bd01)
 ![React](https://img.shields.io/static/v1?label=React&message=v17.0.1&color=00ccff)
-![Axios](https://img.shields.io/static/v1?label=Axios&message=v0.21.1&color=3b6be3)
-![React_Router_DOM](https://img.shields.io/static/v1?label=React-Router-DOM&message=v5.2.0&color=d0021b)
+![Axios](https://img.shields.io/static/v1?label=Axios&message=v0.21.1&color=3b6be3) 
+![React_Router_DOM](https://img.shields.io/static/v1?label=React-Router-DOM&message=v5.2.0&color=d0021b) <br />
 ![MaterialUI](https://img.shields.io/static/v1?label=Material-UI&message=v5.2.0&color=3978e7)
 ![ChartJS](https://img.shields.io/static/v1?label=ChartJS&message=v2.9.4&color=fd767a)
 ![Bootstrap](https://img.shields.io/static/v1?label=Bootstrap&message=v4.6.0&color=8812fc)
+<<<<<<< HEAD
 
 </div>
 
 
 
+=======
+ 
+ </div>
+>>>>>>> 64809d134ae21fe49717327d67a6c2333c25cb2d
 
 ###  [Requirements Report](https://www.notion.so/7e0fdcd157e544cdbfc1d56ba45f414e)
 
@@ -140,7 +145,7 @@ at XMLHttpRequest.handleLoad (xhr.js:62))
 - import { Link } from "react-router-dom"
     + <Link to="/경로" />
 
-- 페이지 전환시, 보여질 페이지에, 데이터를 함께 전달하는 방법 [참고문헌1] (https://velog.io/@dhlee91/this.props.history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0) [참고문헌2](https://velog.io/@devmoonsh/React-Router)
+- 페이지 전환시, 보여질 페이지에, 데이터를 함께 전달하는 방법 [참고문헌1](https://velog.io/@dhlee91/this.props.history.push%EB%A1%9C-props-%EB%84%98%EA%B2%A8%EC%A3%BC%EA%B8%B0) [참고문헌2](https://velog.io/@devmoonsh/React-Router)
     + 넘기는 컴포넌트
         * props.history.push({
         pathname : 경로,
@@ -548,6 +553,7 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 + `D3 라이브러리`로 결과를 다이나믹하게 보여주기
 + 반응형 페이지로 개선하기
 
+<<<<<<< HEAD
 ## 🍒 느낀 점
 
 프로젝트 진행 전
@@ -578,7 +584,43 @@ nginx 를 이용한 Azure VM에 내 프로젝트 배포 [참고문헌](https://w
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 </div>
+=======
+## 🍒 보완해 볼 것
 
++ `워드클라우드` 활용해보기
++ `D3 라이브러리`로 결과를 다이나믹하게 보여주기
++ 반응형 페이지로 개선하기
+
+## 🍒 느낀 점
+
+프로젝트 진행 전
+
++ `와이어프레임`의 중요성 --> 프로젝트의 방향성을 잡아줬다.
+ 
++ `figma`같은, 웹 디자인 협업 툴 같은 걸, 다음 프로젝트 진행 시 사용해봐야겠다. [Figma 링크](https://www.figma.com/)  
+>>>>>>> 64809d134ae21fe49717327d67a6c2333c25cb2d
+
++ 전체적인, 나의 서비스의 `폰트`, `컬러` 정도를 잡고, 들어가는 것도, 프로젝트의 제작시간을 크게 단축 시킬 수 있다는 걸 알았다.
+
+프로젝트 진행 중
+
++ 전체적인 프로젝트 일정이 정해지고, 그날 그날의 할당량이 생겼다면 우선적으로 그 사항을 해결한다.
++ 체력분배를 잘하는 것이 중요 --> 처음에 너무 달리면, 중후반 쯤 `번 아웃`이 올 수 있다
++ 변수나, 메소드를 하나를 정해도, 추후 `10년 뒤에` 봐도, 내가 이 코드를 봐도 이해할 수 있도록 정하는 것이 중요하다고 했다. 
+
+프로젝트 진행 후
+
++ 내가 구현한 코드들이, 구현할 때는, 정신없어서 보지 못한, 불필요한 코드가 있을 수 있다.
++ `리팩토링` 과정이, 필요함을 알게 됬다.
++ 나의 프로젝트를 대략적으로 소개하는 `README 파일`을 작성을 항상 잘 정리해 놓는 것이 좋다.
+ 
+<br />
+
+<div align="center">
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fyoungminss%2Freact_psychology_test&count_bg=%23F5DF4D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+ 
+</div>
 
 
 
