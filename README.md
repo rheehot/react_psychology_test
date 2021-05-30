@@ -29,7 +29,7 @@
 
 
 + [Guide Demo](http://elice-kdt-ai-track-vm-project-03.koreacentral.cloudapp.azure.com/test)
-+ [Live Demo](https://job-value-test.web.app/Home)
++ [Live Demo](https://job-value-test.web.app/)
 
 
 ## 🍒 Day Note
